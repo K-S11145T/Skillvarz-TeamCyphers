@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] */
+
+@font-face {
+  font-family: 'Hanbai';
+  src: url('/Fonts/HANBAI.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/Fonts/orbitron-regular.ttf') format('truetype');
+}
+
+::-webkit-scrollbar{
+  width: 1px;
+  background-color: black;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #333;
+}
