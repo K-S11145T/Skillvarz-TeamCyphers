@@ -3,41 +3,41 @@ import React from 'react'
 const LandingPage = () => {
   return (
     <div className='w-full relative min-h-screen'>
-      <div className='w-full min-h-screen relative overflow-hidden'>
+      <div className='w-full h-screen relative overflow-hidden'>
         <div className=' w-full'>
           <img className='w-full filter brightness-100 saturate-150 h-full object-cover' src="/Page-1/Untitled.png" alt="" />
         </div>
 
 
 
-        <div className='absolute  left-1/2  translate-x-[-50%] w-[40%] min-h-screen bottom-0'>
+        <div className='absolute  left-1/2  translate-x-[-50%] w-[30%] min-h-screen bottom-0'>
           <img className='w-full filter brightness-90 saturate-90 object-cover' src="/Page-1/AC_Shadows_Crest_w_Color 2.png" alt="" />
         </div>
 
-        <div className='absolute left-1/2 translate-x-[-50%] w-[40%] min-h-screen bottom-0'>
+        <div className='absolute left-1/2 translate-x-[-50%] w-[30%] min-h-screen bottom-0'>
           <img className='w-full filter brightness-90 saturate-150 object-cover' src="/Page-1/AC_Shadows_Crest_w_Color 1.png" alt="" />
         </div>
 
-        <div className='absolute left-1/2 translate-x-[-50%] w-[50%] min-h-screen bottom-0'>
+        <div className='absolute left-1/2 translate-x-[-50%] w-[45%] h-fit bottom-0'>
           <img className='w-full h-full ' src="/Page-1/imageAC (1).png" alt="" />
         </div>
       </div>
-      <div className=' absolute top-0 w-full left-0 p-5'>
+      <div className=' absolute top-0 w-full left-0 px-10 p-5'>
         <div className='flex justify-between'>
 
-          <div className='flex flex-col min-h-[110vh] justify-between'>
-            <div className='flex gap-2'>
-              <h1 className="text-4xl font-hanbai text-white [writing-mode:vertical-rl] [text-orientation:upright]">
+          <div className='flex flex-col min-h-screen pb-16 justify-between'>
+            <div className='flex gap-1'>
+              <h1 className="text-3xl font-hanbai text-white [writing-mode:vertical-rl] [text-orientation:upright]">
                 <span className='bg-gradient-to-b from-red-600 via-zinc-800 to-red-600 filter brightness-90 saturate-150 bg-clip-text text-transparent'> as</span>sassins
               </h1>
-              <div className='font-orbitron filter brightness-90 saturate-150 text-3xl font-bold'>
+              <div className='font-orbitron filter brightness-90 saturate-150 text-2xl font-bold'>
 
                 <h1 className='bg-gradient-to-b  from-red-600 to-zinc-800 bg-clip-text text-transparent '>creed</h1>
                 <h1 className='bg-gradient-to-b  from-red-600 to-zinc-800 bg-clip-text text-transparent '>Shadows</h1>
               </div>
             </div>
 
-            <div className='w-[15vw] relative border-b-2 py-4 border-red-500 h-[50vh]'>
+            <div className='w-[13vw] relative border-b-2 py-2 border-red-500 h-[40vh]'>
               <div className='absolute top-[-8%]'>
                 <div className='relative w-full h-full'>
                   {/* Your image with the same clip-path */}
@@ -110,7 +110,7 @@ const LandingPage = () => {
           </div>
 
 
-          <div className='flex flex-col justify-between min-h-screen'>
+          <div className='flex flex-col justify-between pb-16 min-h-screen'>
             <div className='flex h-[7%] gap-3'>
               <div className='px-3 py-2 border-2  border-red-500 text-red-500 font-orbitron flex items-center'>
                 <h1>16d | 8h | 20m | 32s</h1>
