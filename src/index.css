@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 /* [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] */
+/* [clip-path:polygon(0%_0%,100%_0%,100%_100%,100%_80%,0%_100%,0%_100%)] - footer se pehle*/
 
 @font-face {
   font-family: 'Hanbai';
