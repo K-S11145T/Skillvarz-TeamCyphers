@@ -8,19 +8,19 @@ const Page4 = () => {
         <img src="/Page-2/Arrow.svg" alt="Arrow" className="w-fit h-fit object-contain scale-x-[-1]" />
       </div>
 
-      <div className='flex mt-20 min-h-[125vh] gap-5'>
-        <div className='flex flex-col mt-[10vh] gap-[13vh]'>
+      <div className='flex mt-20  min-h-screen '>
+        <div className='flex flex-col w-[30vw] items-center mt-[10vh] gap-[13vh]'>
           <div className='w-[20vw] items-center justify-center rotate-[45deg] flex gap-4 h-fit'>
-            <div className='w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent'></div>
-            <div className='w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent'></div>
+            <div className='w-[13vh] h-[13vh] border-2 border-[#C65244] bg-transparent'></div>
+            <div className='w-[13vh] h-[13vh] border-2 border-[#C65244] bg-transparent'></div>
           </div>
           <div className='w-[20vw] rotate-[45deg] items-center justify-center flex gap-4 h-fit'>
-            <div className='w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent'></div>
-            <div className='w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent'></div>
+            <div className='w-[13vh] h-[13vh] border-2 border-[#C65244] bg-transparent'></div>
+            <div className='w-[13vh] h-[13vh] border-2 border-[#C65244] bg-transparent'></div>
           </div>
           <div className='w-[20vw] rotate-[45deg] items-center justify-center flex gap-4 h-fit'>
-            <div className='w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent'></div>
-            <div className='w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent'></div>
+            <div className='w-[13vh] h-[13vh] border-2 border-[#C65244] bg-transparent'></div>
+            <div className='w-[13vh] h-[13vh] border-2 border-[#C65244] bg-transparent'></div>
           </div>
         </div>
 
@@ -28,7 +28,7 @@ const Page4 = () => {
           <div className='w-[8vh] h-[8vh] mt-20  rotate-[45deg] flex items-center justify-center p-4 border-2 border-[#C65244]'>
             <img src="/Page-2/Arrow.svg" alt="Arrow" className="w-fit  h-fit rotate-[-45deg] object-contain scale-x-[-1]" />
           </div>
-          <div className='relative w-[40vw] '>
+          <div className='relative w-[30vw] '>
             <img className='w-full h-full object-cover' src="/Page-3/AC_Shadows_Crest_w_Color 2.png" alt="" />
             <div className='absolute top-0 left-0 w-[80%] h-fit' >
               <img
@@ -47,13 +47,13 @@ const Page4 = () => {
           </div>
 
         </div>
-        <div className='w-[30vw] mt-[10vh] h-full'>
+        <div className='w-[30vw]  mt-[10vh] h-full'>
           <h1 className='text-white text-center text-4xl'>NAOE</h1>
 
-          <div className='flex gap-5 mt-20'>
-            <div className='h-[15vh] w-[15vh] rounded-full border-2 border-[#C65244] bg-transparent'></div>
-            <div className='h-[15vh] w-[15vh] rounded-full border-2 border-[#C65244] bg-transparent'></div>
-            <div className='h-[15vh] w-[15vh] rounded-full border-2 border-[#C65244] bg-transparent'></div>
+          <div className='flex gap-4 justify-center mt-20'>
+            <div className='h-[13vh] w-[13vh] rounded-full border-2 border-[#C65244] bg-transparent'></div>
+            <div className='h-[13vh] w-[13vh] rounded-full border-2 border-[#C65244] bg-transparent'></div>
+            <div className='h-[13vh] w-[13vh] rounded-full border-2 border-[#C65244] bg-transparent'></div>
 
           </div>
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Page2 = () => {
   return (
-    <div className='w-full h-screen flex items-center justify-between bg-black'>
+<div className='w-full min-h-screen flex items-center justify-between bg-black'>
 
       <div className='w-[18vw] h-screen'>
         <img className='w-full h-full object-cover' src="/Page-2/Player2BgRemoved 1 (1).png" alt="" />
