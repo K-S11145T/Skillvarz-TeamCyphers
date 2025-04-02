@@ -1,24 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "lenis/dist/lenis.css";
+@import "tailwindcss";
 
 /* [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] */
 /* [clip-path:polygon(0%_0%,100%_0%,100%_100%,100%_80%,0%_100%,0%_100%)] - footer se pehle*/
 
 @font-face {
-  font-family: 'Hanbai';
-  src: url('/Fonts/HANBAI.otf') format('opentype');
+  font-family: "Hanbai";
+  src: url("/Fonts/HANBAI.otf") format("opentype");
 }
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('/Fonts/orbitron-regular.ttf') format('truetype');
+  font-family: "Orbitron";
+  src: url("/Fonts/orbitron-regular.ttf") format("truetype");
 }
 
-::-webkit-scrollbar{
+/* .gsap-motion-path-wrapper {
+  will-change: transform;
+} */
+
+::-webkit-scrollbar {
   width: 1px;
   background-color: black;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: #333;
 }
