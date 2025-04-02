@@ -10,11 +10,7 @@ const Page3 = () => {
     { sr: "04", name: "ALEXIOS" },
   ];
   return (
-<<<<<<< HEAD
-    <div className="w-full min-h-screen pb-20 pt-10 font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
-=======
     <div className="w-full min-h-screen pb-20 font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
->>>>>>> features/animation
       <div className="flex p-5 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
@@ -24,19 +20,11 @@ const Page3 = () => {
 
         <h1 className="text-[#C65244] text-5xl">Echoes of the Past</h1>
       </div>
-<<<<<<< HEAD
-      <div className="flex items-center p-5 mt-20 h-[80vh] justify-center gap-3">
-=======
       <div className="flex items-center p-5 mt-20 min-h-[60vh] justify-center gap-3">
->>>>>>> features/animation
         <div className="w-[50vw] min-h-full flex flex-col gap-3 justify-center ">
           <h1 className="text-[#C65244] text-4xl">
             The Ghost of the Battlefield
           </h1>
-<<<<<<< HEAD
-=======
-
->>>>>>> features/animation
           <p className="text-zinc-300 mt-5 text-lg">
             Born into a noble lineage of warriors, Naoe's fate changed when her
             father was betrayed and slain. Escaping the ruins of her home, she

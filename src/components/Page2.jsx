@@ -19,7 +19,7 @@ const Page2 = () => {
         trigger: parent.current,
         start: "top top",
         end: "top -200%",
-        markers: true,
+        // markers: true,
         scrub: 1.2,
         pin: true,
       },
