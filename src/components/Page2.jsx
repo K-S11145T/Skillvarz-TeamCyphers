@@ -135,11 +135,11 @@ const Page2 = () => {
               alt="Arrow"
               className="w-fit h-fit object-contain"
             />
-            <h1 className="text-[#C65244] text-5xl">
+            <h1 className="text-[#C65244] text-5xl lg:text-4xl ">
               {splitText("A new creed rises")}
             </h1>
           </div>
-          <div className="text-zinc-300 mt-5 text-2xl" ref={bodyText}>
+          <div className="text-zinc-300 mt-5 text-2xl lg:text-xl " ref={bodyText}>
             {splitText(
               `Live the intertwined stories of Naoe, an adept shinobi Assassin from Iga Province, and Yasuke, the powerful African samurai of historical legend. Against the backdrop of the turbulent late Sengoku period, this remarkable duo will discover their common destiny as they usher in a new era for Japan!`
             )}

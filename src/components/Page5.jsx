@@ -1,81 +1,149 @@
 import React from "react";
 
-const Page5 = () => {
+const Page6 = () => {
   return (
-    <div className="w-full min-h-screen pb-10  font-orbitron bg-black ">
-      <div className="flex p-5 items-center gap-5">
+    <div className="w-full relative min-h-screen  font-orbitron bg-black">
+      <div className=" w-full">
         <img
-          src="/Page-2/Arrow.svg"
-          alt="Arrow"
-          className="w-fit h-fit object-contain"
-        />
-
-        <h1 className="text-[#C65244] text-5xl">Echoes of the Past</h1>
-      </div>
-
-      <div className="w-full relative h-[90vh] bg-zinc-400">
-        <img
-          style={{ objectPosition: "50% 20%" }}
-          className="w-full h-full object-cover"
-          src="/Page-4/Dope 1.png"
+          className="w-full filter brightness-100 saturate-150 h-[360vh] object-cover"
+          src="/Page-1/Untitled.png"
           alt=""
         />
+      </div>
+      <div className=" absolute flex flex-col items-center justify-start gap-10 top-0">
+        <div className=" pt-20 flex gap-10 items-start">
+          <div className="flex p-5  items-center gap-5">
+            <img
+              src="/Page-2/Arrow.svg"
+              alt="Arrow"
+              className="w-fit h-fit object-contain"
+            />
 
-        <div className="w-full absolute text-white top-0 left-0  flex h-full border-2 border-[#C65244]">
-          <div className="w-[25%] flex items-end p-5 border-x-[1px] border-[#C65244]  h-full ">
-            <div className=" w-full">
-              <h1 className=" ml-2 text-2xl font-bold">Soundtracks</h1>
-              <p className="text-base ml-2 mt-2  ">
-                A character’s soundtrack enhances their presence and emotions.
-                Assassin’s Creed Shadows blends shakuhachi flutes, taiko drums,
-                and orchestration for an immersive, historical feel.
-              </p>
+            <h1 className="text-[#C65244] text-5xl">Platforms</h1>
+          </div>
 
-              <div className="w-full mt-4 h-fit">
-                <img
-                  className="w-full h-full object-cover"
-                  src="/Page-4/Pos2.png"
-                  alt=""
-                />
-              </div>
-              <div className="flex text-black items-center justify-evenly">
-                <button className="bg-red-500 w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
-                  EXPLORE
-                </button>
-                <button className="bg-red-500 w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
-                  STEAM
-                </button>
-              </div>
+          <div className="w-[65%] text-white">
+            <p className="text-4xl mt-7">
+              Step into the shadows of war, where honor and betrayal shape
+              destiny. Will you rise as a master of stealth and steel, or be
+              lost in the chaos of a fading era? The land is your
+              battleground—embrace the assassin’s path!
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-20 w-[85%] flex border-y-2 border-[#C65244] [clip-path:polygon(0%_0%,99%_0%,100%_10%,100%_100%,1%_100%,0%_90%)]  relative h-[20vh]">
+          <svg
+            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            width="100%"
+            height="100%"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
+            {/* Background polygon (transparent) */}
+            <polygon
+              points="0,0 99,0 100,10 100,100 1,100 0,90"
+              fill="transparent"
+            />
+
+            {/* Border polygon (matches border-2) */}
+            <polygon
+              points="0,0 99,0 100,10 100,100 1,100 0,90"
+              fill="none"
+              stroke="#C65244" // Your border color
+              strokeWidth="0.5%" // Perfectly scales to match border-2
+              strokeLinejoin="round" // Clean corners
+            />
+          </svg>
+
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+            <h1>Xbox</h1>
+          </div>
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+            <h1>Ps5</h1>
+          </div>
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+            <h1>Macos</h1>
+          </div>
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+            <h1>Ubisoft</h1>
+          </div>
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+            <h1>Luna</h1>
+          </div>
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+            <h1>Steam</h1>
+          </div>
+          <div className="border-x-[1px] w-[14.2854%] bg-[#C65244]  font-bold text-xl flex items-center justify-center h-full  border-[#C65244]">
+            <img
+              src="/Page-5/Epic 5.svg"
+              alt="Arrow"
+              className="w-[70%] h-fit object-contain"
+              style={{ fill: "#C65244" }}
+            />
+          </div>
+        </div>
+
+        <div className="w-full mt-20 flex flex-col gap-20 items-center min-h-screen">
+          <div className="w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh] ">
+            <img
+              className="w-full h-full object-cover"
+              src="/Page-5/Yasuke.png"
+              alt=""
+            />
+
+            <div className="absolute bottom-5 right-0">
+              <h1 className="text-3xl w-[40vw] text-white font-bold">
+                Become a legendary samurai
+              </h1>
+              <button className="bg-black mt-2 text-[#C65244]  [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                PRE ORDER
+              </button>
             </div>
           </div>
 
-          <div className="w-[25%] border-x-[1px] overflow-hidden group relative border-[#C65244] flex flex-col items-center justify-center h-full ">
-            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#C65244]">
-              {" "}
+          <div className="w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh] ">
+            <img
+              className="w-full h-full object-cover"
+              src="/Page-5/Yasuke.png"
+              alt=""
+            />
+
+            <div className="absolute bottom-5 right-0">
+              <h1 className="text-3xl w-[40vw] text-white font-bold">
+                Become a legendary samurai
+              </h1>
+              <button className="bg-black mt-2 text-[#C65244]  [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                PRE ORDER
+              </button>
             </div>
-            <h1 className="text-xl absolute">Weapon Design</h1>
-            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">01</h1>
           </div>
 
-          <div className="w-[25%] relative overflow-hidden group border-x-[1px] flex flex-col items-center justify-center  border-[#C65244]  h-full ">
-            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#C65244]">
-              {" "}
+          <div className="w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh] ">
+            <img
+              className="w-full h-full object-cover"
+              src="/Page-5/Yasuke.png"
+              alt=""
+            />
+
+            <div className="absolute bottom-5 right-0">
+              <h1 className="text-3xl w-[40vw] text-white font-bold">
+                Become a legendary samurai
+              </h1>
+              <button className="bg-black mt-2 text-[#C65244]  [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                PRE ORDER
+              </button>
             </div>
-            <h1 className="text-xl absolute">Developer Interviews</h1>
-            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">02</h1>
           </div>
 
-          <div className="w-[25%] relative border-x-[1px] group overflow-hidden flex flex-col items-center justify-center border-[#C65244]  h-full ">
-            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#C65244]">
-              {" "}
-            </div>
-            <h1 className="text-xl absolute">Soundtracks</h1>
-            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">03</h1>
-          </div>
+          <h1 className="text-start w-[80%] text-white text-3xl font-bold">
+            Step into the shadows. Stay tuned for exclusive content and
+            pre-launch surprises. The journey begins soon...
+          </h1>
         </div>
       </div>
     </div>
   );
 };
 
-export default Page5;
+export default Page6;

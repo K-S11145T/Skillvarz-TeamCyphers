@@ -1,76 +1,76 @@
 import React from "react";
 
-const Page4 = () => {
+const Page5 = () => {
   return (
-    <div className="w-full min-h-screen font-orbitron p-5 bg-gradient-to-b from-[#120202] via-black to-black">
-      <div className="w-full justify-end items-center flex gap-5">
-        <h1 className="text-[#C65244] text-5xl">Meet the Characters</h1>
+    <div className="w-full min-h-screen py-20 bg-gradient-to-b from-[#120202]  via-black to-[#0D0000] font-orbitron bg-black ">
+      <div className="flex p-5 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
-          className="w-fit h-fit object-contain scale-x-[-1]"
+          className="w-fit h-fit object-contain"
         />
+
+        <h1 className="text-[#C65244] text-5xl">Echoes of the Past</h1>
       </div>
 
-      <div className="flex mt-20 min-h-[125vh] gap-5">
-        <div className="flex flex-col mt-[10vh] gap-[13vh]">
-          <div className="w-[20vw] items-center justify-center rotate-[45deg] flex gap-4 h-fit">
-            <div className="w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent"></div>
-            <div className="w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent"></div>
-          </div>
-          <div className="w-[20vw] rotate-[45deg] items-center justify-center flex gap-4 h-fit">
-            <div className="w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent"></div>
-            <div className="w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent"></div>
-          </div>
-          <div className="w-[20vw] rotate-[45deg] items-center justify-center flex gap-4 h-fit">
-            <div className="w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent"></div>
-            <div className="w-[15vh] h-[15vh] border-2 border-[#C65244] bg-transparent"></div>
-          </div>
-        </div>
+      <div className="w-full relative h-[90vh] bg-zinc-400">
+        <img
+          style={{ objectPosition: "50% 20%" }}
+          className="w-full h-full object-cover"
+          src="/Page-4/Dope 1.png"
+          alt=""
+        />
 
-        <div className="flex h-fit justify-center gap-3 items-center">
-          <div className="w-[8vh] h-[8vh] mt-20  rotate-[45deg] flex items-center justify-center p-4 border-2 border-[#C65244]">
-            <img
-              src="/Page-2/Arrow.svg"
-              alt="Arrow"
-              className="w-fit  h-fit rotate-[-45deg] object-contain scale-x-[-1]"
-            />
-          </div>
-          <div className="relative w-[40vw] ">
-            <img
-              className="w-full h-full object-cover"
-              src="/Page-3/AC_Shadows_Crest_w_Color 2.png"
-              alt=""
-            />
-            <div className="absolute top-0 left-0 w-[80%] h-fit">
-              <img
-                className="w-full h-full object-cover"
-                src="/Page-3/pixelcut-export (1).png"
-                alt=""
-                style={{
-                  maskImage:
-                    "linear-gradient(to bottom, rgb(0, 0, 0),rgba(0,0,0,1) , rgba(0, 0, 0, 0.13))",
-                  WebkitMaskImage:
-                    "linear-gradient(to bottom, rgb(8, 6, 6), rgba(0,0,0,1) , rgba(0, 0, 0, 0))",
-                }}
-              />
+        <div className="w-full absolute text-white top-0 left-0  flex h-full border-2 border-[#C65244]">
+          <div className="w-[25%] flex items-end p-5 border-x-[1px] border-[#C65244]  h-full ">
+            <div className=" w-full">
+              <h1 className=" ml-2 text-2xl font-bold">Soundtracks</h1>
+              <p className="text-base ml-2 mt-2  ">
+                A character’s soundtrack enhances their presence and emotions.
+                Assassin’s Creed Shadows blends shakuhachi flutes, taiko drums,
+                and orchestration for an immersive, historical feel.
+              </p>
+
+              <div className="w-full mt-4 h-fit">
+                <img
+                  className="w-full h-full object-cover"
+                  src="/Page-4/Pos2.png"
+                  alt=""
+                />
+              </div>
+              <div className="flex text-black items-center justify-evenly">
+                <button className="bg-red-500 w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                  EXPLORE
+                </button>
+                <button className="bg-red-500 w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                  STEAM
+                </button>
+              </div>
             </div>
           </div>
-          <div className="w-[8vh] h-[8vh] mt-20 p-4 rotate-[45deg] flex items-center justify-center border-2 border-[#C65244]">
-            <img
-              src="/Page-2/Arrow.svg"
-              alt="Arrow"
-              className="w-fit  h-fit rotate-[-45deg] object-contain "
-            />
-          </div>
-        </div>
-        <div className="w-[30vw] mt-[10vh] h-full">
-          <h1 className="text-white text-center text-4xl">NAOE</h1>
 
-          <div className="flex gap-5 mt-20">
-            <div className="h-[15vh] w-[15vh] rounded-full border-2 border-[#C65244] bg-transparent"></div>
-            <div className="h-[15vh] w-[15vh] rounded-full border-2 border-[#C65244] bg-transparent"></div>
-            <div className="h-[15vh] w-[15vh] rounded-full border-2 border-[#C65244] bg-transparent"></div>
+          <div className="w-[25%] border-x-[1px] overflow-hidden group relative border-[#C65244] flex flex-col items-center justify-center h-full ">
+            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#C65244]">
+              {" "}
+            </div>
+            <h1 className="text-xl absolute">Weapon Design</h1>
+            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">01</h1>
+          </div>
+
+          <div className="w-[25%] relative overflow-hidden group border-x-[1px] flex flex-col items-center justify-center  border-[#C65244]  h-full ">
+            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#C65244]">
+              {" "}
+            </div>
+            <h1 className="text-xl absolute">Developer Interviews</h1>
+            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">02</h1>
+          </div>
+
+          <div className="w-[25%] relative border-x-[1px] group overflow-hidden flex flex-col items-center justify-center border-[#C65244]  h-full ">
+            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#C65244]">
+              {" "}
+            </div>
+            <h1 className="text-xl absolute">Soundtracks</h1>
+            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">03</h1>
           </div>
         </div>
       </div>
@@ -78,4 +78,4 @@ const Page4 = () => {
   );
 };
 
-export default Page4;
+export default Page5;
