@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const Page6 = () => {
+  useEffect(() => {
+    const services = gsap.utils.toArray(".image-container");
+
+    services.forEach((service, i) => {
+      gsap.set(service, { zIndex: services.length - i }); // Layering
+
+      if (i !== 0) {
+        gsap.fromTo(
+          service,
+          { y: -100 },
+          {
+            y: 60 * i,
+            scrollTrigger: {
+              trigger: service,
+              start: "top 70%",
+              end: "bottom 40%",
+              scrub: 0.3,
+            },
+          }
+        );
+      }
+    });
+
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  }, []);
+
   return (
     <div className="w-full relative min-h-screen  font-orbitron bg-black">
       <div className=" w-full">
@@ -84,64 +115,60 @@ const Page6 = () => {
           </div>
         </div>
 
-        <div className="w-full mt-20 flex flex-col gap-20 items-center min-h-screen">
-          <div className="w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh] ">
+        <div className="w-full mt-20 relative flex flex-col items-center min-h-screen">
+          <div className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
             <img
               className="w-full h-full object-cover"
               src="/Page-5/Yasuke.png"
               alt=""
             />
-
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#C65244]  [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button className="bg-black mt-2 text-[#C65244] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>
           </div>
 
-          <div className="w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh] ">
+          <div className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
             <img
               className="w-full h-full object-cover"
               src="/Page-5/Yasuke.png"
               alt=""
             />
-
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#C65244]  [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button className="bg-black mt-2 text-[#C65244] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>
           </div>
 
-          <div className="w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh] ">
+          <div className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
             <img
               className="w-full h-full object-cover"
               src="/Page-5/Yasuke.png"
               alt=""
             />
-
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#C65244]  [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button className="bg-black mt-2 text-[#C65244] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>
           </div>
-
-          <h1 className="text-start w-[80%] text-white text-3xl font-bold">
-            Step into the shadows. Stay tuned for exclusive content and
-            pre-launch surprises. The journey begins soon...
-          </h1>
         </div>
       </div>
+      <h1 className="text-start bottom-[50vh] translate-x-[-50%] left-1/2 absolute w-[80%] text-white text-3xl font-bold">
+        Step into the shadows. Stay tuned for exclusive content and pre-launch
+        surprises. The journey begins soon...
+      </h1>
     </div>
   );
 };
