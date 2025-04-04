@@ -13,7 +13,7 @@ const Page3 = () => {
     setClicked(!clicked);
     // Reset animation state when reverting
     if (clicked) {
-      setActiveIndex(prev => prev); // This will force a re-render
+      setActiveIndex((prev) => prev); // This will force a re-render
     }
   };
 
@@ -80,7 +80,6 @@ const Page3 = () => {
           name: "Katana",
         },
       ],
-
     },
     {
       sr: "02",
@@ -175,21 +174,34 @@ const Page3 = () => {
           alt="Arrow"
           className="w-fit h-fit object-contain"
         />
-        <h1 className="text-[#C65244] text-5xl">Echoes of the Past</h1>
+        <h1 className="text-[#C65244] text-5xl">
+          {" "}
+          <DecryptedText
+            key={clicked ? "stats" : "echoes"}
+            text={clicked ? "Stats" : "Echoes of the Past"}
+            speed={50}
+            maxIterations={100}
+            resetOnView={true}
+            revealDirection="center" // Force center always
+            animateOn="view"
+            resetOnChange={true}
+          />
+        </h1>
       </div>
 
       {/* Only render content for active index */}
       <div className="flex items-center h-[80vh] relative p-5 mt-20 flex-grow justify-center ">
         <div
-          className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${clicked
-            ? "-translate-x-[120%] opacity-0"
-            : "translate-x-0 opacity-100"
-            }`}
+          className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
+            clicked
+              ? "-translate-x-[120%] opacity-0"
+              : "translate-x-0 opacity-100"
+          }`}
         >
           <h1 className="text-[#C65244] text-4xl">
             <DecryptedText
               text={activeData.title}
-              speed={20}
+              speed={50}
               maxIterations={40}
               animateOn={!clicked ? "view" : "none"}
               resetOnChange={clicked} // Reset when reverting
@@ -213,8 +225,8 @@ const Page3 = () => {
           <h1 className="text-white text-3xl">
             <DecryptedText
               text={activeData.name}
-              speed={100}
-              maxIterations={30}
+              speed={60}
+              maxIterations={200}
               animateOn={!clicked ? "view" : "none"}
               resetOnChange={clicked} // Reset when reverting
               key={`name-${activeIndex}-${clicked}`} // Include clicked state in key
@@ -230,8 +242,9 @@ const Page3 = () => {
         <div
           id="container"
           ref={containerRef}
-          className={`w-[35vw] relative transition-all duration-900 mt-[-20vh] ${clicked ? "-translate-x-[140%]" : "translate-x-0"
-            } h-fit`}
+          className={`w-[35vw] relative transition-all duration-900 mt-[-20vh] ${
+            clicked ? "-translate-x-[140%]" : "translate-x-0"
+          } h-fit`}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
@@ -254,8 +267,9 @@ const Page3 = () => {
                 }}
               />
               <svg
-                className={`absolute transition-all opacity-0 duration-900 ${clicked && "opacity-[100%]"
-                  } bottom-10`}
+                className={`absolute transition-all opacity-0 duration-900 ${
+                  clicked && "opacity-[100%]"
+                } bottom-10`}
                 width="200"
                 height="100"
                 viewBox="0 0 180 100"
@@ -282,7 +296,7 @@ const Page3 = () => {
               setClicked(!clicked);
               if (clicked) {
                 // Force reset by triggering a state update
-                setActiveIndex(prev => prev);
+                setActiveIndex((prev) => prev);
               }
             }}
             className="absolute h-[15vh] w-[15vh] flex items-center justify-center rounded-full bg-transparent border-2 border-[#C65244]"
@@ -294,17 +308,18 @@ const Page3 = () => {
         </div>
 
         <div
-          className={`w-[50vw] transition-all text-white bottom-15 duration-900 ease-in-out absolute h-[90vh] ${clicked
-            ? "translate-x-[50%] p-10 opacity-[100%]"
-            : "translate-x-[130%] opacity-0"
-            }`}
+          className={`w-[50vw] transition-all text-white bottom-15 duration-900 ease-in-out absolute h-[90vh] ${
+            clicked
+              ? "translate-x-[50%] p-10 opacity-[100%]"
+              : "translate-x-[130%] opacity-0"
+          }`}
         >
           <div className="flex flex-col gap-2">
             <h1 className="text-[#C65244] font-bold text-3xl">
               <DecryptedText
                 text={activeData.name}
                 speed={200}
-                maxIterations={30}
+                maxIterations={200}
                 animateOn={clicked ? "view" : "none"} // Only animate when clicked
                 key={`expanded-name-${activeIndex}-${clicked}`}
               />
@@ -312,8 +327,8 @@ const Page3 = () => {
             <h1 className="text-xl">
               <DecryptedText
                 text={activeData.title}
-                speed={20}
-                maxIterations={40}
+                speed={50}
+                maxIterations={100}
                 animateOn={clicked ? "view" : "none"} // Only animate when clicked
                 key={`expanded-title-${activeIndex}-${clicked}`}
               />
@@ -342,25 +357,23 @@ const Page3 = () => {
             </div>
 
             <div className="w-[50vh] ml-20 h-[50vh] mt-5">
-
-                <img
-                  src="/Page-3/stats.svg"
-                  alt="Stats"
-                  className="w-fit h-fit object-contain"
-                />
-
+              <img
+                src="/Page-3/stats.svg"
+                alt="Stats"
+                className="w-fit h-fit object-contain"
+              />
             </div>
           </div>
         </div>
-
       </div>
 
       <div className="border-t-2 relative mt-[20vh] flex justify-evenly border-dashed border-[#C65244] w-full">
         {data.map((item, index) => (
           <div
             key={item.sr}
-            className={`relative cursor-pointer group ${clicked ? "pointer-events-none opacity-50" : ""
-              }`}
+            className={`relative cursor-pointer group ${
+              clicked ? "pointer-events-none opacity-50" : ""
+            }`}
             onClick={() => handleDotClick(index)}
           >
             <div className="w-[3vh] h-[3vh] rounded-full bg-[#C65244] transform -translate-y-1/2 transition-all duration-300 group-hover:scale-110"></div>
@@ -370,9 +383,10 @@ const Page3 = () => {
                 absolute w-[5vh] h-[5vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
                 border-2 border-[#C65244] bg-transparent rounded-full 
                 transition-all duration-300 ease-in-out
-                ${activeIndex === index
-                  ? "opacity-100 scale-100"
-                  : "opacity-0 scale-50"
+                ${
+                  activeIndex === index
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-50"
                 }
               `}
             ></div>

@@ -1,4 +1,5 @@
 import React from "react";
+import DecryptedText from "../animations/DecryptedText";
 
 const Page5 = () => {
   return (
@@ -10,7 +11,15 @@ const Page5 = () => {
           className="w-fit h-fit object-contain"
         />
 
-        <h1 className="text-[#C65244] text-5xl">Echoes of the Past</h1>
+        <h1 className="text-[#C65244] text-5xl"><DecryptedText
+          text="Behind the scenes"
+          speed={50}
+          revealDirection='center'
+          maxIterations={100}
+          resetOnView={true} 
+          animateOn="view" // Only animate when clicked
+
+        /></h1>
       </div>
 
       <div className="w-full relative h-[90vh] bg-zinc-400">

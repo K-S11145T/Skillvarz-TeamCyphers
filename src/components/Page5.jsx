@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DecryptedText from "../animations/DecryptedText";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -42,19 +43,27 @@ const Page6 = () => {
         />
       </div>
       <div className=" absolute flex flex-col items-center justify-start gap-10 top-0">
-        <div className=" pt-20 flex gap-10 items-start">
-          <div className="flex p-5  items-center gap-5">
+        <div className=" pt-20 flex gap-5 items-start">
+          <div className="flex p-5 w-[30vw] bg-zinc-30 items-center gap-5">
             <img
               src="/Page-2/Arrow.svg"
               alt="Arrow"
               className="w-fit h-fit object-contain"
             />
 
-            <h1 className="text-[#C65244] text-5xl">Platforms</h1>
+            <h1 className="text-[#C65244] text-5xl">
+              <DecryptedText
+                text="Platforms"
+                speed={100}
+                animateOn="view"
+                resetOnView={true} // This makes it animate every time it comes into view
+                revealDirection="center"
+              />
+            </h1>
           </div>
 
           <div className="w-[65%] text-white">
-            <p className="text-4xl mt-7">
+            <p className="text-3xl mt-7">
               Step into the shadows of war, where honor and betrayal shape
               destiny. Will you rise as a master of stealth and steel, or be
               lost in the chaos of a fading era? The land is your
