@@ -9,9 +9,7 @@
 }
 
 .card {
-  /* border-radius: 20px; */
   clip-path: polygon(0% 0%, 95% 0%, 100% 5%, 100% 100%, 5% 100%, 0% 95%);
-  border: 2px solid #fc2626;
   overflow: hidden;
 }
 
