@@ -60,8 +60,8 @@ const LandingPage = () => {
 
   useEffect(() => {
     gsap.set([shadowImg.current, logoImg.current, character.current], {
-      left: "50%", // Horizontal positioning
-      xPercent: -50, // Center horizontally (-50% of element width)
+      left: "50%",
+      xPercent: -50,
       y: 0,
     });
     const moveElements = (e) => {
@@ -104,42 +104,14 @@ const LandingPage = () => {
       });
     };
 
-    const resetElements = () => {
-      // gsap.to([shadowImg.current, logoImg.current], {
-      //   x: 0,
-      //   y: 0,
-      //   duration: 1,
-      //   ease: "elastic.out(1, 0.3)",
-      // });
-      // // gsap.to(character.current, {
-      //   scale: 1,
-      //   x: 0,
-      //   y: 0,
-      //   duration: 1,
-      //   ease: "power1.out",
-      // });
-    };
-
     const parentEl = parent.current;
     parentEl.addEventListener("mousemove", moveElements);
-    parentEl.addEventListener("mouseleave", resetElements);
 
     return () => {
       parentEl.removeEventListener("mousemove", moveElements);
-      parentEl.removeEventListener("mouseleave", resetElements);
     };
   }, []);
 
-  // useGSAP(() => {
-  //   parent.current.addEventListener("mousemove", (e) => {
-  //     const rect = parent.current.getBoundingClientRect();
-  //     // console.log(rect);
-  //     gsap.to([shadowImg.current, logoImg.current], {
-  //       x: e.movementX,
-  //       y: e.movementY,
-  //     });
-  //   });
-  // });
   return (
     <div ref={parent} className="w-full relative h-screen">
       <div className="w-full h-screen relative overflow-hidden">
@@ -183,7 +155,6 @@ const LandingPage = () => {
             <div className="flex gap-1">
               <h1 className="text-3xl font-[hanbai] text-white [writing-mode:vertical-rl] [text-orientation:upright]">
                 <span className="bg-gradient-to-b from-red-600 via-zinc-800 to-red-600 filter brightness-90 saturate-150 bg-clip-text text-transparent">
-                  {" "}
                   as
                 </span>
                 sassins
@@ -197,78 +168,7 @@ const LandingPage = () => {
                 </h1>
               </div>
             </div>
-            {/* <div className="w-[13vw] relative border-b-2 py-2 border-red-500 h-[40vh]">
-              <div className="absolute top-[-8%]">
-                <div className="relative w-full h-full">
-                  <div className="relative [clip-path:polygon(0%_0%,95%_0%,100%_5%,100%_100%,5%_100%,0%_95%)] w-full h-full">
-                    <img
-                      className="w-full h-full object-cover"
-                      src="/Page-1/pixelcut-export.png"
-                      alt=""
-                    />
-                  </div>
 
-                  <svg
-                    className="absolute top-0 left-0 w-full stroke-red-700 h-full pointer-events-none"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                  >
-                    <polygon
-                      points="0,0 95,0 100,5 100,100 5,100 0,95"
-                      fill="none"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="absolute top-[-2%]">
-                <div className="relative w-full h-full">
-                  <div className="relative [clip-path:polygon(0%_0%,95%_0%,100%_5%,100%_100%,5%_100%,0%_95%)] w-full h-full">
-                    <img
-                      className="w-full h-full object-cover"
-                      src="/Page-1/pixelcut-export.png"
-                      alt=""
-                    />
-                  </div>
-
-                  <svg
-                    className="absolute top-0 left-0 w-full stroke-red-700 h-full pointer-events-none"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                  >
-                    <polygon
-                      points="0,0 95,0 100,5 100,100 5,100 0,95"
-                      fill="none"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="absolute">
-                <div className="relative w-full h-full">
-                  <div className="relative [clip-path:polygon(0%_0%,95%_0%,100%_5%,100%_100%,5%_100%,0%_95%)] w-full h-full">
-                    <img
-                      className="w-full h-full object-cover"
-                      src="/Page-1/pixelcut-export.png"
-                      alt=""
-                    />
-                  </div>
-
-                  <svg
-                    className="absolute top-0 left-0 w-full stroke-red-700 h-full pointer-events-none"
-                    viewBox="0 0 100 100"
-                    preserveAspectRatio="none"
-                  >
-                    <polygon
-                      points="0,0 95,0 100,5 100,100 5,100 0,95"
-                      fill="none"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div> */}
-            
             <Stack cardsData={imgData} />
           </div>
 

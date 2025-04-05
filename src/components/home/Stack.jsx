@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./stack.css";
 
 function CardRotate({ children, onSendToBack, sensitivity }) {
@@ -15,7 +15,6 @@ function CardRotate({ children, onSendToBack, sensitivity }) {
       Math.abs(info.offset.y) > sensitivity
     ) {
       onSendToBack();
-      // Add toss animation when swiping
       x.set(info.velocity.x * 0.2);
       y.set(info.velocity.y * 0.2);
     } else {
@@ -34,7 +33,7 @@ function CardRotate({ children, onSendToBack, sensitivity }) {
         rotateX,
         rotateY,
         scale,
-        zIndex: 1000, // Ensure active card stays on top
+        zIndex: 1000,
       }}
       drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -78,6 +77,8 @@ export default function Stack({
         ]
   );
 
+  const [currentIndex, setCurrentIndex] = useState(cards.length - 1);
+
   const sendToBack = (id) => {
     setCards((prev) => {
       const newCards = [...prev];
@@ -86,21 +87,49 @@ export default function Stack({
       newCards.unshift(card);
       return newCards;
     });
+
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + cards.length) % cards.length
+    );
   };
+
+  // Auto rotate every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      sendToBack(cards[cards.length - 1].id);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [cards]);
 
   return (
     <div
-      className="stack-container"
+      className="stack-container relative"
       style={{
         width: cardDimensions.width,
         height: cardDimensions.height,
         perspective: 1000,
       }}
     >
+      {/* Timeline Progress */}
+      <div className="timeline absolute flex w-full -bottom-7 text-white items-center gap-1">
+        <div className="bg-zinc-600 h-[0.215vh] w-full overflow-hidden relative">
+          <motion.div
+            className="h-full bg-red-500 absolute left-0 top-0"
+            key={currentIndex} // re-trigger animation when index changes
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 4, ease: "linear" }}
+          />
+        </div>
+        <h3 className="text-sm text-red-500">
+          {cards.length - currentIndex}/{cards.length}
+        </h3>
+      </div>
+
       {cards.map((card, index) => {
         const zIndex = cards.length - index;
         const rotate = 0;
-        // const rotate = randomRotation ? Math.random() * 8 - 4 : 0;
 
         return (
           <CardRotate
@@ -129,14 +158,29 @@ export default function Stack({
                 originY: 0.5,
               }}
             >
-              <motion.img
-                src={card.img}
-                alt={`card-${card.id}`}
+              <motion.div
                 className="card-image"
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
-              />
+              >
+                <img
+                  src={card.img}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+                <svg
+                  className="absolute top-0 left-0 w-full stroke-red-700 h-full pointer-events-none"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  <polygon
+                    points="0,0 95,0 100,5 100,100 5,100 0,95"
+                    fill="none"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+              </motion.div>
             </motion.div>
           </CardRotate>
         );
