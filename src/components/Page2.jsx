@@ -135,7 +135,7 @@ const Page2 = () => {
               alt="Arrow"
               className="w-fit h-fit object-contain"
             />
-            <h1 className="text-[#C65244] text-5xl lg:text-4xl ">
+            <h1 className="text-[#E35E4E] text-5xl lg:text-4xl ">
               {splitText("A new creed rises")}
             </h1>
           </div>

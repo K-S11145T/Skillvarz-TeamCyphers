@@ -51,7 +51,7 @@ const Page6 = () => {
               className="w-fit h-fit object-contain"
             />
 
-            <h1 className="text-[#C65244] text-5xl">
+            <h1 className="text-[#E35E4E] text-5xl">
               <DecryptedText
                 text="Platforms"
                 speed={100}
@@ -72,7 +72,7 @@ const Page6 = () => {
           </div>
         </div>
 
-        <div className="mt-20 w-[85%] flex border-y-2 border-[#C65244] [clip-path:polygon(0%_0%,99%_0%,100%_10%,100%_100%,1%_100%,0%_90%)]  relative h-[20vh]">
+        <div className="mt-20 w-[85%] flex border-y-2 border-[#E35E4E] [clip-path:polygon(0%_0%,99%_0%,100%_10%,100%_100%,1%_100%,0%_90%)]  relative h-[20vh]">
           <svg
             className="absolute top-0 left-0 w-full h-full pointer-events-none"
             width="100%"
@@ -90,36 +90,36 @@ const Page6 = () => {
             <polygon
               points="0,0 99,0 100,10 100,100 1,100 0,90"
               fill="none"
-              stroke="#C65244" // Your border color
+              stroke="#E35E4E" // Your border color
               strokeWidth="0.5%" // Perfectly scales to match border-2
               strokeLinejoin="round" // Clean corners
             />
           </svg>
 
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
             <h1>Xbox</h1>
           </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
             <h1>Ps5</h1>
           </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
             <h1>Macos</h1>
           </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
             <h1>Ubisoft</h1>
           </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
             <h1>Luna</h1>
           </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#C65244] text-2xl flex items-center justify-center h-full  border-[#C65244]">
+          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
             <h1>Steam</h1>
           </div>
-          <div className="border-x-[1px] w-[14.2854%] bg-[#C65244]  font-bold text-xl flex items-center justify-center h-full  border-[#C65244]">
+          <div className="border-x-[1px] w-[14.2854%] bg-[#E35E4E]  font-bold text-xl flex items-center justify-center h-full  border-[#E35E4E]">
             <img
               src="/Page-5/Epic 5.svg"
               alt="Arrow"
               className="w-[70%] h-fit object-contain"
-              style={{ fill: "#C65244" }}
+              style={{ fill: "#E35E4E" }}
             />
           </div>
         </div>
@@ -135,7 +135,7 @@ const Page6 = () => {
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#C65244] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>
@@ -151,7 +151,7 @@ const Page6 = () => {
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#C65244] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>
@@ -167,7 +167,7 @@ const Page6 = () => {
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#C65244] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>

@@ -174,15 +174,15 @@ const LandingPage = () => {
 
           <div className="flex flex-col justify-between pb-16 min-h-screen">
             <div className="flex h-[7%] gap-3">
-              <div className="px-3 py-2 border-2  border-red-500 text-red-500 font-[orbitron] flex items-center">
+              <div className="px-3 py-2 border-2  border-[#E35E4E] text-[#E35E4E] font-[orbitron] flex items-center">
                 <h1>16d | 8h | 20m | 32s</h1>
               </div>
 
               {/* JOIN Button */}
-              <button className="relative px-5 py-2 text-red-500 font-[orbitron]  w-[7vw]">
+              <button className="relative px-5 py-2 text-[#E35E4E] font-[orbitron]  w-[7vw]">
                 JOIN
                 <svg
-                  className="absolute top-0 left-0 stroke-red-500 w-full h-full pointer-events-none"
+                  className="absolute top-0 left-0 stroke-[#E35E4E] w-full h-full pointer-events-none"
                   viewBox="0 0 200 60"
                   preserveAspectRatio=" none"
                 >
@@ -204,14 +204,14 @@ const LandingPage = () => {
                 />
               </div>
               <div className="flex items-center gap-5">
-                <button className="bg-red-500 [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 py-2">
+                <button className="bg-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 py-2">
                   PRE ORDER
                 </button>
-                <button className="h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-red-600 border-2 border-red-700">
+                <button className="h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E]">
                   <i class="ri-volume-down-line"></i>
                 </button>
               </div>
-              <button className="h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-red-600 border-2 border-red-700">
+              <button className="h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E]">
                 <i class="ri-arrow-down-double-line"></i>
               </button>
             </div>

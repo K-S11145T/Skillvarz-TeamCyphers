@@ -174,7 +174,7 @@ const Page3 = () => {
           alt="Arrow"
           className="w-fit h-fit object-contain"
         />
-        <h1 className="text-[#C65244] text-5xl">
+        <h1 className="text-[#E35E4E] text-5xl">
           {" "}
           <DecryptedText
             key={clicked ? "stats" : "echoes"}
@@ -198,7 +198,7 @@ const Page3 = () => {
               : "translate-x-0 opacity-100"
           }`}
         >
-          <h1 className="text-[#C65244] text-4xl">
+          <h1 className="text-[#E35E4E] text-4xl">
             <DecryptedText
               text={activeData.title}
               speed={50}
@@ -215,7 +215,7 @@ const Page3 = () => {
               y="50"
               fontSize="50"
               fontWeight="bold"
-              stroke="#C65244"
+              stroke="#E35E4E"
               strokeWidth="1"
               fill="transparent"
             >
@@ -234,7 +234,7 @@ const Page3 = () => {
           </h1>
           <p className="text-zinc-300 mt-5 text-lg">{activeData.text2}</p>
 
-          <button className="bg-red-500 w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+          <button className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
             EXPLORE
           </button>
         </div>
@@ -279,7 +279,7 @@ const Page3 = () => {
                   y="80"
                   fontSize="100"
                   fontWeight="bold"
-                  stroke="#C65244"
+                  stroke="#E35E4E"
                   strokeWidth="0.5"
                   fill="transparent"
                 >
@@ -299,9 +299,9 @@ const Page3 = () => {
                 setActiveIndex((prev) => prev);
               }
             }}
-            className="absolute h-[15vh] w-[15vh] flex items-center justify-center rounded-full bg-transparent border-2 border-[#C65244]"
+            className="absolute h-[15vh] w-[15vh] flex items-center justify-center rounded-full bg-transparent border-2 border-[#E35E4E]"
           >
-            <h1 className="text-sm text-[#C65244]">
+            <h1 className="text-sm text-[#E35E4E]">
               {clicked ? "Revert" : "Tap now"}
             </h1>
           </div>
@@ -315,7 +315,7 @@ const Page3 = () => {
           }`}
         >
           <div className="flex flex-col gap-2">
-            <h1 className="text-[#C65244] font-bold text-3xl">
+            <h1 className="text-[#E35E4E] font-bold text-3xl">
               <DecryptedText
                 text={activeData.name}
                 speed={200}
@@ -343,7 +343,7 @@ const Page3 = () => {
               {activeData.capsule.map((item, index) => {
                 return (
                   <div className="flex flex-col items-center gap-3">
-                    <div className="w-[15vh] h-[15vh] rounded-full overflow-hidden border-2 border-[#C65244]">
+                    <div className="w-[15vh] h-[15vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
                       <img
                         className="w-full h-full object-cover"
                         src={item.img}
@@ -367,7 +367,7 @@ const Page3 = () => {
         </div>
       </div>
 
-      <div className="border-t-2 relative mt-[20vh] flex justify-evenly border-dashed border-[#C65244] w-full">
+      <div className="border-t-2 relative mt-[20vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
         {data.map((item, index) => (
           <div
             key={item.sr}
@@ -376,12 +376,12 @@ const Page3 = () => {
             }`}
             onClick={() => handleDotClick(index)}
           >
-            <div className="w-[3vh] h-[3vh] rounded-full bg-[#C65244] transform -translate-y-1/2 transition-all duration-300 group-hover:scale-110"></div>
+            <div className="w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] transform -translate-y-1/2 transition-all duration-300 group-hover:scale-110"></div>
 
             <div
               className={`
                 absolute w-[5vh] h-[5vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
-                border-2 border-[#C65244] bg-transparent rounded-full 
+                border-2 border-[#E35E4E] bg-transparent rounded-full 
                 transition-all duration-300 ease-in-out
                 ${
                   activeIndex === index
@@ -398,7 +398,7 @@ const Page3 = () => {
                 ${activeIndex === index ? "opacity-100" : "opacity-40"}
               `}
             >
-              <h1 className="text-[#C65244]">{item.sr}</h1>
+              <h1 className="text-[#E35E4E]">{item.sr}</h1>
               <h1 className="text-zinc-500">{item.name}</h1>
             </div>
           </div>
