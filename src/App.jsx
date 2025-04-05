@@ -12,7 +12,7 @@ const App = () => {
   const lenis = useLenis();
   return (
     <ReactLenis root>
-      <div className="w-full  min-h-screen bg-black select-none font-[orbitron]">
+      <div className="w-full overflow-x-hidden  min-h-screen bg-black select-none font-[orbitron]">
         <LandingPage />
         <Page2 />
         <Page3 />

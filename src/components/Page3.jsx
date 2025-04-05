@@ -9,13 +9,6 @@ const Page3 = () => {
   const animationFrame = useRef(null);
   const targetPosition = useRef({ x: 0, y: 80 });
 
-  const handleButtonClick = () => {
-    setClicked(!clicked);
-    // Reset animation state when reverting
-    if (clicked) {
-      setActiveIndex((prev) => prev); // This will force a re-render
-    }
-  };
 
   useEffect(() => {
     targetPosition.current.x = clicked ? 90 : 0;

@@ -1,9 +1,68 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText";
+import { gsap } from "gsap";
 
-const Page5 = () => {
+const Page4 = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const stackContainerRef = useRef(null);
+  const movingDivRef = useRef(null);
+  const isAnimating = useRef(false);
+
+  const data = [
+    {
+      sr: "01",
+      title: "Weapon Design",
+      description: "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
+      image: "/Page-4/Dope 1.png",
+    },
+    {
+      sr: "02",
+      title: "Developers Interviews",
+      description: "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
+      image: "https://4kwallpapers.com/images/wallpapers/assassins-creed-4480x2520-16786.jpeg",
+    },
+    {
+      sr: "03",
+      title: "Soundtracks",
+      description: "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
+      image: "https://gaming-cdn.com/images/news/articles/10198/cover/1000x563/ubisoft-posts-a-new-artwork-from-assassin-s-creed-shadows-cover67894625921f9.jpg",
+    }
+  ];
+
+  const moveRedDivAndChangeImage = (direction, index) => {
+    if (isAnimating.current) return;
+    isAnimating.current = true;
+  
+    const startX = direction === 'forward' ? "0%" : "-200%";
+    const endX = direction === 'forward' ? "-200%" : "0%";
+  
+    gsap.fromTo(movingDivRef.current,
+      { x: startX },
+      {
+        x: endX,
+        duration: 1,
+        ease: "power2.inOut",
+        onUpdate: function() {
+          if (this.progress() >= 0.5 && activeIndex !== index) {
+            setActiveIndex(index);
+          }
+        },
+        onComplete: () => {
+          gsap.set(movingDivRef.current, { x: direction === 'forward' ? "0%" : "-200%" });
+          isAnimating.current = false;
+        }
+      }
+    );
+  };
+  
+  const handleClick = (index) => {
+    if(index === activeIndex || isAnimating.current) return;
+    const direction = 'forward'
+    moveRedDivAndChangeImage(direction, index);
+  };
+
   return (
-    <div className="w-full min-h-screen py-20 bg-gradient-to-b from-[#120202]  via-black to-[#0D0000] font-orbitron bg-black ">
+    <div className="w-full min-h-screen py-20 bg-gradient-to-b from-[#120202] via-black to-[#0D0000] font-orbitron bg-black overflow-x-hidden">
       <div className="flex p-5 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
@@ -11,33 +70,42 @@ const Page5 = () => {
           className="w-fit h-fit object-contain"
         />
 
-        <h1 className="text-[#E35E4E] text-5xl"><DecryptedText
-          text="Behind the scenes"
-          speed={50}
-          revealDirection='center'
-          maxIterations={100}
-          resetOnView={true} 
-          animateOn="view" // Only animate when clicked
-
-        /></h1>
+        <h1 className="text-[#E35E4E] text-5xl">
+          <DecryptedText
+            text="Behind the scenes"
+            speed={50}
+            revealDirection='center'
+            maxIterations={100}
+            resetOnView={true}
+            animateOn="view"
+          />
+        </h1>
       </div>
 
-      <div className="w-full relative h-[90vh] bg-zinc-400">
+      <div className="w-full relative h-[90vh] bg-zinc-400 overflow-hidden">
         <img
           style={{ objectPosition: "50% 20%" }}
           className="w-full h-full object-cover"
-          src="/Page-4/Dope 1.png"
+          src={data[activeIndex].image}
           alt=""
         />
 
-        <div className="w-full absolute text-white top-0 left-0  flex h-full border-2 border-[#E35E4E]">
-          <div className="w-[25%] flex items-end p-5 border-x-[1px] border-[#E35E4E]  h-full ">
-            <div className=" w-full">
-              <h1 className=" ml-2 text-2xl font-bold">Soundtracks</h1>
-              <p className="text-base ml-2 mt-2  ">
-                A character’s soundtrack enhances their presence and emotions.
-                Assassin’s Creed Shadows blends shakuhachi flutes, taiko drums,
-                and orchestration for an immersive, historical feel.
+        <div className="w-full absolute text-white top-0 left-0 flex h-full border-2 border-[#E35E4E]">
+          {/* Left panel - fixed width */}
+          <div className="w-[25%] flex items-end p-5 border-r-[1px] border-[#E35E4E] h-full z-10">
+            <div className="w-full">
+              <h1 className="ml-2 text-2xl font-bold">
+                <DecryptedText
+                  text={data[activeIndex].title}
+                  speed={50}
+                  maxIterations={100}
+                  resetOnView={true}
+                  animateOn={"view"}
+                  key={`expanded-title-${activeIndex}`}
+                />
+              </h1>
+              <p className="text-base ml-2 mt-2">
+                {data[activeIndex].description}
               </p>
 
               <div className="w-full mt-4 h-fit">
@@ -47,7 +115,7 @@ const Page5 = () => {
                   alt=""
                 />
               </div>
-              <div className="flex text-black items-center justify-evenly">
+              <div className="flex text-black items-center justify-evenly mt-4">
                 <button className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                   EXPLORE
                 </button>
@@ -58,28 +126,30 @@ const Page5 = () => {
             </div>
           </div>
 
-          <div className="w-[25%] border-x-[1px] overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full ">
-            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]">
-              {" "}
+          <div
+            ref={movingDivRef}
+            className="moving-div w-full absolute h-full bg-[#E35E4E]"
+            style={{ left: "100%", zIndex: 99 }}
+          ></div>
+          
+          {/* Right panel - stack items with animation */}
+          <div className="flex-1 relative overflow-hidden">
+            <div
+              ref={stackContainerRef}
+              className="w-full h-full flex"
+            >
+              {data.map((item, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => handleClick(idx)}
+                  className="stack-item w-1/3 border-r-[1px] cursor-pointer overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
+                >
+                  <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]"></div>
+                  <h1 className="text-xl absolute z-10">{item.title}</h1>
+                  <h1 className="text-2xl absolute right-5 bottom-3 font-bold z-10">{item.sr}</h1>
+                </div>
+              ))}
             </div>
-            <h1 className="text-xl absolute">Weapon Design</h1>
-            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">01</h1>
-          </div>
-
-          <div className="w-[25%] relative overflow-hidden group border-x-[1px] flex flex-col items-center justify-center  border-[#E35E4E]  h-full ">
-            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]">
-              {" "}
-            </div>
-            <h1 className="text-xl absolute">Developer Interviews</h1>
-            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">02</h1>
-          </div>
-
-          <div className="w-[25%] relative border-x-[1px] group overflow-hidden flex flex-col items-center justify-center border-[#E35E4E]  h-full ">
-            <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]">
-              {" "}
-            </div>
-            <h1 className="text-xl absolute">Soundtracks</h1>
-            <h1 className="text-2xl absolute right-5 bottom-3 font-bold">03</h1>
           </div>
         </div>
       </div>
@@ -87,4 +157,4 @@ const Page5 = () => {
   );
 };
 
-export default Page5;
+export default Page4;
