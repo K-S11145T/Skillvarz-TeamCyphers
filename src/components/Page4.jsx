@@ -2,11 +2,17 @@ import React, { useState, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText";
 import { gsap } from "gsap";
 
-const Page4 = () => {
+const Page4 = ({playSound}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const stackContainerRef = useRef(null);
   const movingDivRef = useRef(null);
   const isAnimating = useRef(false);
+
+  const playSound2 = () => {
+    const audio = new Audio("/Page-1/Data 2.wav");
+    audio.play();
+    audio.volume = 0.1;
+  };
 
   const data = [
     {
@@ -76,7 +82,6 @@ const Page4 = () => {
             speed={50}
             revealDirection='center'
             maxIterations={100}
-            resetOnView={true}
             animateOn="view"
           />
         </h1>
@@ -99,7 +104,6 @@ const Page4 = () => {
                   text={data[activeIndex].title}
                   speed={50}
                   maxIterations={100}
-                  resetOnView={true}
                   animateOn={"view"}
                   key={`expanded-title-${activeIndex}`}
                 />
@@ -116,10 +120,14 @@ const Page4 = () => {
                 />
               </div>
               <div className="flex text-black items-center justify-evenly mt-4">
-                <button className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                <button  onClick={() => {
+                  playSound();
+                }} className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                   EXPLORE
                 </button>
-                <button className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                <button onClick={() => {
+                  playSound();
+                }} className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                   STEAM
                 </button>
               </div>
@@ -141,7 +149,12 @@ const Page4 = () => {
               {data.map((item, idx) => (
                 <div
                   key={idx}
-                  onClick={() => handleClick(idx)}
+                  onClick={() => {
+                    handleClick(idx)
+
+                  playSound2();
+        
+                  }}
                   className="stack-item w-1/3 border-r-[1px] cursor-pointer overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]"></div>

@@ -1,10 +1,33 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Stack from "./home/Stack";
 
-const LandingPage = () => {
+const LandingPage = ({playSound}) => {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const toggleAudio = () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.volume = 0.05;
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.error("Audio play error:", err);
+        });
+    }
+  };
   const parent = useRef();
   const shadowImg = useRef();
   const logoImg = useRef();
@@ -114,6 +137,13 @@ const LandingPage = () => {
 
   return (
     <div ref={parent} className="w-full relative h-screen">
+      <audio
+        ref={audioRef}
+        src="/Page-1/youtube_-wa3LTEHjLk_audio.ogg"
+        autoPlay
+        loop
+        preload="auto"
+      />
       <div className="w-full h-screen relative overflow-hidden">
         {/* Background image */}
         <div
@@ -179,7 +209,9 @@ const LandingPage = () => {
               </div>
 
               {/* JOIN Button */}
-              <button className="relative px-5 py-2 text-[#E35E4E] font-[orbitron]  w-[7vw]">
+              <button onClick={() => {
+                  playSound();
+                }} className="relative cursor-pointer px-5 py-2 text-[#E35E4E] font-[orbitron]  w-[7vw]">
                 JOIN
                 <svg
                   className="absolute top-0 left-0 stroke-[#E35E4E] w-full h-full pointer-events-none"
@@ -204,14 +236,31 @@ const LandingPage = () => {
                 />
               </div>
               <div className="flex items-center gap-5">
-                <button className="bg-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 py-2">
+                <button onClick={() => {
+                  playSound();
+                }} className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 py-2">
                   PRE ORDER
                 </button>
-                <button className="h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E]">
-                  <i class="ri-volume-down-line"></i>
+                <button
+                  onClick={() => {
+                    playSound();
+                    toggleAudio();
+                  }}
+                  className="h-[6vh] w-[6vh] cursor-pointer flex items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E]"
+                >
+                  {isPlaying ? (
+                    <i class="ri-volume-off-vibrate-line"></i>
+                  ) : (
+                    <i class="ri-volume-down-line"></i>
+                  )}
                 </button>
               </div>
-              <button className="h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E]">
+              <button
+                onClick={() => {
+                  playSound();
+                }}
+                className="h-[6vh] w-[6vh] flex cursor-pointer items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E]"
+              >
                 <i class="ri-arrow-down-double-line"></i>
               </button>
             </div>

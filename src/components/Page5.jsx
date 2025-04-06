@@ -6,7 +6,7 @@ import DecryptedText from "../animations/DecryptedText";
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-const Page6 = () => {
+const Page6 = ({playSound}) => {
   useEffect(() => {
     const services = gsap.utils.toArray(".image-container");
 
@@ -33,6 +33,37 @@ const Page6 = () => {
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
+  const links = [
+    {
+      link: "Xbox",
+      svg : "/Page-5/Xbox.svg",
+    },
+    {
+      link: "Ps5",
+      svg : "/Page-5/PS 5.svg",
+    },
+    {
+      link: "Macos",
+      svg : "/Page-5/Apple Inc.svg",
+    },
+    {
+      link: "Ubisoft",
+      svg : "/Page-5/Ubisoft.svg",
+    },
+    {
+      link: "Luna",
+      svg : "/Page-5/Amazon-Luna.svg",
+    },
+    {
+      link: "Steam",
+      svg : "/Page-5/Steam Black 1.svg",
+    },
+    {
+      link: "Epic",
+      svg : "/Page-5/Epic 5.svg",
+    },
+  ]
+
   return (
     <div className="w-full relative min-h-screen  font-orbitron bg-black">
       <div className=" w-full">
@@ -55,8 +86,7 @@ const Page6 = () => {
               <DecryptedText
                 text="Platforms"
                 speed={100}
-                animateOn="view"
-                resetOnView={true} // This makes it animate every time it comes into view
+                animateOn="view" // This makes it animate every time it comes into view
                 revealDirection="center"
               />
             </h1>
@@ -96,32 +126,18 @@ const Page6 = () => {
             />
           </svg>
 
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
-            <h1>Xbox</h1>
-          </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
-            <h1>Ps5</h1>
-          </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
-            <h1>Macos</h1>
-          </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
-            <h1>Ubisoft</h1>
-          </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
-            <h1>Luna</h1>
-          </div>
-          <div className="border-x-[1px] w-[14.2854%] font-bold text-[#E35E4E] text-2xl flex items-center justify-center h-full  border-[#E35E4E]">
-            <h1>Steam</h1>
-          </div>
-          <div className="border-x-[1px] w-[14.2854%] bg-[#E35E4E]  font-bold text-xl flex items-center justify-center h-full  border-[#E35E4E]">
+          {links.map ((item , idx)=>{
+            return <div key={idx}  onClick={() => {
+              playSound();
+            }} className="w-[14.2854%] cursor-pointer group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]">
+              <h1 className="text-[#E35E4E] font-bold text-2xl group-hover:opacity-0 transition duration-300">{item.link}</h1>
             <img
-              src="/Page-5/Epic 5.svg"
+              src={item.svg}
               alt="Arrow"
-              className="w-[70%] h-fit object-contain"
-              style={{ fill: "#E35E4E" }}
+              className="w-[50%] opacity-0 group-hover:opacity-100 transition duration-300 absolute h-fit object-contain"
             />
           </div>
+          })}
         </div>
 
         <div className="w-full mt-20 relative flex flex-col items-center min-h-screen">
@@ -135,7 +151,9 @@ const Page6 = () => {
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button  onClick={() => {
+                  playSound();
+                }} className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>
@@ -151,13 +169,15 @@ const Page6 = () => {
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button  onClick={() => {
+                  playSound();
+                }} className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>
           </div>
 
-          <div className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
+          <div  className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
             <img
               className="w-full h-full object-cover"
               src="/Page-5/Yasuke.png"
@@ -167,7 +187,9 @@ const Page6 = () => {
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+              <button  onClick={() => {
+                  playSound();
+                }} className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
                 PRE ORDER
               </button>
             </div>

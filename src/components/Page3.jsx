@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText";
 
-const Page3 = () => {
+const Page3 = ({playSound}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [clicked, setClicked] = useState(false);
   const buttonRef = useRef(null);
   const containerRef = useRef(null);
   const animationFrame = useRef(null);
   const targetPosition = useRef({ x: 0, y: 80 });
-
 
   useEffect(() => {
     targetPosition.current.x = clicked ? 90 : 0;
@@ -39,14 +38,16 @@ const Page3 = () => {
     }
   };
 
-  const handleMouseLeave = () => {
-    targetPosition.current = clicked ? { x: 350, y: 400 } : { x: 0, y: 80 }; // Reset to default position
-  };
-
   useEffect(() => {
     animationFrame.current = requestAnimationFrame(updateButtonPosition);
     return () => cancelAnimationFrame(animationFrame.current);
   }, []);
+
+  const playSound2 = () => {
+    const audio = new Audio("/Page-1/Data 2.wav");
+    audio.play();
+    audio.volume = 0.1;
+  };
 
   const data = [
     {
@@ -73,6 +74,8 @@ const Page3 = () => {
           name: "Katana",
         },
       ],
+      boximg:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiKGYgpx5iy1W0TRk1IUVJc3Gl2QBCG_Dp8w&s",
     },
     {
       sr: "02",
@@ -98,6 +101,8 @@ const Page3 = () => {
           name: "Katana",
         },
       ],
+      boximg:
+        "https://i.pinimg.com/736x/e0/4d/c7/e04dc7f7065d7a2a23db7455fe3d323d.jpg",
     },
     {
       sr: "03",
@@ -123,6 +128,8 @@ const Page3 = () => {
           name: "Katana",
         },
       ],
+      boximg:
+        "https://assets-prd.ignimgs.com/2024/06/10/ac-shadows-details-blog-1718049618925.jpg",
     },
     {
       sr: "04",
@@ -148,6 +155,8 @@ const Page3 = () => {
           name: "Katana",
         },
       ],
+      boximg:
+        "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2019/10/Alexios-Cropped-e1605308105670.jpg",
     },
   ];
 
@@ -160,7 +169,7 @@ const Page3 = () => {
   };
 
   return (
-    <div className="w-full min-h-screen pb-20 font-orbitron overflow-hidden bg-gradient-to-b from-black via-black to-[#120202]">
+    <div className="w-full min-h-screen pb-20 font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
       <div className="flex p-5 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
@@ -174,7 +183,6 @@ const Page3 = () => {
             text={clicked ? "Stats" : "Echoes of the Past"}
             speed={50}
             maxIterations={100}
-            resetOnView={true}
             revealDirection="center" // Force center always
             animateOn="view"
             resetOnChange={true}
@@ -183,7 +191,7 @@ const Page3 = () => {
       </div>
 
       {/* Only render content for active index */}
-      <div className="flex items-center h-[80vh] relative p-5 mt-20 flex-grow justify-center ">
+      <div className="flex items-center h-[60vh] relative p-5 mt-18 flex-grow justify-center ">
         <div
           className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
             clicked
@@ -201,7 +209,7 @@ const Page3 = () => {
               key={`title-${activeIndex}-${clicked}`} // Include clicked state in key
             />
           </h1>
-          <p className="text-zinc-300 mt-5 text-lg">{activeData.text1}</p>
+          <p className="text-zinc-300 mt-2 text-lg">{activeData.text1}</p>
           <svg width="100" height="60" viewBox="0 0 100 50">
             <text
               x="0"
@@ -225,9 +233,11 @@ const Page3 = () => {
               key={`name-${activeIndex}-${clicked}`} // Include clicked state in key
             />
           </h1>
-          <p className="text-zinc-300 mt-5 text-lg">{activeData.text2}</p>
+          <p className="text-zinc-300 mt-2 text-lg">{activeData.text2}</p>
 
-          <button className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+          <button  onClick={() => {
+                  playSound();
+                }} className="bg-[#E35E4E] w-fit cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
             EXPLORE
           </button>
         </div>
@@ -239,7 +249,6 @@ const Page3 = () => {
             clicked ? "-translate-x-[140%]" : "translate-x-0"
           } h-fit`}
           onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
         >
           <img
             className="w-full h-full object-cover"
@@ -286,13 +295,16 @@ const Page3 = () => {
             ref={buttonRef}
             id="button"
             onClick={() => {
+ 
+                playSound();
+            
               setClicked(!clicked);
               if (clicked) {
                 // Force reset by triggering a state update
                 setActiveIndex((prev) => prev);
               }
             }}
-            className="absolute h-[15vh] w-[15vh] flex items-center justify-center rounded-full bg-transparent border-2 border-[#E35E4E]"
+            className="absolute h-[12vh] w-[12vh] flex items-center justify-center rounded-full bg-transparent border-2 border-[#E35E4E]"
           >
             <h1 className="text-sm text-[#E35E4E]">
               {clicked ? "Revert" : "Tap now"}
@@ -301,14 +313,14 @@ const Page3 = () => {
         </div>
 
         <div
-          className={`w-[50vw] transition-all text-white bottom-15 duration-900 ease-in-out absolute h-[90vh] ${
+          className={`w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
             clicked
-              ? "translate-x-[50%] p-10 opacity-[100%]"
+              ? "translate-x-[50%] px-10 opacity-[100%]"
               : "translate-x-[130%] opacity-0"
           }`}
         >
           <div className="flex flex-col gap-2">
-            <h1 className="text-[#E35E4E] font-bold text-3xl">
+            <h1 className="text-[#E35E4E] font-bold text-2xl">
               <DecryptedText
                 text={activeData.name}
                 speed={200}
@@ -327,16 +339,16 @@ const Page3 = () => {
               />
             </h1>
 
-            <div className="flex gap-10 text-lg text-zinc-500">
+            <div className="flex gap-10 text-md text-zinc-500">
               {activeData.skills.map((skill, index) => {
                 return <h1 key={index}>{skill}</h1>;
               })}
             </div>
-            <div className="flex mt-5 gap-10">
+            <div className="flex mt-2 gap-20">
               {activeData.capsule.map((item, index) => {
                 return (
                   <div className="flex flex-col items-center gap-3">
-                    <div className="w-[15vh] h-[15vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
+                    <div className="w-[12vh] h-[12vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
                       <img
                         className="w-full h-full object-cover"
                         src={item.img}
@@ -349,7 +361,7 @@ const Page3 = () => {
               })}
             </div>
 
-            <div className="w-[50vh] ml-20 h-[50vh] mt-5">
+            <div className="w-[45vh] ml-20 h-[45vh] mt-5">
               <img
                 src="/Page-3/stats.svg"
                 alt="Stats"
@@ -360,14 +372,18 @@ const Page3 = () => {
         </div>
       </div>
 
-      <div className="border-t-2 relative mt-[20vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
+      <div className="border-t-2 relative mt-[15vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
         {data.map((item, index) => (
           <div
             key={item.sr}
-            className={`relative cursor-pointer group ${
-              clicked ? "pointer-events-none opacity-50" : ""
-            }`}
-            onClick={() => handleDotClick(index)}
+            className={`relative cursor-pointer group ${clicked ? "pointer-events-none opacity-50" : ""
+              }`}
+            onClick={() => {
+              playSound2();
+              handleDotClick(index)
+   
+
+            }}
           >
             <div className="w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] transform -translate-y-1/2 transition-all duration-300 group-hover:scale-110"></div>
 
@@ -392,7 +408,24 @@ const Page3 = () => {
               `}
             >
               <h1 className="text-[#E35E4E]">{item.sr}</h1>
-              <h1 className="text-zinc-500">{item.name}</h1>
+              <h1 className="text-zinc-400">{item.name}</h1>
+            </div>
+
+            <div
+              className={`absolute top-[0vh] flex flex-col gap-3  transition-all duration-500 translate-x-[-37%] items-center   ${
+                activeIndex === index ? "opacity-100" : "opacity-10"
+              } `}
+            >
+              <div className="w-[1px] h-[7vh] border-r-2 border-dashed border-[#E35E4E]">
+                {" "}
+              </div>
+              <div className="w-[10vh] h-[10vh]  overflow-hidden rotate-[45deg] border-2  border-[#E35E4E] ">
+                <img
+                  className="w-full h-full scale-[150%] object-cover  rotate-[-45deg]"
+                  src={item.boximg}
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         ))}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LandingPage from "./components/LandingPage";
 import Page2 from "./components/Page2";
 import Page3 from "./components/Page3";
@@ -10,16 +10,23 @@ import Footer from "./components/Footer";
 
 const App = () => {
   const lenis = useLenis();
+  const playSound = () => {
+    const audio = new Audio("/Page-1/Data 3.wav");
+    audio.play();
+    audio.volume = 0.1;
+  };
+ 
+  
   return (
     <ReactLenis root>
       <div className="w-full overflow-x-hidden  min-h-screen bg-black select-none font-[orbitron]">
-        <LandingPage />
-        <Page2 />
-        <Page3 />
-        <Page4 />
-        <Page5 />
+        <LandingPage playSound={playSound} />
+        <Page2 playSound={playSound} />
+        <Page3 playSound={playSound} />
+        <Page4 playSound={playSound} />
+        <Page5 playSound={playSound} />
         
-        <Footer />
+        <Footer playSound={playSound} />
       </div>
     </ReactLenis>
   );
