@@ -13,7 +13,7 @@ const App = () => {
   const playSound = () => {
     const audio = new Audio("/Page-1/Data 3.wav");
     audio.play();
-    audio.volume = 0.1;
+    audio.volume = 0.3;
   };
  
   

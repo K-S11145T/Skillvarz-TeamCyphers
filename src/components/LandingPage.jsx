@@ -1,12 +1,12 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Stack from "./home/Stack";
 import Countdown from "./Countdown";
 import { motion } from "framer-motion";
 
-const LandingPage = () => {
+const LandingPage = ({ playSound }) => {
   const parent = useRef();
   const shadowImg = useRef();
   const logoImg = useRef();
@@ -14,6 +14,29 @@ const LandingPage = () => {
   const character = useRef();
   const arrowBtn = useRef();
   const arrowBtnIcon = useRef();
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const toggleAudio = () => {
+    const audio = audioRef.current;
+
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.volume = 0.05;
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((err) => {
+          console.error("Audio play error:", err);
+        });
+    }
+  };
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -142,6 +165,12 @@ const LandingPage = () => {
 
   return (
     <div ref={parent} className="w-full relative h-screen">
+      <audio
+        ref={audioRef}
+        src="/Page-1/youtube_-wa3LTEHjLk_audio.ogg"
+        loop
+        preload="auto"
+      />
       <div className="w-full h-screen relative overflow-hidden">
         {/* Background image */}
         <div ref={bgImg} className="absolute w-[103%] h-[103%] bottom-0">
@@ -207,7 +236,12 @@ const LandingPage = () => {
                 />
               </div>
               <div className="flex items-center justify-start w-full mb-16 pl-5">
-                <button className="bg-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 py-2">
+                <button
+                  onClick={() => {
+                    playSound();
+                  }}
+                  className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 py-2"
+                >
                   PRE ORDER
                 </button>
               </div>
@@ -215,19 +249,22 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="fixed top-0 z-[999] w-full left-0 px-10 p-5 flex justify-end">
+      <div className="fixed pointer-events-none top-0 z-[999] w-full left-0 px-10 p-5 flex justify-end">
         <div className="flex flex-col justify-between pb-16 min-h-screen">
           <div className="flex h-[7%] gap-3">
             <Countdown />
             {/* JOIN Button */}
             <motion.button
-              className="relative px-5 py-2 text-[#E35E4E] font-[orbitron] w-[7vw] overflow-hidden hover:text-black cursor-pointer"
+              onClick={() => {
+                playSound();
+              }}
+              className="relative px-5 py-2 bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] text-[#E35E4E] font-[orbitron] w-[7vw] overflow-hidden hover:text-black cursor-pointer"
               whileHover="hover"
             >
-              <span className="relative z-10">JOIN</span>
+              <span className="relative z-10 font-bold pointer-events-auto">JOIN</span>
 
               <motion.span
-                className="absolute inset-0 bg-[#E35E4E] "
+                className="absolute font-bold [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] inset-0 bg-[#E35E4E] "
                 initial={{ width: 0 }}
                 variants={{
                   hover: {
@@ -261,52 +298,27 @@ const LandingPage = () => {
 
           <div className="flex flex-col gap-4 items-end">
             <motion.button
-              className="relative cursor-pointer h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E] hover:text-black"
+              onClick={() => {
+                playSound();
+                toggleAudio();
+              }}
+              className="relative cursor-pointer h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
               whileHover="hover"
             >
-              <motion.span
-                className="absolute inset-0 bg-[#E35E4E] "
-                initial={{ width: 0 }}
-                variants={{
-                  hover: {
-                    width: "100%",
-                    transition: { duration: 0.3, ease: "easeInOut" },
-                  },
-                }}
-                style={{
-                  height: "100%",
-                  left: 0,
-                  top: 0,
-                  position: "absolute",
-                  zIndex: 0,
-                }}
-              />
-              <i className="ri-volume-down-line relative z-10"></i>
+
+              {isPlaying ? <i class="ri-volume-off-vibrate-line relative z-10"></i> : <i className="ri-volume-down-line relative z-10"></i>}
             </motion.button>
 
             <motion.button
               ref={arrowBtn}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="relative cursor-pointer hover:text-black h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 border-[#E35E4E]"
-              whileHover="hover"
+              onClick={() => {
+                playSound();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="relative cursor-pointer  h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
+ 
             >
-              <motion.span
-                className="absolute inset-0 bg-[#E35E4E] "
-                initial={{ width: 0 }}
-                variants={{
-                  hover: {
-                    width: "100%",
-                    transition: { duration: 0.3, ease: "easeInOut" },
-                  },
-                }}
-                style={{
-                  height: "100%",
-                  left: 0,
-                  top: 0,
-                  position: "absolute",
-                  zIndex: 0,
-                }}
-              />
+             
               <i
                 ref={arrowBtnIcon}
                 className="ri-arrow-down-double-line relative z-10"

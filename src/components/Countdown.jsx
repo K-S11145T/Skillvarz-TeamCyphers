@@ -36,7 +36,7 @@ const Countdown = () => {
   }, []);
 
   return (
-    <div className="px-3 py-2 border-2 border-[#E35E4E] text-[#E35E4E] font-[orbitron] flex items-center">
+    <div className="px-3 font-bold py-2 w-[15vw] bg-black/30 backdrop-blur-md border-[1px] border-[#E35E4E] text-[#E35E4E] justify-center font-[orbitron] flex items-center">
       <h1>
         {timeLeft.days}d | {timeLeft.hours}h | {timeLeft.minutes}m |{" "}
         {timeLeft.seconds}s

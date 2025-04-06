@@ -49,7 +49,7 @@ const Page3 = ({ playSound }) => {
   const playSound2 = () => {
     const audio = new Audio("/Page-1/Data 2.wav");
     audio.play();
-    audio.volume = 0.1;
+    audio.volume = 0.3;
   };
 
   const data = [
