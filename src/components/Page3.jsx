@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText";
+import BoxElement from "./BoxElement";
 
-const Page3 = ({playSound}) => {
+const Page3 = ({ playSound }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [clicked, setClicked] = useState(false);
   const buttonRef = useRef(null);
@@ -13,6 +14,8 @@ const Page3 = ({playSound}) => {
     targetPosition.current.x = clicked ? 90 : 0;
     targetPosition.current.y = clicked ? 100 : 80;
   }, [clicked]);
+
+
 
   const updateButtonPosition = () => {
     if (buttonRef.current) {
@@ -167,9 +170,12 @@ const Page3 = ({playSound}) => {
       setActiveIndex(index);
     }
   };
+  const boxRef = useRef(null);
+
+
 
   return (
-    <div className="w-full min-h-screen pb-20 font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
+    <div className="w-full min-h-screen font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
       <div className="flex p-5 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
@@ -191,15 +197,14 @@ const Page3 = ({playSound}) => {
       </div>
 
       {/* Only render content for active index */}
-      <div className="flex items-center h-[60vh] relative p-5 mt-18 flex-grow justify-center ">
+      <div className="flex items-center h-[70vh] relative p-5 mt-18 flex-grow justify-center ">
         <div
-          className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
-            clicked
-              ? "-translate-x-[120%] opacity-0"
-              : "translate-x-0 opacity-100"
-          }`}
+          className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${clicked
+            ? "-translate-x-[120%] opacity-0"
+            : "translate-x-0 opacity-100"
+            }`}
         >
-          <h1 className="text-[#E35E4E] text-4xl">
+          <h1 className="text-[#E35E4E] font-bold text-4xl">
             <DecryptedText
               text={activeData.title}
               speed={50}
@@ -210,20 +215,23 @@ const Page3 = ({playSound}) => {
             />
           </h1>
           <p className="text-zinc-300 mt-2 text-lg">{activeData.text1}</p>
-          <svg width="100" height="60" viewBox="0 0 100 50">
+          <div className="w-[50%] h-[30%]  ">
+          <svg width="50%" height="200%" viewBox="0 0 180 60" preserveAspectRatio="xMidYMid meet">
             <text
-              x="0"
-              y="50"
-              fontSize="50"
+              x="0" y="0"
+              fontSize="60"
               fontWeight="bold"
               stroke="#E35E4E"
-              strokeWidth="1"
+              strokeWidth="0.5"
               fill="transparent"
+              dominantBaseline="middle"
             >
               {activeData.sr}
             </text>
           </svg>
-          <h1 className="text-white text-3xl">
+          </div>
+          
+          <h1 className="text-white font-bold text-3xl">
             <DecryptedText
               text={activeData.name}
               speed={60}
@@ -235,9 +243,9 @@ const Page3 = ({playSound}) => {
           </h1>
           <p className="text-zinc-300 mt-2 text-lg">{activeData.text2}</p>
 
-          <button  onClick={() => {
-                  playSound();
-                }} className="bg-[#E35E4E] w-fit cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+          <button onClick={() => {
+            playSound();
+          }} className="bg-[#E35E4E] w-fit cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
             EXPLORE
           </button>
         </div>
@@ -245,9 +253,8 @@ const Page3 = ({playSound}) => {
         <div
           id="container"
           ref={containerRef}
-          className={`w-[35vw] relative transition-all duration-900 mt-[-20vh] ${
-            clicked ? "-translate-x-[140%]" : "translate-x-0"
-          } h-fit`}
+          className={`w-[35vw] relative transition-all duration-900 mt-[-20vh] ${clicked ? "-translate-x-[140%]" : "translate-x-0"
+            } h-fit`}
           onMouseMove={handleMouseMove}
         >
           <img
@@ -269,9 +276,8 @@ const Page3 = ({playSound}) => {
                 }}
               />
               <svg
-                className={`absolute transition-all opacity-0 duration-900 ${
-                  clicked && "opacity-[100%]"
-                } bottom-10`}
+                className={`absolute transition-all opacity-0 duration-900 ${clicked && "opacity-[100%]"
+                  } bottom-10`}
                 width="200"
                 height="100"
                 viewBox="0 0 180 100"
@@ -295,9 +301,9 @@ const Page3 = ({playSound}) => {
             ref={buttonRef}
             id="button"
             onClick={() => {
- 
-                playSound();
-            
+
+              playSound();
+
               setClicked(!clicked);
               if (clicked) {
                 // Force reset by triggering a state update
@@ -313,11 +319,10 @@ const Page3 = ({playSound}) => {
         </div>
 
         <div
-          className={`w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
-            clicked
-              ? "translate-x-[50%] px-10 opacity-[100%]"
-              : "translate-x-[130%] opacity-0"
-          }`}
+          className={`w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${clicked
+            ? "translate-x-[50%] px-10 opacity-[100%]"
+            : "translate-x-[130%] opacity-0"
+            }`}
         >
           <div className="flex flex-col gap-2">
             <h1 className="text-[#E35E4E] font-bold text-2xl">
@@ -372,60 +377,52 @@ const Page3 = ({playSound}) => {
         </div>
       </div>
 
-      <div className="border-t-2 relative mt-[15vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
+      <div className="border-t-2 relative mt-[17vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
         {data.map((item, index) => (
           <div
             key={item.sr}
-            className={`relative cursor-pointer group ${clicked ? "pointer-events-none opacity-50" : ""
-              }`}
+            className={`relative cursor-pointer group ${clicked ? "pointer-events-none opacity-50" : ""}`}
             onClick={() => {
               playSound2();
-              handleDotClick(index)
-   
-
+              handleDotClick(index);
             }}
           >
-            <div className="w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] transform -translate-y-1/2 transition-all duration-300 group-hover:scale-110"></div>
+            {/* Dot elements container */}
+            <div className="relative h-[3vh]">
+              {/* Hover dot */}
+              <div className="absolute w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
 
-            <div
-              className={`
-                absolute w-[5vh] h-[5vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
-                border-2 border-[#E35E4E] bg-transparent rounded-full 
-                transition-all duration-300 ease-in-out
-                ${
-                  activeIndex === index
-                    ? "opacity-100 scale-100"
-                    : "opacity-0 scale-50"
-                }
-              `}
-            ></div>
-
-            <div
-              className={`
-                absolute text-xl top-[-13vh] left-1/2 -translate-x-1/2
-                transition-all duration-300
-                ${activeIndex === index ? "opacity-100" : "opacity-40"}
-              `}
-            >
-              <h1 className="text-[#E35E4E]">{item.sr}</h1>
-              <h1 className="text-zinc-400">{item.name}</h1>
+              {/* Active ring */}
+              <div
+                className={`
+            absolute w-[5vh] h-[5vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
+            border-2 border-[#E35E4E] bg-transparent rounded-full 
+            transition-all duration-300 ease-in-out
+            ${activeIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-50"}
+          `}
+              ></div>
             </div>
 
+            {/* Text labels */}
             <div
-              className={`absolute top-[0vh] flex flex-col gap-3  transition-all duration-500 translate-x-[-37%] items-center   ${
-                activeIndex === index ? "opacity-100" : "opacity-10"
-              } `}
+              className={`
+          absolute text-center top-[-13vh] left-1/2 -translate-x-1/2 w-[12vw]
+          transition-all duration-300
+          ${activeIndex === index ? "opacity-100" : "opacity-40"}
+        `}
             >
-              <div className="w-[1px] h-[7vh] border-r-2 border-dashed border-[#E35E4E]">
-                {" "}
-              </div>
-              <div className="w-[10vh] h-[10vh]  overflow-hidden rotate-[45deg] border-2  border-[#E35E4E] ">
-                <img
-                  className="w-full h-full scale-[150%] object-cover  rotate-[-45deg]"
-                  src={item.boximg}
-                  alt=""
-                />
-              </div>
+              <h1 className="text-[#E35E4E] text-xl">{item.sr}</h1>
+              <h1 className="text-zinc-400 text-lg">{item.name}</h1>
+            </div>
+
+            {/* Box container - fixed size and centered */}
+            <div className="w-[10vw] h-[25vh] flex justify-center overflow-hidden mx-auto">
+              <BoxElement
+                key={index}
+                item={item}
+                index={index}
+                activeIndex={activeIndex}
+              />
             </div>
           </div>
         ))}
