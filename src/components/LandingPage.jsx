@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Stack from "./home/Stack";
 import Countdown from "./Countdown";
 import { motion } from "framer-motion";
+import PreOrder from "./PreOrder";
 
 const LandingPage = ({ playSound }) => {
   const parent = useRef();
@@ -16,6 +17,50 @@ const LandingPage = ({ playSound }) => {
   const arrowBtnIcon = useRef();
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [Order, setOrder] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleClose = () => {
+    setOrder(false);
+    // Restore scroll position after closing modal
+    window.scrollTo(0, scrollPosition);
+
+    // Refresh ScrollTriggers after a small delay to allow state update
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+  };
+
+  // In the useEffect for Order
+  useEffect(() => {
+    if (Order) {
+      // Save current scroll position
+      setScrollPosition(window.scrollY);
+
+      // Disable scroll without killing triggers
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${window.scrollY}px`;
+      document.body.style.width = "100%";
+    } else {
+      // Enable scroll
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+    }
+
+    return () => {
+      // Cleanup
+      document.body.style.overflow = "auto";
+      document.documentElement.style.overflow = "auto";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+    };
+  }, [Order]);
 
   const toggleAudio = () => {
     const audio = audioRef.current;
@@ -164,14 +209,28 @@ const LandingPage = ({ playSound }) => {
   }, []);
 
   return (
-    <div ref={parent} className="w-full relative h-screen">
+    <div ref={parent} className={`w-full relative h-screen`}>
+      {Order && (
+        <div className="absolute z-[999]">
+          <PreOrder
+            playSound={playSound}
+            Order={Order}
+            handleClose={handleClose}
+          />
+        </div>
+      )}
+
       <audio
         ref={audioRef}
         src="/Page-1/youtube_-wa3LTEHjLk_audio.ogg"
         loop
         preload="auto"
       />
-      <div className="w-full h-screen relative overflow-hidden">
+      <div
+        className={`w-full h-screen ${
+          Order && "opacity-40"
+        } relative overflow-hidden`}
+      >
         {/* Background image */}
         <div ref={bgImg} className="absolute w-[103%] h-[103%] bottom-0">
           <img
@@ -203,7 +262,11 @@ const LandingPage = ({ playSound }) => {
         </div>
       </div>
 
-      <div className="absolute top-0 w-full left-0 px-10 p-5">
+      <div
+        className={`absolute top-0 ${
+          Order && "opacity-40 pointer-events-none"
+        } w-full left-0 px-10 p-5`}
+      >
         <div className="flex justify-between">
           <div className="flex flex-col min-h-screen pb-16 justify-between">
             <div className="flex gap-1">
@@ -239,6 +302,7 @@ const LandingPage = ({ playSound }) => {
                 <button
                   onClick={() => {
                     playSound();
+                    setOrder(true);
                   }}
                   className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 py-2"
                 >
@@ -249,7 +313,11 @@ const LandingPage = ({ playSound }) => {
           </div>
         </div>
       </div>
-      <div className="fixed pointer-events-none top-0 z-[999] w-full left-0 px-10 p-5 flex justify-end">
+      <div
+        className={`fixed pointer-events-none top-0 z-[999] ${
+          Order && "opacity-40 pointer-events-none"
+        } w-full left-0 px-10 p-5 flex justify-end`}
+      >
         <div className="flex flex-col justify-between pb-16 min-h-screen">
           <div className="flex h-[7%] gap-3">
             <Countdown />
@@ -261,7 +329,9 @@ const LandingPage = ({ playSound }) => {
               className="relative px-5 py-2 bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] text-[#E35E4E] font-[orbitron] w-[7vw] overflow-hidden hover:text-black cursor-pointer"
               whileHover="hover"
             >
-              <span className="relative z-10 font-bold pointer-events-auto">JOIN</span>
+              <span className="relative z-10 font-bold pointer-events-auto">
+                JOIN
+              </span>
 
               <motion.span
                 className="absolute font-bold [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] inset-0 bg-[#E35E4E] "
@@ -305,8 +375,11 @@ const LandingPage = ({ playSound }) => {
               className="relative cursor-pointer h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
               whileHover="hover"
             >
-
-              {isPlaying ? <i class="ri-volume-off-vibrate-line relative z-10"></i> : <i className="ri-volume-down-line relative z-10"></i>}
+              {isPlaying ? (
+                <i class="ri-volume-off-vibrate-line relative z-10"></i>
+              ) : (
+                <i className="ri-volume-down-line relative z-10"></i>
+              )}
             </motion.button>
 
             <motion.button
@@ -316,9 +389,7 @@ const LandingPage = ({ playSound }) => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               className="relative cursor-pointer  h-[6vh] w-[6vh] flex items-center justify-center  text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
- 
             >
-             
               <i
                 ref={arrowBtnIcon}
                 className="ri-arrow-down-double-line relative z-10"

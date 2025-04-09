@@ -79,6 +79,7 @@ const Page3 = ({ playSound }) => {
       ],
       boximg:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiKGYgpx5iy1W0TRk1IUVJc3Gl2QBCG_Dp8w&s",
+        stats:"/Page-3/stats.svg"
     },
     {
       sr: "02",
@@ -106,6 +107,7 @@ const Page3 = ({ playSound }) => {
       ],
       boximg:
         "https://i.pinimg.com/736x/e0/4d/c7/e04dc7f7065d7a2a23db7455fe3d323d.jpg",
+      stats:"/Page-3/stats2.png"
     },
     {
       sr: "03",
@@ -133,6 +135,7 @@ const Page3 = ({ playSound }) => {
       ],
       boximg:
         "https://assets-prd.ignimgs.com/2024/06/10/ac-shadows-details-blog-1718049618925.jpg",
+      stats:"/Page-3/stats3.png"
     },
     {
       sr: "04",
@@ -160,6 +163,7 @@ const Page3 = ({ playSound }) => {
       ],
       boximg:
         "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2019/10/Alexios-Cropped-e1605308105670.jpg",
+      stats:"/Page-3/stats.svg"
     },
   ];
 
@@ -368,7 +372,7 @@ const Page3 = ({ playSound }) => {
 
             <div className="w-[45vh] ml-20 h-[45vh] mt-5">
               <img
-                src="/Page-3/stats.svg"
+                src={activeData.stats}
                 alt="Stats"
                 className="w-fit h-fit object-contain"
               />

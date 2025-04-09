@@ -147,6 +147,7 @@ const Page6 = ({playSound}) => {
               src="/Page-5/Yasuke.png"
               alt=""
             />
+            <img className="absolute  top-0 z-[99]" src="/Page-5/image.png" alt="" />
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
