@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import React, { useRef } from "react";
+import DecryptedText from "../animations/DecryptedText";
 
 const Page2 = () => {
   const leftImg = useRef();
@@ -136,7 +137,14 @@ const Page2 = () => {
               className="w-fit h-fit object-contain"
             />
             <h1 className="text-[#E35E4E] text-5xl lg:text-4xl ">
-              {splitText("A new creed rises")}
+              <DecryptedText
+                text="A new creed rises"
+                speed={60}
+                maxIterations={100}
+                revealDirection="center" // Force center always
+                animateOn="view"
+                resetOnChange={true}
+              />
             </h1>
           </div>
           <div className="text-zinc-300 mt-5 text-2xl lg:text-xl " ref={bodyText}>

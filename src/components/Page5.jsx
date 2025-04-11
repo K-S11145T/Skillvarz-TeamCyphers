@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DecryptedText from "../animations/DecryptedText";
+import SplitText from "../animations/SplitText";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-const Page6 = ({playSound}) => {
+const Page6 = ({ playSound }) => {
   useEffect(() => {
     const services = gsap.utils.toArray(".image-container");
 
@@ -36,33 +37,33 @@ const Page6 = ({playSound}) => {
   const links = [
     {
       link: "Xbox",
-      svg : "/Page-5/Xbox.svg",
+      svg: "/Page-5/Xbox.svg",
     },
     {
       link: "Ps5",
-      svg : "/Page-5/PS 5.svg",
+      svg: "/Page-5/PS 5.svg",
     },
     {
       link: "Macos",
-      svg : "/Page-5/Apple Inc.svg",
+      svg: "/Page-5/Apple Inc.svg",
     },
     {
       link: "Ubisoft",
-      svg : "/Page-5/Ubisoft.svg",
+      svg: "/Page-5/Ubisoft.svg",
     },
     {
       link: "Luna",
-      svg : "/Page-5/Amazon-Luna.svg",
+      svg: "/Page-5/Amazon-Luna.svg",
     },
     {
       link: "Steam",
-      svg : "/Page-5/Steam Black 1.svg",
+      svg: "/Page-5/Steam Black 1.svg",
     },
     {
       link: "Epic",
-      svg : "/Page-5/Epic 5.svg",
+      svg: "/Page-5/Epic 5.svg",
     },
-  ]
+  ];
 
   return (
     <div className="w-full relative min-h-screen  font-orbitron bg-black">
@@ -94,10 +95,19 @@ const Page6 = ({playSound}) => {
 
           <div className="w-[65%] text-white">
             <p className="text-3xl mt-7">
-              Step into the shadows of war, where honor and betrayal shape
-              destiny. Will you rise as a master of stealth and steel, or be
-              lost in the chaos of a fading era? The land is your
-              battleground—embrace the assassin’s path!
+              <SplitText
+                text="Step into the shadows of war, where honor and betrayal shape destiny. Will you rise as a master of stealth and steel, or be lost in the chaos of a fading era? The land is your battleground—embrace the assassin’s path!"
+                delay={30} // delay between each word
+                duration={0.3} // animation time per word
+                animationFrom={{ opacity: 0, y: 40 }}
+                animationTo={{ opacity: 1, y: 0 }}
+                resetOnChange={true}
+                easing="power3.out"
+                threshold={0.2}
+                rootMargin="-50px"
+                textAlign="start"
+                onLetterAnimationComplete={() => console.log("done ✅")}
+              />
             </p>
           </div>
         </div>
@@ -126,80 +136,114 @@ const Page6 = ({playSound}) => {
             />
           </svg>
 
-          {links.map ((item , idx)=>{
-            return <div key={idx}  onClick={() => {
-              playSound();
-            }} className="w-[14.2854%] cursor-pointer group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]">
-              <h1 className="text-[#E35E4E] font-bold text-2xl group-hover:opacity-0 transition duration-300">{item.link}</h1>
-            <img
-              src={item.svg}
-              alt="Arrow"
-              className="w-[50%] opacity-0 group-hover:opacity-100 transition duration-300 absolute h-fit object-contain"
-            />
-          </div>
+          {links.map((item, idx) => {
+            return (
+              <div
+                key={idx}
+                onClick={() => {
+                  playSound();
+                }}
+                className="w-[14.2854%] cursor-pointer group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]"
+              >
+                <h1 className="text-[#E35E4E] font-bold text-2xl group-hover:opacity-0 transition duration-300">
+                  {item.link}
+                </h1>
+                <img
+                  src={item.svg}
+                  alt="Arrow"
+                  className="w-[50%] opacity-0 group-hover:opacity-100 transition duration-300 absolute h-fit object-contain"
+                />
+              </div>
+            );
           })}
         </div>
 
         <div className="w-full mt-20 relative flex flex-col items-center min-h-screen">
           <div className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
             <img
-              className="w-full h-full object-cover"
-              src="/Page-5/Yasuke.png"
+              className="w-full h-[150%] object-cover"
+              src="/Page-5/lastcard.png"
               alt=""
             />
-            <img className="absolute  top-0 z-[99]" src="/Page-5/image.png" alt="" />
+            <img
+              className="absolute  top-0 z-[99]"
+              src="/Page-5/image.png"
+              alt=""
+            />
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button  onClick={() => {
+              <button
+                onClick={() => {
                   playSound();
-                }} className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
-                PRE ORDER
+                }}
+                className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+              >
+                EXPLORE
               </button>
             </div>
           </div>
 
           <div className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
             <img
-              className="w-full h-full object-cover"
-              src="/Page-5/Yasuke.png"
+              className="w-full h-[150%] object-cover"
+              src="/Page-5/lastcard-1.png"
               alt=""
             />
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button  onClick={() => {
+              <button
+                onClick={() => {
                   playSound();
-                }} className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
-                PRE ORDER
+                }}
+                className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+              >
+                EXPLORE
               </button>
             </div>
           </div>
 
-          <div  className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
+          <div className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
             <img
-              className="w-full h-full object-cover"
-              src="/Page-5/Yasuke.png"
+              className="w-full h-[150%] object-cover"
+              src="/Page-5/sa.png"
               alt=""
             />
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
               </h1>
-              <button  onClick={() => {
+              <button
+                onClick={() => {
                   playSound();
-                }} className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
-                PRE ORDER
+                }}
+                className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+              >
+                EXPLORE
               </button>
             </div>
           </div>
         </div>
       </div>
       <h1 className="text-start bottom-[50vh] translate-x-[-50%] left-1/2 absolute w-[80%] text-white text-3xl font-bold">
-        Step into the shadows. Stay tuned for exclusive content and pre-launch
-        surprises. The journey begins soon...
+
+        <SplitText
+          text="Step into the shadows. Stay tuned for exclusive content and pre-launch surprises. The journey begins soon..."
+          delay={30} // delay between each word
+          duration={0.5} // animation time per word
+          animationFrom={{ opacity: 0, y: 40 }}
+          animationTo={{ opacity: 1, y: 0 }}
+          resetOnChange={true}
+          easing="power3.out"
+          threshold={0.2}
+          rootMargin="-50px"
+          textAlign="start"
+          onLetterAnimationComplete={() => console.log("done ✅")}
+        />
+
       </h1>
     </div>
   );

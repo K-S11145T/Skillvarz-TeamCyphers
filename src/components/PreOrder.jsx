@@ -8,12 +8,53 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
   const line2 = useRef();
   const centerDiv = useRef();
   const Img = useRef();
+  const modalRef = useRef();
+
+
+  const handleAnimatedClose = () => {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        // Only call handleClose after all animations are complete
+        setTimeout(() => {
+          handleClose();
+        }, 100);
+      }
+    });
+
+    tl.to([centerDiv.current, Img.current], {
+      opacity: 0,
+      duration: 0.4,
+      ease: "power2.inOut"
+    });
+
+    tl.to(
+      line1.current,
+      {
+        top: "50%",
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.in"
+      },
+      "<"
+    );
+
+    tl.to(
+      line2.current,
+      {
+        bottom: "50%",
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.in"
+      },
+      "<"
+    );
+  };
 
   useGSAP(() => {
     if (Order) {
       // Reset initial states
 
-      gsap.set([centerDiv.current ,Img.current], { opacity: 0 });
+      gsap.set([centerDiv.current, Img.current], { opacity: 0 });
 
       const tl = gsap.timeline();
 
@@ -21,23 +62,23 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
         line1.current,
         {
           top: "50%",
-          duration: 1.2,
+          duration: 0.5,
         },
         "line"
       );
-  
+
       tl.from(
         line2.current,
         {
           bottom: "50%",
-          duration: 1.2,
+          duration: 0.5,
         },
         "line"
       );
-    
-      tl.to([centerDiv.current , Img.current], {
+
+      tl.to([centerDiv.current, Img.current], {
         opacity: 1,
-        duration: 0.6,
+        duration: 0.5,
         ease: "power2.out"
       }, "+=0.2"); // Small delay after lines finish
     }
@@ -45,13 +86,13 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
 
   return (
     <motion.div
-      className="fixed top-1/2 left-1/2 z-[9999] w-[60vw] -translate-x-1/2 -translate-y-1/2  shadow-[0_0_40px_5px_rgba(255,0,0,0.2)] text-white"
+      className="fixed top-1/2 left-1/2 z-[9999] w-[60vw] -translate-x-1/2 -translate-y-1/2   text-white"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
     >
       <div ref={Img} className="w-full h-full ">
-        <img 
+        <img
           className="w-full opacity-80 h-full object-cover"
           src="/Page-1/arcy slides 3-11 1.png"
           alt=""
@@ -65,20 +106,20 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
         >
           <img src="/Page-2/Lines (1).png" alt="" />
         </div>
-        
+
 
         {/* Form Fields */}
         <div ref={centerDiv} className="space-y-4 flex flex-col justify-evenly items-center w-[80%]">
-        <button
-          onClick={() => {
-            playSound();
-            handleClose();
-          }}
-          className="absolute top-4 right-5 text-white hover:text-[#E35E4E] cursor-pointer transition text-lg "
-        >
-          Close
-        </button>
-    
+          <button
+            onClick={() => {
+              playSound();
+              handleAnimatedClose();
+            }}
+            className="absolute top-4 right-5 text-white hover:text-[#E35E4E] cursor-pointer transition text-lg "
+          >
+            Close
+          </button>
+
           <div className="flex gap-3 items-center justify-center">
             <label className="block mb-1 w-[40vw] font-bold text-2xl ">
               Choose Platform :{" "}

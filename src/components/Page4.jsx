@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText";
+import SplitText from "../animations/SplitText";
 import { gsap } from "gsap";
 
-const Page4 = ({playSound}) => {
+const Page4 = ({ playSound }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const stackContainerRef = useRef(null);
   const movingDivRef = useRef(null);
@@ -18,52 +19,60 @@ const Page4 = ({playSound}) => {
     {
       sr: "01",
       title: "Weapon Design",
-      description: "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
+      description:
+        "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
       image: "/Page-4/Dope 1.png",
     },
     {
       sr: "02",
       title: "Developers Interviews",
-      description: "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      image: "https://4kwallpapers.com/images/wallpapers/assassins-creed-4480x2520-16786.jpeg",
+      description:
+        "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
+      image:
+        "https://4kwallpapers.com/images/wallpapers/assassins-creed-4480x2520-16786.jpeg",
     },
     {
       sr: "03",
       title: "Soundtracks",
-      description: "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      image: "https://gaming-cdn.com/images/news/articles/10198/cover/1000x563/ubisoft-posts-a-new-artwork-from-assassin-s-creed-shadows-cover67894625921f9.jpg",
-    }
+      description:
+        "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
+      image:
+        "https://gaming-cdn.com/images/news/articles/10198/cover/1000x563/ubisoft-posts-a-new-artwork-from-assassin-s-creed-shadows-cover67894625921f9.jpg",
+    },
   ];
 
   const moveRedDivAndChangeImage = (direction, index) => {
     if (isAnimating.current) return;
     isAnimating.current = true;
-  
-    const startX = direction === 'forward' ? "0%" : "-200%";
-    const endX = direction === 'forward' ? "-200%" : "0%";
-  
-    gsap.fromTo(movingDivRef.current,
+
+    const startX = direction === "forward" ? "0%" : "-200%";
+    const endX = direction === "forward" ? "-200%" : "0%";
+
+    gsap.fromTo(
+      movingDivRef.current,
       { x: startX },
       {
         x: endX,
         duration: 1,
         ease: "power2.inOut",
-        onUpdate: function() {
+        onUpdate: function () {
           if (this.progress() >= 0.5 && activeIndex !== index) {
             setActiveIndex(index);
           }
         },
         onComplete: () => {
-          gsap.set(movingDivRef.current, { x: direction === 'forward' ? "0%" : "-200%" });
+          gsap.set(movingDivRef.current, {
+            x: direction === "forward" ? "0%" : "-200%",
+          });
           isAnimating.current = false;
-        }
+        },
       }
     );
   };
-  
+
   const handleClick = (index) => {
-    if(index === activeIndex || isAnimating.current) return;
-    const direction = 'forward'
+    if (index === activeIndex || isAnimating.current) return;
+    const direction = "forward";
     moveRedDivAndChangeImage(direction, index);
   };
 
@@ -80,7 +89,7 @@ const Page4 = ({playSound}) => {
           <DecryptedText
             text="Behind the scenes"
             speed={50}
-            revealDirection='center'
+            revealDirection="center"
             maxIterations={100}
             animateOn="view"
           />
@@ -109,7 +118,19 @@ const Page4 = ({playSound}) => {
                 />
               </h1>
               <p className="text-base ml-2 mt-2">
-                {data[activeIndex].description}
+                <SplitText
+                  text={data[activeIndex].description}
+                  delay={30} // delay between each word
+                  duration={0.3} // animation time per word
+                  animationFrom={{ opacity: 0, y: 40 }}
+                  animationTo={{ opacity: 1, y: 0 }}
+                  resetOnChange={true}
+                  easing="power3.out"
+                  threshold={0.2}
+                  rootMargin="-50px"
+                  textAlign="start"
+                  onLetterAnimationComplete={() => console.log("done ✅")}
+                />
               </p>
 
               <div className="w-full mt-4 h-fit">
@@ -120,14 +141,20 @@ const Page4 = ({playSound}) => {
                 />
               </div>
               <div className="flex text-black items-center justify-evenly mt-4">
-                <button  onClick={() => {
-                  playSound();
-                }} className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                <button
+                  onClick={() => {
+                    playSound();
+                  }}
+                  className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                >
                   EXPLORE
                 </button>
-                <button onClick={() => {
-                  playSound();
-                }} className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2">
+                <button
+                  onClick={() => {
+                    playSound();
+                  }}
+                  className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                >
                   STEAM
                 </button>
               </div>
@@ -139,27 +166,25 @@ const Page4 = ({playSound}) => {
             className="moving-div w-full absolute h-full bg-[#E35E4E]"
             style={{ left: "100%", zIndex: 99 }}
           ></div>
-          
+
           {/* Right panel - stack items with animation */}
           <div className="flex-1 relative overflow-hidden">
-            <div
-              ref={stackContainerRef}
-              className="w-full h-full flex"
-            >
+            <div ref={stackContainerRef} className="w-full h-full flex">
               {data.map((item, idx) => (
                 <div
                   key={idx}
                   onClick={() => {
-                    handleClick(idx)
+                    handleClick(idx);
 
-                  playSound2();
-        
+                    playSound2();
                   }}
                   className="stack-item w-1/3 border-r-[1px] cursor-pointer overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]"></div>
                   <h1 className="text-xl absolute z-10">{item.title}</h1>
-                  <h1 className="text-2xl absolute right-5 bottom-3 font-bold z-10">{item.sr}</h1>
+                  <h1 className="text-2xl absolute right-5 bottom-3 font-bold z-10">
+                    {item.sr}
+                  </h1>
                 </div>
               ))}
             </div>
