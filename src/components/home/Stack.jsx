@@ -49,33 +49,52 @@ function CardRotate({ children, onSendToBack, sensitivity }) {
 export default function Stack({
   randomRotation = true,
   sensitivity = 200,
-  cardDimensions = { width: 182, height: 230 },
   cardsData = [],
   animationConfig = { stiffness: 280, damping: 15 },
   sendToBackOnClick = true,
 }) {
-  const [cards, setCards] = useState(
-    cardsData.length
-      ? cardsData
-      : [
-          {
-            id: 1,
-            img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
-          },
-          {
-            id: 2,
-            img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
-          },
-          {
-            id: 3,
-            img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
-          },
-          {
-            id: 4,
-            img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format",
-          },
-        ]
-  );
+  const [cards, setCards] = useState([]);
+  const [cardDimensions, setCardDimensions] = useState({ width: 40, height: 50 }); // Default dimensions in vw
+
+  useEffect(() => {
+    const updateResponsiveData = () => {
+      const width = window.innerWidth;
+
+      const defaultCards = [
+        { id: 1, img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format" },
+        { id: 2, img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format" },
+        { id: 3, img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format" },
+        { id: 4, img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format" },
+      ];
+
+      if (width < 640) {
+        // sm
+        setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
+        setCardDimensions({ width: 28, height: 34 }); // 40vw x 50vh
+      } else if (width < 768) {
+        // md
+        setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
+        setCardDimensions({ width: 20, height: 24 }); // 35vw x 45vh
+      } else if (width < 1024) {
+        // lg
+        setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
+        setCardDimensions({ width: 18, height: 24 }); // 30vw x 40vh
+      } else if (width < 1280) {
+        // xl
+        setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
+        setCardDimensions({ width: 18, height: 22 }); // 25vw x 35vh
+      } else {
+        // 2xl and above
+        setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
+        setCardDimensions({ width: 12, height: 16 }); // 20vw x 30vh
+      }
+    };
+
+    updateResponsiveData();
+    window.addEventListener("resize", updateResponsiveData);
+
+    return () => window.removeEventListener("resize", updateResponsiveData);
+  }, [cardsData]);
 
   const [currentIndex, setCurrentIndex] = useState(cards.length - 1);
 
@@ -106,8 +125,8 @@ export default function Stack({
     <div
       className="stack-container relative"
       style={{
-        width: cardDimensions.width,
-        height: cardDimensions.height,
+        width: `${cardDimensions.width}vw`,
+        height: `${cardDimensions.height}vw`,
         perspective: 1000,
       }}
     >
@@ -151,8 +170,8 @@ export default function Stack({
                 },
               }}
               style={{
-                width: cardDimensions.width,
-                height: cardDimensions.height,
+                width: `${cardDimensions.width}vw`,
+                height: `${cardDimensions.height}vw`,
                 zIndex,
                 originX: 0.5,
                 originY: 0.5,
