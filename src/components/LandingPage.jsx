@@ -376,9 +376,9 @@ const LandingPage = ({ playSound }) => {
               whileHover="hover"
             >
               {isPlaying ? (
-                <i class="ri-volume-off-vibrate-line relative z-10"></i>
+               <i className="ri-volume-down-line relative z-10"></i>
               ) : (
-                <i className="ri-volume-down-line relative z-10"></i>
+                <i class="ri-volume-off-vibrate-line relative z-10"></i>
               )}
             </motion.button>
 
