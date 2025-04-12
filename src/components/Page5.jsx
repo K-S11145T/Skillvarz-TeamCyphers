@@ -170,6 +170,9 @@ const Page6 = ({ playSound }) => {
               src="/Page-5/image.png"
               alt=""
             />
+            <div className="w-full h-full absolute top-0 left-0">
+              <img className="w-full h-full object-cover" src="/Footer/FooterOverlay.png" alt="" />
+            </div>
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
@@ -191,6 +194,9 @@ const Page6 = ({ playSound }) => {
               src="/Page-5/lastcard-1.png"
               alt=""
             />
+            <div className="w-full h-full absolute top-0 left-0">
+              <img className="w-full h-full object-cover" src="/Footer/FooterOverlay.png" alt="" />
+            </div>
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
@@ -212,6 +218,9 @@ const Page6 = ({ playSound }) => {
               src="/Page-5/sa.png"
               alt=""
             />
+            <div className="w-full h-full absolute top-0 left-0">
+              <img className="w-full h-full object-cover" src="/Footer/FooterOverlay.png" alt="" />
+            </div>
             <div className="absolute bottom-5 right-0">
               <h1 className="text-3xl w-[40vw] text-white font-bold">
                 Become a legendary samurai
