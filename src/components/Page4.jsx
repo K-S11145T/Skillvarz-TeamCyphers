@@ -103,6 +103,10 @@ const Page4 = ({ playSound }) => {
           src={data[activeIndex].image}
           alt=""
         />
+        <div className="absolute w-full h-full top-0 left-0">
+          <img className="w-full h-full object-cover" src="/Page-4/dotedOverlay.png" alt="" />
+
+        </div>
 
         <div className="w-full absolute text-white top-0 left-0 flex h-full border-2 border-[#E35E4E]">
           {/* Left panel - fixed width */}

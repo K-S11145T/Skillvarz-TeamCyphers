@@ -75,12 +75,15 @@ const Footer = ({ playSound }) => {
         <div className={`w-full h-screen ${
           Order && "opacity-40 pointer-events-none"
         } relative`}>
-          <div className="w-full h-screen flex items-center justify-center text-9xl text-white">
+          <div className="w-full h-screen relative flex items-center justify-center text-9xl text-white">
             <img
               className="w-full h-full object-cover"
               src="/Footer/Footer IMG.png"
               alt="Footer background"
             />
+            <div className="w-full h-full absolute top-0 left-0">
+              <img className="w-full h-full object-cover" src="/Footer/FooterOverlay.png" alt="" />
+            </div>
           </div>
 
           <div className="absolute p-10 flex flex-col justify-end top-0 left-0 w-full h-[100%] text-white">
