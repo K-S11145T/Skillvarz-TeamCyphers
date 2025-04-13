@@ -314,30 +314,30 @@ const LandingPage = ({ playSound }) => {
                   alt=""
                 />
               </div>
-              <div className="flex items-center justify-start w-full mb-16 pl-5 lg:pl-4 xl:pl-6 2xl:pl-4">
+              <div className="flex items-center justify-start w-full mb-16 lg:mb-16 pl-5 lg:pl-4 xl:pl-6 2xl:pl-4">
                 <button
                   onClick={() => {
                     playSound();
                     setOrder(true);
-                  }}
-                  className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 sm:px-6 md:px-6 lg:px-6 xl:px-8 2xl:px-12 py-2 sm:py-3 md:py-3 lg:py-4 xl:py-3 2xl:py-4 lg:mr-10"
-                >
-                  PRE ORDER
-                </button>
+                    }}
+                    className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 sm:px-6 md:px-6 lg:px-6 xl:px-8 2xl:px-12 py-2 sm:py-3 md:py-3 lg:py-3 xl:py-3 2xl:py-4 lg:mr-10"
+                  >
+                    PRE ORDER
+                  </button>
+                  </div>
+                </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className={`fixed pointer-events-none top-0 z-[999] ${
-          Order && "opacity-40 pointer-events-none"
-        } w-full left-0 px-10 p-5 flex justify-end`}
-      >
-        <div className="flex flex-col justify-between pb-12 sm:pb-12 md:pb-12 lg:pb-14 xl:pb-16 2xl:pb-12 lg:pr-4 2xl:pr-10 min-h-screen">
-          <div className="flex h-[7%] gap-3">
-            <Countdown />
-            {/* JOIN Button */}
+              </div>
+              <div
+              className={`fixed pointer-events-none top-0 z-[999] ${
+                Order && "opacity-40 pointer-events-none"
+              } w-full left-0 px-10 p-5 flex justify-end`}
+              >
+              <div className="flex flex-col justify-between pb-12 sm:pb-12 md:pb-12 lg:pb-14 xl:pb-16 2xl:pb-12 lg:pr-4 2xl:pr-10 min-h-screen">
+                <div className="flex h-[7%] gap-3">
+                <Countdown />
+                {/* JOIN Button */}
             <motion.button
               onClick={() => {
                 playSound();
@@ -382,7 +382,7 @@ const LandingPage = ({ playSound }) => {
             </motion.button>
           </div>
 
-          <div className="flex flex-col justify-start h-28 sm:h-26 md:h-28 lg:h-32 xl:h-32 2xl:h-34 gap-4 mr-2 lg:mr-4 xl:mr-6 2xl:mr-2 items-end">
+          <div className="flex flex-col justify-start h-28 sm:h-26 md:h-28 lg:h-30 xl:h-32 2xl:h-34 gap-4 mr-2 lg:mr-4 xl:mr-6 2xl:mr-2 items-end">
             <motion.button
               onClick={() => {
                 playSound();
