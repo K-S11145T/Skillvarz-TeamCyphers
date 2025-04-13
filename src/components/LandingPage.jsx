@@ -286,13 +286,13 @@ const LandingPage = ({ playSound }) => {
         <div className="flex flex-col md:flex-row justify-between">
           <div className="flex flex-col min-h-screen pb-16 justify-between">
             <div className="flex gap-1">
-              <h1 className="tracking-[-0.14em] text-3xl sm:text-5xl md:text-5xl lg:text-3xl md:text-5xl xl:text-4xl 2xl:text-6xl font-[hanbai] text-white [writing-mode:vertical-rl] [text-orientation:upright]">
+              <h1 className="tracking-[-0.14em] lg:tracking-[-0.18em] 2xl:tracking-[-0.22em] text-3xl sm:text-5xl md:text-5xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-[hanbai] text-white [writing-mode:vertical-rl] [text-orientation:upright]">
                 <span className="bg-gradient-to-b from-red-600 via-zinc-800 to-red-600 filter brightness-90 saturate-150 bg-clip-text text-transparent">
                   as
                 </span>
                 sassins
               </h1>
-              <div className="font-[orbitron] filter brightness-90 saturate-150 leading-6 sm:leading-8 md:leading-9 lg:leading-7 xl:leading-8 2xl:leading-10 text-xl sm:text-3xl md:text-4xl lg:text-2xl xl:text-4xl 2xl:text-4xl font-bold">
+              <div className="font-[orbitron] filter brightness-90 saturate-150 leading-6 sm:leading-8 md:leading-9 lg:leading-6 xl:leading-8 2xl:leading-8 text-xl sm:text-3xl md:text-4xl lg:text-2xl xl:text-4xl 2xl:text-3xl font-bold">
                 <h1 className="bg-gradient-to-b from-red-600 to-zinc-800 bg-clip-text text-transparent">
                   creed
                 </h1>
@@ -314,13 +314,13 @@ const LandingPage = ({ playSound }) => {
                   alt=""
                 />
               </div>
-              <div className="flex items-center justify-start w-full mb-16 pl-5 lg:pl-4 xl:pl-6 2xl:pl-4">
+              <div className="flex items-center justify-start w-full mb-16 lg:mb-16 pl-5 lg:pl-4 xl:pl-6 2xl:pl-4">
                 <button
                   onClick={() => {
                     playSound();
                     setOrder(true);
                   }}
-                  className="bg-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 sm:px-6 md:px-6 lg:px-8 xl:px-8 2xl:px-18 py-2 sm:py-3 md:py-3 lg:py-4 xl:py-3 2xl:py-4 lg:mr-10"
+                  className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 sm:px-6 md:px-6 lg:px-8 xl:px-8 2xl:px-18 py-2 sm:py-3 md:py-3 lg:py-4 xl:py-3 2xl:py-4 lg:mr-10"
                 >
                   PRE ORDER
                 </button>
@@ -382,13 +382,13 @@ const LandingPage = ({ playSound }) => {
             </motion.button>
           </div>
 
-          <div className="flex flex-col justify-start h-28 sm:h-26 md:h-28 lg:h-32 xl:h-32 2xl:h-34 gap-4 mr-2 lg:mr-4 xl:mr-6 2xl:mr-2 items-end">
+          <div className="flex flex-col justify-start h-28 sm:h-26 md:h-28 lg:h-30 xl:h-32 2xl:h-34 gap-4 mr-2 lg:mr-4 xl:mr-6 2xl:mr-2 items-end">
             <motion.button
               onClick={() => {
                 playSound();
                 toggleAudio();
               }}
-              className="relative cursor-pointer sm:mt-0 md:mt-0 lg:mt-0 xl:mt-4 2xl:mt-0 h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] flex items-center justify-center text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
+              className="relative cursor-pointer sm:mt-0 md:mt-0 lg:mt-0 xl:mt-4 2xl:mt-0 h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
               whileHover="hover"
             >
               {isPlaying ? (
@@ -404,7 +404,7 @@ const LandingPage = ({ playSound }) => {
                 playSound();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="relative cursor-pointer h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] flex items-center justify-center  text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
+              className="relative cursor-pointer h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center  text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
             >
               <i
                 ref={arrowBtnIcon}

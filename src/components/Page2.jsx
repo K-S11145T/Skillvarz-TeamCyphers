@@ -136,7 +136,7 @@ const Page2 = () => {
               alt="Arrow"
               className="w-fit h-fit object-contain"
             />
-            <h1 className="text-[#E35E4E] text-5xl lg:text-4xl ">
+            <h1 className="font-orbitron font-semibold text-[#E35E4E] text-5xl lg:text-4xl ">
               <DecryptedText
                 text="A new creed rises"
                 speed={60}
