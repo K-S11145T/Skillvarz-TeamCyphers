@@ -320,7 +320,7 @@ const LandingPage = ({ playSound }) => {
                     playSound();
                     setOrder(true);
                   }}
-                  className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 sm:px-6 md:px-6 lg:px-8 xl:px-8 2xl:px-18 py-2 sm:py-3 md:py-3 lg:py-4 xl:py-3 2xl:py-4 lg:mr-10"
+                  className="bg-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 sm:px-6 md:px-6 lg:px-8 xl:px-8 2xl:px-18 py-2 sm:py-3 md:py-3 lg:py-4 xl:py-3 2xl:py-4 lg:mr-10"
                 >
                   PRE ORDER
                 </button>

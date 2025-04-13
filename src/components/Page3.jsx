@@ -324,7 +324,7 @@ const Page3 = ({ playSound }) => {
             onClick={() => {
               playSound();
             }}
-            className="bg-[#E35E4E] w-fit cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+            className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
           >
             EXPLORE
           </button>
@@ -462,7 +462,7 @@ const Page3 = ({ playSound }) => {
         {data.map((item, index) => (
           <div
             key={item.sr}
-            className={`relative cursor-pointer group ${
+            className={`relative  group ${
               clicked ? "pointer-events-none opacity-50" : ""
             }`}
             onClick={() => {

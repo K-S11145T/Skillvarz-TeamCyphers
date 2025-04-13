@@ -115,7 +115,7 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
               playSound();
               handleAnimatedClose();
             }}
-            className="absolute top-4 right-5 text-white hover:text-[#E35E4E] cursor-pointer transition text-lg "
+            className="absolute top-4 right-5 text-white hover:text-[#E35E4E]  transition text-lg "
           >
             Close
           </button>
@@ -185,14 +185,14 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
                 }}
                 type="checkbox"
                 id="notify"
-                className="appearance-none w-8 h-8 cursor-pointer border-2 border-[#E35E4E]  checked:bg-[#E35E4E] relative"
+                className="appearance-none w-8 h-8  border-2 border-[#E35E4E]  checked:bg-[#E35E4E] relative"
               />
               <label
                 htmlFor="notify"
                 onClick={() => {
                   playSound();
                 }}
-                className="bg-[#E35E4E] text-black cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base font-[orbitron] font-bold px-3 py-2"
+                className="bg-[#E35E4E] text-black  [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base font-[orbitron] font-bold px-3 py-2"
               >
                 Notify Me
               </label>
@@ -202,7 +202,7 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
               onClick={() => {
                 playSound();
               }}
-              className="px-6 py-2 bg-transparent border-2 text-[#E35E4E] cursor-pointer border-[#E35E4E] font-bold"
+              className="px-6 py-2 bg-transparent border-2 text-[#E35E4E]  border-[#E35E4E] font-bold"
             >
               Submit
             </button>

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@jdion/tilt-react": "^1.0.0",
     "@tailwindcss/vite": "^4.0.17",
     "framer-motion": "^12.6.3",
     "gsap": "^3.12.7",
