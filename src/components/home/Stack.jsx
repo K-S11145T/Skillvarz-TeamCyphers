@@ -54,39 +54,49 @@ export default function Stack({
   sendToBackOnClick = true,
 }) {
   const [cards, setCards] = useState([]);
-  const [cardDimensions, setCardDimensions] = useState({ width: 40, height: 50 }); // Default dimensions in vw
+  const [cardDimensions, setCardDimensions] = useState({
+    width: 40,
+    height: 50,
+  });
 
   useEffect(() => {
     const updateResponsiveData = () => {
       const width = window.innerWidth;
 
       const defaultCards = [
-        { id: 1, img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format" },
-        { id: 2, img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format" },
-        { id: 3, img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format" },
-        { id: 4, img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format" },
+        {
+          id: 1,
+          img: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format",
+        },
+        {
+          id: 2,
+          img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format",
+        },
+        {
+          id: 3,
+          img: "https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format",
+        },
+        {
+          id: 4,
+          img: "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format",
+        },
       ];
 
       if (width < 640) {
-        // sm
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 28, height: 34 }); // 40vw x 50vh
+        setCardDimensions({ width: 28, height: 34 });
       } else if (width < 768) {
-        // md
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 20, height: 24 }); // 35vw x 45vh
+        setCardDimensions({ width: 20, height: 24 });
       } else if (width < 1024) {
-        // lg
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 18, height: 24 }); // 30vw x 40vh
+        setCardDimensions({ width: 18, height: 24 });
       } else if (width < 1280) {
-        // xl
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 18, height: 22 }); // 25vw x 35vh
+        setCardDimensions({ width: 18, height: 22 });
       } else {
-        // 2xl and above
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 12, height: 16 }); // 20vw x 30vh
+        setCardDimensions({ width: 12, height: 16 });
       }
     };
 
@@ -95,31 +105,29 @@ export default function Stack({
 
     return () => window.removeEventListener("resize", updateResponsiveData);
   }, [cardsData]);
-
-  const [currentIndex, setCurrentIndex] = useState(cards.length - 1);
-
-  const sendToBack = (id) => {
+  const sendToBack = () => {
     setCards((prev) => {
-      const newCards = [...prev];
-      const index = newCards.findIndex((card) => card.id === id);
-      const [card] = newCards.splice(index, 1);
-      newCards.unshift(card);
-      return newCards;
+      const [firstCard, ...rest] = prev; // Extract the first card
+      return [...rest, firstCard]; // Move the first card to the end
     });
-
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + cards.length) % cards.length
-    );
   };
 
-  // Auto rotate every 4 seconds
+  // Auto rotate
   useEffect(() => {
     const timer = setInterval(() => {
-      sendToBack(cards[cards.length - 1].id);
+      if (cards.length > 0) {
+        sendToBack(cards[cards.length - 1].id);
+      }
     }, 4000);
-
     return () => clearInterval(timer);
   }, [cards]);
+
+  // Index of top visible card (last in the array)
+  const topCardId = cards[0]?.id;
+  const originalOrder = cardsData.length
+    ? cardsData
+    : [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+  const visibleIndex = originalOrder.findIndex((card) => card.id === topCardId);
 
   return (
     <div
@@ -135,14 +143,14 @@ export default function Stack({
         <div className="bg-zinc-600 h-[0.215vh] w-full overflow-hidden relative">
           <motion.div
             className="h-full bg-red-500 absolute left-0 top-0"
-            key={currentIndex} // re-trigger animation when index changes
+            key={topCardId}
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 4, ease: "linear" }}
           />
         </div>
         <h3 className="text-sm text-red-500">
-          {cards.length - currentIndex}/{cards.length}
+          {visibleIndex + 1}/{cards.length}
         </h3>
       </div>
 
@@ -161,7 +169,7 @@ export default function Stack({
               onClick={() => sendToBackOnClick && sendToBack(card.id)}
               animate={{
                 translateY: -((cards.length - index - 1) * 15),
-                rotate: rotate,
+                rotate,
                 filter: "brightness(1)",
                 transition: {
                   type: "spring",
