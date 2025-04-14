@@ -6,6 +6,7 @@ import Stack from "./home/Stack";
 import Countdown from "./Countdown";
 import { motion } from "framer-motion";
 import PreOrder from "./PreOrder";
+import PreOrderPopup from "./home/PreOrderPopUp";
 
 const LandingPage = ({ playSound }) => {
   const parent = useRef();
@@ -19,6 +20,7 @@ const LandingPage = ({ playSound }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [Order, setOrder] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleClose = () => {
     setOrder(false);
@@ -71,7 +73,7 @@ const LandingPage = ({ playSound }) => {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.volume = 0.05;
+      audio.volume = 0.08; // Yaha se Set volume krlo!!
       audio
         .play()
         .then(() => {
@@ -88,19 +90,19 @@ const LandingPage = ({ playSound }) => {
   const imgData = [
     {
       id: 1,
-      img: "/Page-1/pixelcut-export.png",
+      img: "/Page-1/Game4.png",
     },
     {
       id: 2,
-      img: "/Page-1/Game2.png",
-    },
-    {
-      id: 3,
       img: "/Page-1/Game3.png",
     },
     {
+      id: 3,
+      img: "/Page-1/Game2.png",
+    },
+    {
       id: 4,
-      img: "/Page-1/Game4.png",
+      img: "/Page-1/Game1.png",
     },
   ];
 
@@ -213,6 +215,7 @@ const LandingPage = ({ playSound }) => {
       {Order && (
         <div className="absolute z-[999]">
           <PreOrder
+            setSubmitted={setSubmitted}
             playSound={playSound}
             Order={Order}
             handleClose={handleClose}
@@ -392,7 +395,7 @@ const LandingPage = ({ playSound }) => {
               whileHover="hover"
             >
               {isPlaying ? (
-               <i className="ri-volume-down-line relative z-10"></i>
+                <i className="ri-volume-down-line relative z-10"></i>
               ) : (
                 <i class="ri-volume-off-vibrate-line relative z-10"></i>
               )}
@@ -414,6 +417,8 @@ const LandingPage = ({ playSound }) => {
           </div>
         </div>
       </div>
+
+      <PreOrderPopup submitted={submitted} />
     </div>
   );
 };
