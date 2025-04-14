@@ -6,7 +6,7 @@ import Stack from "./home/Stack";
 import Countdown from "./Countdown";
 import { motion } from "framer-motion";
 import PreOrder from "./PreOrder";
-import PreOrderPopup from "./home/PreOrderPopUp";
+import PreOrderPopup from "./home/PreOrderPopup";
 
 const LandingPage = ({ playSound }) => {
   const parent = useRef();
