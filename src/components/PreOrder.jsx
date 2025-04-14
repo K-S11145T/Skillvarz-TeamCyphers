@@ -144,7 +144,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
           <div className="w-full flex gap-3 items-center justify-between">
             <label className="font-bold text-2xl ">Choose Platform :</label>
             <CustomDropdown
-              options={["Steam", "Epic Games"]}
+              options={["Steam", "Epic Games", "Xbox", "PlayStation", "Ubisoft"]}
               onChange={(val) => setPlatform(val)}
             />
           </div>
@@ -154,7 +154,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
               Select Creed Edition :
             </label>
             <CustomDropdown
-              options={["Standard Edition", "Deluxe Edition"]}
+              options={["Standard Edition", "Deluxe Edition", "Gold Edition", "Ultimate Edition"]}
               onChange={(val) => setEdition(val)}
             />
           </div>
@@ -174,7 +174,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
           <div className="w-full flex gap-3 items-center justify-between">
             <label className="font-bold text-2xl ">Select Region :</label>
             <CustomDropdown
-              options={["United States", "United Kingdom"]}
+              options={["United States", "United Kingdom", "Canada", "Japan", "India"]}
               onChange={(val) => setRegion(val)}
             />
           </div>

@@ -30,7 +30,7 @@ const PreOrderPopup = ({ submitted }) => {
               alt="popup"
               className="w-auto object-cover"
             />
-            <h3 className="absolute w-full text-center block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-sm font-semibold">
+            <h3 className="absolute w-full text-center block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-sm">
               Pre-order Confirmed! Prepare for the Shadows.
             </h3>
           </div>
