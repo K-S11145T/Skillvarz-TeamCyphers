@@ -36,7 +36,7 @@ const Countdown = () => {
   }, []);
 
   return (
-    <div className="px-3 font-bold py-2 w-[40vw] sm:w-[32vw] md:w-[28vw] lg:w-[22vw] xl:w-[16vw] 2xl:w-[14vw] bg-black/30 backdrop-blur-md border-[1px] border-[#E35E4E] text-[#E35E4E] justify-center font-[orbitron] flex items-center">
+    <div className="px-3 font-bold py-3 w-fit text-sm sm:text-base sm:w-[30vw] lg:w-[16vw] bg-black/30 backdrop-blur-md border-[1px] border-[#E35E4E] text-[#E35E4E] font-[orbitron] flex justify-center items-center">
       <h1>
         {timeLeft.days}d | {timeLeft.hours}h | {timeLeft.minutes}m |{" "}
         {timeLeft.seconds}s

@@ -16,23 +16,22 @@ const Page3 = ({ playSound }) => {
   useEffect(() => {
     if (characterImageRef.current) {
       // Reset initial state
-      gsap.set(characterImageRef.current, { 
+      gsap.set(characterImageRef.current, {
         opacity: 0,
         scale: 1.1,
-        y: 20
+        y: 20,
       });
-      
+
       // Animate to final state
       gsap.to(characterImageRef.current, {
         opacity: 1,
         scale: 1,
         y: 0,
         duration: 0.6,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     }
   }, [activeIndex]);
-  
 
   useEffect(() => {
     targetPosition.current.x = clicked ? 90 : 0;
@@ -219,14 +218,13 @@ const Page3 = ({ playSound }) => {
 
   return (
     <div className="w-full min-h-screen font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
-      <div className="flex p-5 items-center gap-5">
+      <div className="w-full flex px-4 py-2 lg:p-5 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
-          className="w-fit h-fit object-contain"
+          className="h-4 w-auto lg:w-fit lg:h-fit object-contain"
         />
-        <h1 className="text-[#E35E4E] text-5xl">
-          {" "}
+        <h1 className="text-[#E35E4E] font-bold text-lg sm:text-2xl lg:text-5xl">
           <DecryptedText
             key={clicked ? "stats" : "echoes"}
             text={clicked ? "Stats" : "Echoes of the Past"}
@@ -240,7 +238,7 @@ const Page3 = ({ playSound }) => {
       </div>
 
       {/* Only render content for active index */}
-      <div className="flex items-center h-[70vh] relative p-5 mt-18 flex-grow justify-center ">
+      <div className="w-full flex items-center lg:h-[70vh] relative px-4 py-2 lg:p-5 lg:mt-8 flex-grow justify-center ">
         <div
           className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
             clicked
@@ -248,7 +246,7 @@ const Page3 = ({ playSound }) => {
               : "translate-x-0 opacity-100"
           }`}
         >
-          <h1 className="text-[#E35E4E] font-bold text-4xl">
+          <h1 className="text-[#E35E4E] font-semibold text-base sm:text-2xl lg:text-4xl">
             <DecryptedText
               text={activeData.title}
               speed={50}
@@ -258,7 +256,7 @@ const Page3 = ({ playSound }) => {
               key={`title-${activeIndex}-${clicked}`} // Include clicked state in key
             />
           </h1>
-          <p className="text-zinc-300 mt-2 text-lg">
+          <p className="text-zinc-300 mt-2 text-xs sm:text-lg lg:text-xl">
             <SplitText
               text={activeData.text1}
               delay={30} // delay between each word
@@ -270,10 +268,9 @@ const Page3 = ({ playSound }) => {
               threshold={0.2}
               rootMargin="-50px"
               textAlign="start"
-              onLetterAnimationComplete={() => console.log("done ✅")}
             />
           </p>
-          <div className="w-[50%] h-[30%]  ">
+          <div className="w-full h-[5vh] lg:w-[50%] lg:h-[30%]  ">
             <svg
               width="50%"
               height="200%"
@@ -295,7 +292,7 @@ const Page3 = ({ playSound }) => {
             </svg>
           </div>
 
-          <h1 className="text-white font-bold text-3xl">
+          <h1 className="text-white font-semibold text-base sm:text-2xl lg:text-4xl">
             <DecryptedText
               text={activeData.name}
               speed={60}
@@ -305,8 +302,7 @@ const Page3 = ({ playSound }) => {
               key={`name-${activeIndex}-${clicked}`} // Include clicked state in key
             />
           </h1>
-          <p className="text-zinc-300 mt-2 text-lg">
-            {" "}
+          <p className="text-zinc-300 mt-2 text-xs sm:text-lg lg:text-xl">
             <SplitText
               text={activeData.text2}
               delay={30} // delay between each word
@@ -324,7 +320,7 @@ const Page3 = ({ playSound }) => {
             onClick={() => {
               playSound();
             }}
-            className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+            className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs lg:text-base px-3 py-2"
           >
             EXPLORE
           </button>
@@ -333,7 +329,7 @@ const Page3 = ({ playSound }) => {
         <div
           id="container"
           ref={containerRef}
-          className={`w-[35vw] relative transition-all duration-900 mt-[-20vh] ${
+          className={`w-[35vw] h-full relative transition-all duration-900 mt-[-20vh] ${
             clicked ? "-translate-x-[140%]" : "translate-x-0"
           } h-fit`}
           onMouseMove={handleMouseMove}
@@ -345,16 +341,18 @@ const Page3 = ({ playSound }) => {
           />
           <div className={`absolute bottom-14 left-10 w-[80%] h-fit`}>
             <div className="relative">
-            <img
-    ref={characterImageRef}
-    className="w-full h-full object-cover"
-    src={activeData.image}
-    alt={activeData.name}
-    style={{
-      maskImage: "linear-gradient(to bottom, rgb(0, 0, 0),rgba(0,0,0,1) , rgba(0, 0, 0, 0.13))",
-      WebkitMaskImage: "linear-gradient(to bottom, rgb(8, 6, 6), rgba(0,0,0,1) , rgba(0, 0, 0, 0))",
-    }}
-  />
+              <img
+                ref={characterImageRef}
+                className="w-full h-full object-cover"
+                src={activeData.image}
+                alt={activeData.name}
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, rgb(0, 0, 0),rgba(0,0,0,1) , rgba(0, 0, 0, 0.13))",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, rgb(8, 6, 6), rgba(0,0,0,1) , rgba(0, 0, 0, 0))",
+                }}
+              />
               <svg
                 className={`absolute transition-all opacity-0 duration-900 ${
                   clicked && "opacity-[100%]"

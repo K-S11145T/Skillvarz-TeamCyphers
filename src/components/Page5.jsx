@@ -1,4 +1,4 @@
-import React, { useEffect , useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DecryptedText from "../animations/DecryptedText";
@@ -17,16 +17,16 @@ const Page6 = ({ playSound }) => {
   useEffect(() => {
     // Setup for first card
     if (floatRef1.current) {
-      const img1 = floatRef1.current.querySelector('img');
-      
+      const img1 = floatRef1.current.querySelector("img");
+
       floatRef1.current.addEventListener("mouseenter", () => {
         gsap.to(img1, {
           y: -20,
-          scale:1.05,
+          scale: 1.05,
           duration: 1.3,
           ease: "sine.inOut",
           yoyo: true,
-          repeat: -1
+          repeat: -1,
         });
       });
 
@@ -38,16 +38,16 @@ const Page6 = ({ playSound }) => {
 
     // Setup for second card
     if (floatRef2.current) {
-      const img2 = floatRef2.current.querySelector('img');
-      
+      const img2 = floatRef2.current.querySelector("img");
+
       floatRef2.current.addEventListener("mouseenter", () => {
         gsap.to(img2, {
           y: -20,
-          scale:1.05,
+          scale: 1.05,
           duration: 1.3,
           ease: "sine.inOut",
           yoyo: true,
-          repeat: -1
+          repeat: -1,
         });
       });
 
@@ -59,16 +59,16 @@ const Page6 = ({ playSound }) => {
 
     // Setup for third card
     if (floatRef3.current) {
-      const img3 = floatRef3.current.querySelector('img');
-      
+      const img3 = floatRef3.current.querySelector("img");
+
       floatRef3.current.addEventListener("mouseenter", () => {
         gsap.to(img3, {
           y: -20,
-          scale:1.05,
+          scale: 1.05,
           duration: 1.3,
           ease: "sine.inOut",
           yoyo: true,
-          repeat: -1
+          repeat: -1,
         });
       });
 
@@ -80,14 +80,16 @@ const Page6 = ({ playSound }) => {
 
     // Cleanup function
     return () => {
-      [floatRef1.current, floatRef2.current, floatRef3.current].forEach(el => {
-        if (el) {
-          const img = el.querySelector('img');
-          el.removeEventListener("mouseenter", () => {});
-          el.removeEventListener("mouseleave", () => {});
-          gsap.killTweensOf(img);
+      [floatRef1.current, floatRef2.current, floatRef3.current].forEach(
+        (el) => {
+          if (el) {
+            const img = el.querySelector("img");
+            el.removeEventListener("mouseenter", () => {});
+            el.removeEventListener("mouseleave", () => {});
+            gsap.killTweensOf(img);
+          }
         }
-      });
+      );
     };
   }, []);
 
@@ -149,24 +151,24 @@ const Page6 = ({ playSound }) => {
   ];
 
   return (
-    <div className="w-full relative min-h-screen  font-orbitron bg-black">
-      <div className=" w-full">
+    <div className="w-full relative min-h-screen font-orbitron">
+      <div className="w-full">
         <img
           className="w-full filter brightness-100 saturate-150 h-[360vh] object-cover"
-          src="/Page-1/Untitled.png"
+          src="/Page-1/AC_Background.png"
           alt=""
         />
       </div>
-      <div className=" absolute flex flex-col items-center justify-start gap-10 top-0">
-        <div className=" pt-20 flex gap-5 items-start">
-          <div className="flex p-5 w-[30vw] bg-zinc-30 items-center gap-5">
+      <div className="w-full px-4 md:px-8 absolute flex flex-col pt-10 items-center justify-start gap-10 top-0">
+        <div className="w-full flex flex-col md:flex-row gap-2 md:gap-5 items-start justify-between">
+          <div className="flex w-full md:w-[30%] bg-zinc-30 items-center gap-2 md:gap-5">
             <img
               src="/Page-2/Arrow.svg"
               alt="Arrow"
-              className="w-fit h-fit object-contain"
+              className="h-4 w-auto lg:w-fit lg:h-fit object-contain"
             />
 
-            <h1 className="text-[#E35E4E] text-5xl">
+            <h1 className="text-[#E35E4E] font-semibold leading-none text-lg sm:text-3xl lg:text-5xl">
               <DecryptedText
                 text="Platforms"
                 speed={100}
@@ -176,26 +178,23 @@ const Page6 = ({ playSound }) => {
             </h1>
           </div>
 
-          <div className="w-[65%] text-white">
-            <p className="text-3xl mt-7">
-              <SplitText
-                text="Step into the shadows of war, where honor and betrayal shape destiny. Will you rise as a master of stealth and steel, or be lost in the chaos of a fading era? The land is your battleground—embrace the assassin’s path!"
-                delay={30} // delay between each word
-                duration={0.3} // animation time per word
-                animationFrom={{ opacity: 0, y: 40 }}
-                animationTo={{ opacity: 1, y: 0 }}
-                resetOnChange={true}
-                easing="power3.out"
-                threshold={0.2}
-                rootMargin="-50px"
-                textAlign="start"
-                onLetterAnimationComplete={() => console.log("done ✅")}
-              />
-            </p>
+          <div className="w-full md:w-[65%] text-white sm:text-xl md:text-2xl lg:text-3xl">
+            <SplitText
+              text="Step into the shadows of war, where honor and betrayal shape destiny. Will you rise as a master of stealth and steel, or be lost in the chaos of a fading era? The land is your battleground—embrace the assassin’s path!"
+              delay={30} // delay between each word
+              duration={0.3} // animation time per word
+              animationFrom={{ opacity: 0, y: 40 }}
+              animationTo={{ opacity: 1, y: 0 }}
+              resetOnChange={true}
+              easing="power3.out"
+              threshold={0.2}
+              rootMargin="-50px"
+              textAlign="start"
+            />
           </div>
         </div>
 
-        <div className="mt-20 w-[85%] flex border-y-2 border-[#E35E4E] [clip-path:polygon(0%_0%,99%_0%,100%_10%,100%_100%,1%_100%,0%_90%)]  relative h-[20vh]">
+        <div className="w-full md:w-[85%] flex border-y-2 border-[#E35E4E] [clip-path:polygon(0%_0%,99%_0%,100%_10%,100%_100%,1%_100%,0%_90%)] relative md:h-[20vh]">
           <svg
             className="absolute top-0 left-0 w-full h-full pointer-events-none"
             width="100%"
@@ -226,82 +225,83 @@ const Page6 = ({ playSound }) => {
                 onClick={() => {
                   playSound();
                 }}
-                className="w-[14.2854%]  group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]"
+                className="w-[14.2854%] py-5 px-1 group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]"
               >
-                <h1 className="text-[#E35E4E] font-bold text-2xl group-hover:opacity-0 transition duration-300">
+                <h1 className="text-[#E35E4E] font-bold text-xs text-center md:text-2xl group-hover:opacity-0 transition duration-300">
                   {item.link}
                 </h1>
                 <img
                   src={item.svg}
                   alt="Arrow"
-                  className="w-[50%] opacity-0 group-hover:opacity-100 transition duration-300 absolute h-fit object-contain"
+                  className="md:w-[50%] opacity-0 group-hover:opacity-[1] transition duration-300 absolute h-fit object-contain"
                 />
               </div>
             );
           })}
         </div>
 
-        <div className="w-full mt-20 relative flex flex-col items-center min-h-screen">
-         <Tilt
-          className="w-full z-[11] relative h-full flex group items-center justify-center"
-          options={{ scale: 1.07, max: 10 }}
-        >
-          <div 
-             ref={floatRef1}
-            className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh] overflow-hidden" // Added overflow-hidden
+        <div className="w-full relative flex flex-col items-center md:min-h-screen">
+          <Tilt
+            className="w-full z-[11] relative h-full flex group items-center justify-center"
+            options={{ scale: 1.07, max: 10 }}
           >
             <div
-              className="absolute top-0 left-0 w-full h-full z-[50] pointer-events-none
+              ref={floatRef1}
+              className="image-container w-full h-[15vh] md:h-[50vh] md:w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] overflow-hidden"
+            >
+              <div
+                className="absolute top-0 left-0 w-full h-full z-[50] pointer-events-none
               bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)]"
-            />
+              />
 
-            <img
-              className="w-full h-[150%] translate-y-[-3vh] object-cover"
-              src="/Page-5/lastcard.png"
-              alt=""
-            />
-            <img className="absolute top-0" src="/Page-5/image.png" alt="" />
+              <img
+                className="w-full md:h-[150%] translate-y-[-3vh] object-cover"
+                src="/Page-5/lastcard.png"
+                alt=""
+              />
+              <img className="absolute top-0 w-full h-full" src="/Page-5/image.png" alt="" />
 
-            <div className="absolute bottom-5 right-0">
-              <h1 className="text-3xl w-[40vw] text-white font-bold">
-                Become a legendary samurai
-              </h1>
-              <button
-                onClick={() => playSound()}
-                className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
-              >
-                EXPLORE
-              </button>
+              <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
+                <h1 className="text-xl md:text-4xl text-white font-bold">
+                  Become a legendary samurai
+                </h1>
+                <button
+                  onClick={() => playSound()}
+                  className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold  text-xs px-3 py-2"
+                >
+                  EXPLORE
+                </button>
+              </div>
             </div>
-          </div>
-        </Tilt>
+          </Tilt>
           <Tilt
             className="w-full z-[10] relative h-full flex items-center justify-center"
             options={{ scale: 1.07, max: 10 }}
           >
             <div
-            ref={floatRef2} className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
+              ref={floatRef2}
+              className="image-container w-full h-[15vh] md:h-[50vh] md:w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)]"
+            >
               <div
                 className="absolute top-0 left-0 w-full h-full z-[50] pointer-events-none
   bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)]"
               />
 
               <img
-              
                 className="w-full h-[150%] translate-y-[-3vh] object-cover"
                 src="/Page-5/lastcard-1.png"
                 alt=""
               />
 
-              <div className="absolute bottom-5 right-0">
-                <h1 className="text-3xl w-[40vw] text-white font-bold">
+              <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
+                <h1 className="text-xl md:text-4xl text-white font-bold">
                   Become a legendary samurai
                 </h1>
                 <button
                   onClick={() => {
                     playSound();
                   }}
-                  className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                  className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
                 >
                   EXPLORE
                 </button>
@@ -313,7 +313,10 @@ const Page6 = ({ playSound }) => {
             className="w-full z-[9] relative h-full flex items-center justify-center"
             options={{ scale: 1.07, max: 10 }}
           >
-            <div              ref={floatRef3} className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
+            <div
+              ref={floatRef3}
+              className="image-container w-full h-[15vh] md:h-[50vh] md:w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)]"
+            >
               <div
                 className="absolute top-0 left-0 w-full h-full z-[50] pointer-events-none
   bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)]"
@@ -325,15 +328,15 @@ const Page6 = ({ playSound }) => {
                 alt=""
               />
 
-              <div className="absolute bottom-5 right-0">
-                <h1 className="text-3xl w-[40vw] text-white font-bold">
+              <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
+                <h1 className="text-xl md:text-4xl text-white font-bold">
                   Become a legendary samurai
                 </h1>
                 <button
                   onClick={() => {
                     playSound();
                   }}
-                  className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                  className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
                 >
                   EXPLORE
                 </button>
@@ -354,7 +357,6 @@ const Page6 = ({ playSound }) => {
           threshold={0.2}
           rootMargin="-50px"
           textAlign="start"
-          onLetterAnimationComplete={() => console.log("done ✅")}
         />
       </h1>
     </div>

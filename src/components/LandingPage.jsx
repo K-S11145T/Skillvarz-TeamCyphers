@@ -62,7 +62,7 @@ const LandingPage = ({ playSound }) => {
       document.body.style.top = "";
       document.body.style.width = "";
     };
-  }, [Order])
+  }, [Order]);
 
   const toggleAudio = () => {
     const audio = audioRef.current;
@@ -154,14 +154,41 @@ const LandingPage = ({ playSound }) => {
   });
 
   useEffect(() => {
-    gsap.set(
-      [shadowImg.current, logoImg.current, character.current, bgImg.current],
-      {
+    const mm = gsap.matchMedia();
+
+    mm.add("(max-width: 767px)", () => {
+      // Mobile styles
+      gsap.set([shadowImg.current, logoImg.current, bgImg.current], {
+        left: "50%",
+        top: "60%",
+        xPercent: -50,
+        yPercent: -50,
+        bottom: 0,
+      });
+
+      gsap.set(character.current, {
         left: "50%",
         xPercent: -50,
         bottom: 0,
-      }
-    );
+      });
+    });
+
+    mm.add("(min-width: 768px)", () => {
+      // Desktop styles
+      gsap.set([shadowImg.current, logoImg.current, bgImg.current], {
+        left: "50%",
+        top: "50%",
+        xPercent: -50,
+        yPercent: -50,
+        bottom: 0,
+      });
+
+      gsap.set(character.current, {
+        left: "50%",
+        xPercent: -50,
+        bottom: 0,
+      });
+    });
     const moveElements = (e) => {
       const rect = parent.current.getBoundingClientRect();
       const relX = e.clientX - rect.left;
@@ -206,6 +233,7 @@ const LandingPage = ({ playSound }) => {
     parentEl.addEventListener("mousemove", moveElements);
 
     return () => {
+      mm.revert();
       parentEl.removeEventListener("mousemove", moveElements);
     };
   }, []);
@@ -241,7 +269,7 @@ const LandingPage = ({ playSound }) => {
         >
           <img
             className="w-full h-full object-cover"
-            src="/Page-1/Untitled.png"
+            src="/Page-1/AC_Background.png"
             alt=""
           />
         </div>
@@ -249,103 +277,163 @@ const LandingPage = ({ playSound }) => {
         {/* Centered elements */}
         <div
           ref={shadowImg}
-          className="absolute w-[55%] sm:w-[45%] md:w-[40%] lg:w-[35%] xl:w-[30%] min-h-screen bottom-0" // Increased width slightly
+          className="absolute w-[90%] h-[60%] md:w-[80%] md:h-[80%] xl:w-[30%] xl:h-screen bottom-0" // Increased width slightly
         >
           <img
             className="w-full h-full object-cover"
-            src="/Page-1/AC_Shadows_Crest_w_Color 2.png"
+            src="/Page-1/AC_Shadow.png"
             alt=""
           />
         </div>
 
         <div
           ref={logoImg}
-          className="absolute w-[45%] sm:w-[45%] md:w-[40%] lg:w-[35%] xl:w-[30%] min-h-screen bottom-0" // Increased width slightly
+          className="absolute w-[90%] h-[60%] md:w-[80%] md:h-[80%] xl:w-[30%] xl:h-screen bottom-0" // Increased width slightly
         >
           <img
             className="w-full h-full object-cover"
-            src="/Page-1/AC_Shadows_Crest_w_Color 1.png"
+            src="/Page-1/AC_Logo.png"
             alt=""
           />
         </div>
 
         <div
           ref={character}
-          className="absolute w-[75%] sm:w-[65%] md:w-[55%] lg:w-[50%] xl:w-[45%] h-fit bottom-0" // Increased width slightly
+          className="absolute w-full h-[65%] md:h-[75%] xl:w-[45%] xl:h-fit bottom-0" // Increased width slightly
         >
           <img
             className="w-full h-full object-cover"
-            src="/Page-1/imageAC (1).png"
+            src="/Page-1/AC_Character.png"
             alt=""
           />
         </div>
       </div>
 
+      {/* Left & Right */}
+
       <div
         className={`absolute top-0 ${
           Order && "opacity-40 pointer-events-none"
-        } w-full left-0 px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16 p-5`}
+        } w-full h-screen left-0 px-4 lg:px-8 py-4 flex items-between justify-between`}
       >
-        <div className="flex flex-col md:flex-row justify-between">
-          <div className="flex flex-col min-h-screen pb-16 justify-between">
-            <div className="flex gap-1">
-              <h1 className="tracking-[-0.14em] lg:tracking-[-0.18em] 2xl:tracking-[-0.22em] text-3xl sm:text-5xl md:text-5xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-[hanbai] text-white [writing-mode:vertical-rl] [text-orientation:upright]">
-                <span className="bg-gradient-to-b from-red-600 via-zinc-800 to-red-600 filter brightness-90 saturate-150 bg-clip-text text-transparent">
-                  as
-                </span>
-                sassins
+        <div className="w-fit flex flex-col h-full pb-14 sm:pb-30 lg:pb-8 justify-between">
+          <div className="flex gap-1">
+            <h1 className="tracking-[-0.18em] text-3xl sm:text-5xl font-[hanbai] text-white [writing-mode:vertical-rl] [text-orientation:upright]">
+              <span className="bg-gradient-to-b from-red-600 via-zinc-800 to-red-600 filter brightness-90 saturate-150 bg-clip-text text-transparent">
+                as
+              </span>
+              sassins
+            </h1>
+            <div className="font-[orbitron] filter brightness-90 saturate-150 leading-6 md:leading-none text-xl sm:text-3xl font-bold">
+              <h1 className="bg-gradient-to-b from-red-600 to-zinc-800 bg-clip-text text-transparent">
+                creed
               </h1>
-              <div className="font-[orbitron] filter brightness-90 saturate-150 leading-6 sm:leading-8 md:leading-9 lg:leading-6 xl:leading-8 2xl:leading-8 text-xl sm:text-3xl md:text-4xl lg:text-2xl xl:text-4xl 2xl:text-3xl font-bold">
-                <h1 className="bg-gradient-to-b from-red-600 to-zinc-800 bg-clip-text text-transparent">
-                  creed
-                </h1>
-                <h1 className="bg-gradient-to-b from-red-600 to-zinc-800 bg-clip-text text-transparent">
-                  Shadows
-                </h1>
-              </div>
+              <h1 className="bg-gradient-to-b from-red-600 to-zinc-800 bg-clip-text text-transparent">
+                Shadows
+              </h1>
             </div>
-
-            <Stack cardsData={imgData} />
           </div>
 
-          <div className="flex flex-col justify-end pb-16 min-h-screen">
-            <div className="flex flex-col gap-2 lg:gap-4 items-end">
-              <div className="w-[50vw] sm:w-[30vw] md:w-[20vw] lg:w-[26vw] xl:w-[22vw] 2xl:w-[20vw] h-[40vh] sm:h-[20vh] md:h-[20vh] lg:h-[46vh] xl:h-[40vh] 2xl:h-[50vh]">
-                <img
-                  className="w-full h-full object-cover"
-                  src="/Page-1/Assassin’s Creed Shadows poster (1).png"
-                  alt=""
-                />
-              </div>
-              <div className="flex items-center justify-start w-full mb-16 lg:mb-16 pl-5 lg:pl-4 xl:pl-6 2xl:pl-4">
+          <Stack cardsData={imgData} />
+        </div>
+
+        <div className="w-fit h-full flex flex-col sm:justify-end lg:pb-0 pt-13 sm:pt-0">
+          <div className="w-fit h-full justify-between sm:justify-end flex flex-col sm:gap-2 items-end">
+            <div className="w-fit">
+              <img
+                className="w-[40vw] md:w-[28vw] lg:w-[16vw] h-auto object-cover"
+                src="/Page-1/AC_Shadows_poster_.png"
+                alt=""
+              />
+            </div>
+            <div className="w-full flex items-center justify-end gap-2 mb-7 sm:mb-15 lg:mb-0">
+              <div className="flex flex-col gap-1 justify-start items-end">
                 <button
                   onClick={() => {
                     playSound();
                     setOrder(true);
                   }}
-                  className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] font-bold px-3 sm:px-6 md:px-6 lg:px-8 xl:px-8 2xl:px-18 py-2 sm:py-3 md:py-3 lg:py-4 xl:py-3 2xl:py-4 lg:mr-10"
+                  className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] text-xs sm:text-base font-bold px-3 sm:px-4 sm:py-3 md:px-6 py-2"
                 >
                   PRE ORDER
                 </button>
+                {/* JOIN Button */}
+                <motion.button
+                  onClick={() => {
+                    playSound();
+                  }}
+                  className="sm:opacity-0 relative px-5 py-2 sm:py-3 text-xs sm:text-base w-fit bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] text-[#E35E4E] text-sm font-[orbitron] overflow-hidden hover:text-black cursor-pointer"
+                  whileHover="hover"
+                >
+                  <span className="relative z-10 font-bold pointer-events-auto">
+                    JOIN
+                  </span>
+
+                  {/* SVG Border */}
+                  <svg
+                    className="absolute top-0 left-0 stroke-[#E35E4E] w-full h-full pointer-events-none z-20"
+                    viewBox="0 0 200 60"
+                    preserveAspectRatio="none"
+                  >
+                    <polygon
+                      points="0,0 200,0 200,10 200,60 10,60 0,50"
+                      strokeWidth="5"
+                      fill="transparent"
+                    />
+                  </svg>
+                </motion.button>
+              </div>
+              <div className="flex flex-col justify-center gap-1 items-center opacity-0">
+                <motion.button
+                  onClick={() => {
+                    playSound();
+                    toggleAudio();
+                  }}
+                  className="relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
+                  whileHover="hover"
+                >
+                  {isPlaying ? (
+                    <i className="ri-volume-down-line relative z-10"></i>
+                  ) : (
+                    <i class="ri-volume-off-vibrate-line relative z-10"></i>
+                  )}
+                </motion.button>
+
+                <motion.button
+                  ref={arrowBtn}
+                  onClick={() => {
+                    playSound();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
+                >
+                  <i
+                    ref={arrowBtnIcon}
+                    className="ri-arrow-down-double-line relative z-10"
+                  ></i>
+                </motion.button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Fixed Nav */}
+      
       <div
         className={`fixed pointer-events-none top-0 z-[999] ${
           Order && "opacity-40 pointer-events-none"
-        } w-full left-0 px-10 p-5 flex justify-end`}
+        } w-full left-0 lg:px-8 p-4 flex justify-end`}
       >
-        <div className="flex flex-col justify-between pb-12 sm:pb-12 md:pb-12 lg:pb-14 xl:pb-16 2xl:pb-12 lg:pr-4 2xl:pr-10 min-h-screen">
-          <div className="flex h-[7%] gap-3">
+        <div className="flex flex-col justify-between pb-8 h-screen">
+          <div className="flex flex-col lg:flex-row gap-2 lg:gap-3 items-end">
             <Countdown />
             {/* JOIN Button */}
             <motion.button
               onClick={() => {
                 playSound();
               }}
-              className="relative px-5 py-2 bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] text-[#E35E4E] font-[orbitron] w-[7vw] sm:w-[8vw] md:w-[8vw] lg:w-[12vw] xl:w-[8vw] 2xl:w-[8vw] overflow-hidden hover:text-black cursor-pointer"
+              className="hidden sm:block relative px-8 w-fit py-3 bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] text-[#E35E4E] font-[orbitron] overflow-hidden hover:text-black cursor-pointer"
               whileHover="hover"
             >
               <span className="relative z-10 font-bold pointer-events-auto">
@@ -385,35 +473,73 @@ const LandingPage = ({ playSound }) => {
             </motion.button>
           </div>
 
-          <div className="flex flex-col justify-start h-28 sm:h-26 md:h-28 lg:h-30 xl:h-32 2xl:h-34 gap-4 mr-2 lg:mr-4 xl:mr-6 2xl:mr-2 items-end">
-            <motion.button
-              onClick={() => {
-                playSound();
-                toggleAudio();
-              }}
-              className="relative cursor-pointer sm:mt-0 md:mt-0 lg:mt-0 xl:mt-4 2xl:mt-0 h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
-              whileHover="hover"
-            >
-              {isPlaying ? (
-                <i className="ri-volume-down-line relative z-10"></i>
-              ) : (
-                <i class="ri-volume-off-vibrate-line relative z-10"></i>
-              )}
-            </motion.button>
+          <div className="w-full flex items-center justify-end gap-2 mb-7 sm:mb-15 lg:mb-0 ">
+            <div className="flex flex-col gap-1 justify-between items-end opacity-0">
+              <button
+                onClick={() => {
+                  playSound();
+                  setOrder(true);
+                }}
+                className="bg-[#E35E4E] cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-[orbitron] text-xs sm:text-base font-bold px-3 sm:px-4 sm:py-3 md:px-6 py-2"
+              >
+                PRE ORDER
+              </button>
+              {/* JOIN Button */}
+              <motion.button
+                onClick={() => {
+                  playSound();
+                }}
+                className="sm:hidden relative px-5 py-2 sm:py-3 text-xs w-fit bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] text-[#E35E4E] text-sm font-[orbitron] overflow-hidden hover:text-black cursor-pointer"
+                whileHover="hover"
+              >
+                <span className="relative z-10 font-bold pointer-events-auto">
+                  JOIN
+                </span>
 
-            <motion.button
-              ref={arrowBtn}
-              onClick={() => {
-                playSound();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="relative cursor-pointer h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center  text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
-            >
-              <i
-                ref={arrowBtnIcon}
-                className="ri-arrow-down-double-line relative z-10"
-              ></i>
-            </motion.button>
+                {/* SVG Border */}
+                <svg
+                  className="absolute top-0 left-0 stroke-[#E35E4E] w-full h-full pointer-events-none z-20"
+                  viewBox="0 0 200 60"
+                  preserveAspectRatio="none"
+                >
+                  <polygon
+                    points="0,0 200,0 200,10 200,60 10,60 0,50"
+                    strokeWidth="5"
+                    fill="transparent"
+                  />
+                </svg>
+              </motion.button>
+            </div>
+            <div className="flex flex-col justify-center gap-1 items-center">
+              <motion.button
+                onClick={() => {
+                  playSound();
+                  toggleAudio();
+                }}
+                className="relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
+                whileHover="hover"
+              >
+                {isPlaying ? (
+                  <i className="ri-volume-down-line relative z-10"></i>
+                ) : (
+                  <i class="ri-volume-off-vibrate-line relative z-10"></i>
+                )}
+              </motion.button>
+
+              <motion.button
+                ref={arrowBtn}
+                onClick={() => {
+                  playSound();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
+              >
+                <i
+                  ref={arrowBtnIcon}
+                  className="ri-arrow-down-double-line relative z-10"
+                ></i>
+              </motion.button>
+            </div>
           </div>
         </div>
       </div>

@@ -108,9 +108,9 @@ const Page2 = () => {
   return (
     <div
       ref={parent}
-      className="w-full h-screen flex items-center justify-between bg-black overflow-hidden"
+      className="relative w-full h-[40vh] xl:h-screen flex items-center justify-between bg-black overflow-hidden"
     >
-      <div ref={leftImg} className="w-[18vw] h-screen">
+      <div ref={leftImg} className="w-[30%] sm:w-[25%] h-full">
         <img
           className="w-full h-full object-cover"
           src="/Page-2/Player2BgRemoved 1 (1).png"
@@ -118,7 +118,7 @@ const Page2 = () => {
         />
       </div>
 
-      <div className="relative flex items-center w-[45vw] h-[50vh] ">
+      <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center w-[55%] lg:w-[45%] ">
         <div
           ref={line1}
           className="absolute top-0 -translate-y-1/2 w-full h-fit"
@@ -128,15 +128,18 @@ const Page2 = () => {
 
         <div
           ref={centerDiv}
-          className="w-full text-center font-[orbitron] p-5 h-fit opacity-0 translate-y-10"
+          className="w-full text-center font-[orbitron] py-2 sm:py-10 h-fit opacity-0 lg:translate-y-10"
         >
-          <div className="flex items-center gap-5" ref={headingText}>
+          <div
+            className="flex items-center justify-center gap-2 lg:gap-5"
+            ref={headingText}
+          >
             <img
               src="/Page-2/Arrow.svg"
               alt="Arrow"
-              className="w-fit h-fit object-contain"
+              className="h-4 w-auto lg:w-fit lg:h-fit object-contain"
             />
-            <h1 className="font-orbitron font-semibold text-[#E35E4E] text-5xl lg:text-4xl ">
+            <h1 className="font-orbitron font-semibold text-[#E35E4E] text-base sm:text-2xl lg:text-4xl ">
               <DecryptedText
                 text="A new creed rises"
                 speed={60}
@@ -147,7 +150,10 @@ const Page2 = () => {
               />
             </h1>
           </div>
-          <div className="text-zinc-300 mt-5 text-2xl lg:text-xl " ref={bodyText}>
+          <div
+            className="text-zinc-300 text-xs sm:text-lg lg:mt-5 lg:text-xl "
+            ref={bodyText}
+          >
             {splitText(
               `Live the intertwined stories of Naoe, an adept shinobi Assassin from Iga Province, and Yasuke, the powerful African samurai of historical legend. Against the backdrop of the turbulent late Sengoku period, this remarkable duo will discover their common destiny as they usher in a new era for Japan!`
             )}
@@ -162,7 +168,7 @@ const Page2 = () => {
         </div>
       </div>
 
-      <div ref={rightImg} className="w-[18vw] h-screen">
+      <div ref={rightImg} className="w-[30%] sm:w-[25%] h-full">
         <img
           className="w-full h-full object-cover"
           src="/Page-2/Player1BgRemoved 1 (1).png"

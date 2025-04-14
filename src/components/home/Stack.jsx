@@ -84,13 +84,13 @@ export default function Stack({
 
       if (width < 640) {
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 28, height: 34 });
+        setCardDimensions({ width: 30, height: 34 });
       } else if (width < 768) {
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 20, height: 24 });
+        setCardDimensions({ width: 25, height: 24 });
       } else if (width < 1024) {
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
-        setCardDimensions({ width: 18, height: 24 });
+        setCardDimensions({ width: 22, height: 26 });
       } else if (width < 1280) {
         setCards(cardsData.length ? cardsData.slice(0, 4) : defaultCards);
         setCardDimensions({ width: 18, height: 22 });
