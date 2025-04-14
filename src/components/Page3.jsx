@@ -469,7 +469,7 @@ const Page3 = ({ playSound }) => {
             }}
           >
             {/* Dot elements container */}
-            <div className="relative h-[3vh]">
+            <div className="relative cursor-pointer h-[3vh]">
               {/* Hover dot */}
               <div className="absolute w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
 

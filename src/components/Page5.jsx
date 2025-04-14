@@ -93,32 +93,6 @@ const Page6 = ({ playSound }) => {
     };
   }, []);
 
-  useEffect(() => {
-    const services = gsap.utils.toArray(".image-container");
-
-    services.forEach((service, i) => {
-      gsap.set(service, { zIndex: services.length - i }); // Layering
-
-      if (i !== 0) {
-        gsap.fromTo(
-          service,
-          { y: -100 },
-          {
-            y: 60 * i,
-            scrollTrigger: {
-              trigger: service,
-              start: "top 70%",
-              end: "bottom 40%",
-              scrub: 0.3,
-            },
-          }
-        );
-      }
-    });
-
-    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  }, []);
-
   const links = [
     {
       link: "Xbox",
@@ -276,7 +250,7 @@ const Page6 = ({ playSound }) => {
           </Tilt>
           <Tilt
             className="w-full z-[10] relative h-full flex items-center justify-center"
-            options={{ scale: 1.07, max: 10 }}
+            options={{ scale: 1.03, max: 7 }}
           >
             <div
               ref={floatRef2}
@@ -311,7 +285,7 @@ const Page6 = ({ playSound }) => {
 
           <Tilt
             className="w-full z-[9] relative h-full flex items-center justify-center"
-            options={{ scale: 1.07, max: 10 }}
+            options={{ scale: 1.03, max: 7 }}
           >
             <div
               ref={floatRef3}

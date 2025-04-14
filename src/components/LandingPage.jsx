@@ -73,7 +73,7 @@ const LandingPage = ({ playSound }) => {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.volume = 0.08; // Yaha se Set volume krlo!!
+      audio.volume = 0.2; // Yaha se Set volume krlo!!
       audio
         .play()
         .then(() => {
