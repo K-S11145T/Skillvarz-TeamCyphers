@@ -73,7 +73,7 @@ const LandingPage = ({ playSound }) => {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.volume = 0.08; // Yaha se Set volume krlo!!
+      audio.volume = 0.2; // Yaha se Set volume krlo!!
       audio
         .play()
         .then(() => {
@@ -391,7 +391,7 @@ const LandingPage = ({ playSound }) => {
                 playSound();
                 toggleAudio();
               }}
-              className="relative cursor-pointer sm:mt-0 md:mt-0 lg:mt-0 xl:mt-4 2xl:mt-0 h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
+              className="relative cursor-pointer sm:mt-0 bg-black/10 backdrop-blur-md md:mt-0 lg:mt-0 xl:mt-4 2xl:mt-0 h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
               whileHover="hover"
             >
               {isPlaying ? (
@@ -407,7 +407,7 @@ const LandingPage = ({ playSound }) => {
                 playSound();
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="relative cursor-pointer h-[6vh] w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center  text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
+              className="relative cursor-pointer h-[6vh] bg-black/10 backdrop-blur-md w-[6vh] lg:h-[7.5vh] lg:w-[7.5vh] xl:h-[6.5vh] xl:w-[6.5vh] 2xl:h-[7vh] 2xl:w-[7vh] flex items-center justify-center  text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
             >
               <i
                 ref={arrowBtnIcon}
