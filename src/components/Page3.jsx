@@ -320,7 +320,7 @@ const Page3 = ({ playSound }) => {
             onClick={() => {
               playSound();
             }}
-            className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs lg:text-base px-3 py-2"
+            className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs lg:text-base px-3 py-2"
           >
             EXPLORE
           </button>

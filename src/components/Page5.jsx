@@ -128,7 +128,7 @@ const Page6 = ({ playSound }) => {
     <div className="w-full relative min-h-screen font-orbitron">
       <div className="w-full">
         <img
-          className="w-full filter brightness-100 saturate-150 h-[360vh] object-cover"
+          className="w-full filter brightness-100 saturate-150 h-[340vh] object-cover"
           src="/Page-1/AC_Background.png"
           alt=""
         />
@@ -199,7 +199,7 @@ const Page6 = ({ playSound }) => {
                 onClick={() => {
                   playSound();
                 }}
-                className="w-[14.2854%] py-5 px-1 group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]"
+                className="w-[14.2854%] cursor-pointer py-5 px-1 group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]"
               >
                 <h1 className="text-[#E35E4E] font-bold text-xs text-center md:text-2xl group-hover:opacity-0 transition duration-300">
                   {item.link}
@@ -214,7 +214,7 @@ const Page6 = ({ playSound }) => {
           })}
         </div>
 
-        <div className="w-full relative flex flex-col items-center md:min-h-screen">
+        <div className="w-full mt-[20vh] relative flex flex-col gap-10 items-center md:min-h-screen">
           <Tilt
             className="w-full z-[11] relative h-full flex group items-center justify-center"
             options={{ scale: 1.07, max: 10 }}
@@ -241,7 +241,7 @@ const Page6 = ({ playSound }) => {
                 </h1>
                 <button
                   onClick={() => playSound()}
-                  className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold  text-xs px-3 py-2"
+                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold  text-xs px-3 py-2"
                 >
                   EXPLORE
                 </button>
@@ -275,7 +275,7 @@ const Page6 = ({ playSound }) => {
                   onClick={() => {
                     playSound();
                   }}
-                  className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
+                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
                 >
                   EXPLORE
                 </button>
@@ -310,7 +310,7 @@ const Page6 = ({ playSound }) => {
                   onClick={() => {
                     playSound();
                   }}
-                  className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
+                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
                 >
                   EXPLORE
                 </button>

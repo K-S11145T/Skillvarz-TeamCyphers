@@ -150,7 +150,7 @@ const Page4 = ({ playSound }) => {
                     onClick={() => {
                       playSound();
                     }}
-                    className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-base font-bold px-3 py-2"
+                    className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-base font-bold px-3 py-2"
                   >
                     Explore
                   </button>
@@ -158,7 +158,7 @@ const Page4 = ({ playSound }) => {
                     onClick={() => {
                       playSound();
                     }}
-                    className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-base px-3 py-2 font-bold"
+                    className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-base px-3 py-2 font-bold"
                   >
                     Steam
                   </button>
@@ -183,7 +183,7 @@ const Page4 = ({ playSound }) => {
                     handleClick(idx);
                     playSound2();
                   }}
-                  className="stack-item w-1/3 border-r-[1px] overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
+                  className="stack-item cursor-pointer w-1/3 border-r-[1px] overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]"></div>
                   <h1 className="text-xs text-center lg:text-xl absolute top-1/2 -translate-y-1/2 z-10">{item.title}</h1>

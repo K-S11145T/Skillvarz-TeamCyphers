@@ -433,15 +433,15 @@ const LandingPage = ({ playSound }) => {
               onClick={() => {
                 playSound();
               }}
-              className="hidden sm:block relative px-8 w-fit py-3 bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] text-[#E35E4E] font-[orbitron] overflow-hidden hover:text-black cursor-pointer"
+              className="hidden cursor-pointer sm:block relative px-8 w-fit py-3 bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] pointer-events-auto text-[#E35E4E] font-[orbitron] overflow-hidden hover:text-black "
               whileHover="hover"
             >
-              <span className="relative z-10 font-bold pointer-events-auto">
+              <span className="relative z-10 font-bold ">
                 JOIN
               </span>
 
               <motion.span
-                className="absolute font-bold [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] inset-0 bg-[#E35E4E] "
+                className="absolute cursor-pointer font-bold [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] inset-0 bg-[#E35E4E] "
                 initial={{ width: 0 }}
                 variants={{
                   hover: {
@@ -516,7 +516,7 @@ const LandingPage = ({ playSound }) => {
                   playSound();
                   toggleAudio();
                 }}
-                className="relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
+                className="relative cursor-pointer bg-black/20 backdrop-blur-md px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] border-2 pointer-events-auto border-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black"
                 whileHover="hover"
               >
                 {isPlaying ? (
@@ -532,7 +532,7 @@ const LandingPage = ({ playSound }) => {
                   playSound();
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className="relative cursor-pointer px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
+                className="relative bg-black/20 backdrop-blur-md cursor-pointer px-2 py-1 sm:px-3 sm:py-2 flex items-center justify-center text-xl sm:text-2xl text-[#E35E4E] hover:bg-[#E35E4E] duration-300 hover:text-black pointer-events-auto border-2 border-[#E35E4E]"
               >
                 <i
                   ref={arrowBtnIcon}
