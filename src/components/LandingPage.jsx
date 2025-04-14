@@ -73,7 +73,7 @@ const LandingPage = ({ playSound }) => {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.volume = 0.05;
+      audio.volume = 0.08; // Yaha se Set volume krlo!!
       audio
         .play()
         .then(() => {
@@ -90,19 +90,19 @@ const LandingPage = ({ playSound }) => {
   const imgData = [
     {
       id: 1,
-      img: "/Page-1/pixelcut-export.png",
+      img: "/Page-1/Game4.png",
     },
     {
       id: 2,
-      img: "/Page-1/Game2.png",
-    },
-    {
-      id: 3,
       img: "/Page-1/Game3.png",
     },
     {
+      id: 3,
+      img: "/Page-1/Game2.png",
+    },
+    {
       id: 4,
-      img: "/Page-1/Game4.png",
+      img: "/Page-1/Game1.png",
     },
   ];
 
