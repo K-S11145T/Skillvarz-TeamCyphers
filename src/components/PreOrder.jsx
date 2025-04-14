@@ -115,7 +115,7 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
               playSound();
               handleAnimatedClose();
             }}
-            className="absolute top-4 right-5 text-white hover:text-[#E35E4E]  transition text-lg "
+            className="absolute top-4 cursor-pointer right-5 text-white hover:text-[#E35E4E]  transition text-lg "
           >
             Close
           </button>
@@ -202,7 +202,7 @@ const PreOrder = ({ handleClose, Order, playSound }) => {
               onClick={() => {
                 playSound();
               }}
-              className="px-6 py-2 bg-transparent border-2 text-[#E35E4E]  border-[#E35E4E] font-bold"
+              className="px-6 py-2 cursor-pointer bg-transparent border-2 text-[#E35E4E]  border-[#E35E4E] font-bold"
             >
               Submit
             </button>

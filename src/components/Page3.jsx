@@ -16,23 +16,22 @@ const Page3 = ({ playSound }) => {
   useEffect(() => {
     if (characterImageRef.current) {
       // Reset initial state
-      gsap.set(characterImageRef.current, { 
+      gsap.set(characterImageRef.current, {
         opacity: 0,
         scale: 1.1,
-        y: 20
+        y: 20,
       });
-      
+
       // Animate to final state
       gsap.to(characterImageRef.current, {
         opacity: 1,
         scale: 1,
         y: 0,
         duration: 0.6,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     }
   }, [activeIndex]);
-  
 
   useEffect(() => {
     targetPosition.current.x = clicked ? 90 : 0;
@@ -324,7 +323,7 @@ const Page3 = ({ playSound }) => {
             onClick={() => {
               playSound();
             }}
-            className="bg-[#E35E4E] w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+            className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
           >
             EXPLORE
           </button>
@@ -345,16 +344,18 @@ const Page3 = ({ playSound }) => {
           />
           <div className={`absolute bottom-14 left-10 w-[80%] h-fit`}>
             <div className="relative">
-            <img
-    ref={characterImageRef}
-    className="w-full h-full object-cover"
-    src={activeData.image}
-    alt={activeData.name}
-    style={{
-      maskImage: "linear-gradient(to bottom, rgb(0, 0, 0),rgba(0,0,0,1) , rgba(0, 0, 0, 0.13))",
-      WebkitMaskImage: "linear-gradient(to bottom, rgb(8, 6, 6), rgba(0,0,0,1) , rgba(0, 0, 0, 0))",
-    }}
-  />
+              <img
+                ref={characterImageRef}
+                className="w-full h-full object-cover"
+                src={activeData.image}
+                alt={activeData.name}
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, rgb(0, 0, 0),rgba(0,0,0,1) , rgba(0, 0, 0, 0.13))",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, rgb(8, 6, 6), rgba(0,0,0,1) , rgba(0, 0, 0, 0))",
+                }}
+              />
               <svg
                 className={`absolute transition-all opacity-0 duration-900 ${
                   clicked && "opacity-[100%]"
@@ -471,7 +472,7 @@ const Page3 = ({ playSound }) => {
             }}
           >
             {/* Dot elements container */}
-            <div className="relative h-[3vh]">
+            <div className="relative cursor-pointer h-[3vh]">
               {/* Hover dot */}
               <div className="absolute w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
 

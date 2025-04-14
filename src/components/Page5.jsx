@@ -91,32 +91,6 @@ const Page6 = ({ playSound }) => {
     };
   }, []);
 
-  useEffect(() => {
-    const services = gsap.utils.toArray(".image-container");
-
-    services.forEach((service, i) => {
-      gsap.set(service, { zIndex: services.length - i }); // Layering
-
-      if (i !== 0) {
-        gsap.fromTo(
-          service,
-          { y: -100 },
-          {
-            y: 60 * i,
-            scrollTrigger: {
-              trigger: service,
-              start: "top 70%",
-              end: "bottom 40%",
-              scrub: 0.3,
-            },
-          }
-        );
-      }
-    });
-
-    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-  }, []);
-
   const links = [
     {
       link: "Xbox",
@@ -152,7 +126,7 @@ const Page6 = ({ playSound }) => {
     <div className="w-full relative min-h-screen  font-orbitron bg-black">
       <div className=" w-full">
         <img
-          className="w-full filter brightness-100 saturate-150 h-[360vh] object-cover"
+          className="w-full filter brightness-100 saturate-150 h-[350vh] object-cover"
           src="/Page-1/Untitled.png"
           alt=""
         />
@@ -226,7 +200,7 @@ const Page6 = ({ playSound }) => {
                 onClick={() => {
                   playSound();
                 }}
-                className="w-[14.2854%]  group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]"
+                className="w-[14.2854%] cursor-pointer group bg-transparent hover:bg-[#E35E4E] relative flex items-center justify-center h-full border-x border-[#E35E4E]"
               >
                 <h1 className="text-[#E35E4E] font-bold text-2xl group-hover:opacity-0 transition duration-300">
                   {item.link}
@@ -241,10 +215,10 @@ const Page6 = ({ playSound }) => {
           })}
         </div>
 
-        <div className="w-full mt-20 relative flex flex-col items-center min-h-screen">
+        <div className="w-full mt-20 relative flex flex-col gap-10 items-center min-h-screen">
          <Tilt
           className="w-full z-[11] relative h-full flex group items-center justify-center"
-          options={{ scale: 1.07, max: 10 }}
+          options={{ scale: 1.03, max: 7 }}
         >
           <div 
              ref={floatRef1}
@@ -268,7 +242,7 @@ const Page6 = ({ playSound }) => {
               </h1>
               <button
                 onClick={() => playSound()}
-                className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
               >
                 EXPLORE
               </button>
@@ -277,7 +251,7 @@ const Page6 = ({ playSound }) => {
         </Tilt>
           <Tilt
             className="w-full z-[10] relative h-full flex items-center justify-center"
-            options={{ scale: 1.07, max: 10 }}
+            options={{ scale: 1.03, max: 7 }}
           >
             <div
             ref={floatRef2} className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
@@ -301,7 +275,7 @@ const Page6 = ({ playSound }) => {
                   onClick={() => {
                     playSound();
                   }}
-                  className="bg-black mt-2  text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
                 >
                   EXPLORE
                 </button>
@@ -311,7 +285,7 @@ const Page6 = ({ playSound }) => {
 
           <Tilt
             className="w-full z-[9] relative h-full flex items-center justify-center"
-            options={{ scale: 1.07, max: 10 }}
+            options={{ scale: 1.03, max: 7 }}
           >
             <div              ref={floatRef3} className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]">
               <div
@@ -333,7 +307,7 @@ const Page6 = ({ playSound }) => {
                   onClick={() => {
                     playSound();
                   }}
-                  className="bg-black mt-2 text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
                 >
                   EXPLORE
                 </button>
