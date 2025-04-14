@@ -62,7 +62,7 @@ const LandingPage = ({ playSound }) => {
       document.body.style.top = "";
       document.body.style.width = "";
     };
-  }, [Order]);
+  }, [Order])
 
   const toggleAudio = () => {
     const audio = audioRef.current;
