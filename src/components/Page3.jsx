@@ -227,7 +227,7 @@ const Page3 = ({ playSound }) => {
 
   return (
     <div className="w-full min-h-screen  font-orbitron bg-gradient-to-b from-black via-black to-[#120202] overflow-x-hidden">
-      <div className="flex p-5 mt-20 items-center gap-2 md:gap-5">
+      <div className="flex px-4 sm:p-5 mt-2 md:mt-20 items-center gap-2 md:gap-5">
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
@@ -246,7 +246,7 @@ const Page3 = ({ playSound }) => {
         </h1>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center mt-20 lg:h-[60vh] 2xl:h-[50vh] relative p-5 mt-4 md:mt-18 flex-grow justify-center">
+      <div className="flex flex-col md:flex-row items-center mt-10 md:mt-20 lg:h-[60vh] 2xl:h-[50vh] relative p-5 mt-4 md:mt-18 flex-grow justify-center">
         <div className="border-t-2 lg:hidden relative mt-4 flex justify-evenly border-dashed border-[#E35E4E] w-full">
           {data.map((item, index) => (
             <div
