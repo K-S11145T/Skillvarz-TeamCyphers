@@ -7,6 +7,9 @@ const Loader = () => {
     const loaderRef = useRef(null); // Reference to the loader container
 
     useEffect(() => {
+        // Disable scrolling when the loader is visible
+        document.body.style.overflow = "hidden";
+
         const duration = 11; // Duration in seconds
         const interval = 100; // Update interval in milliseconds
         const increment = 100 / (duration * (1000 / interval));
@@ -21,7 +24,10 @@ const Loader = () => {
             });
         }, interval);
 
-        return () => clearInterval(intervalId);
+        return () => {
+            clearInterval(intervalId);
+            document.body.style.overflow = "auto"; // Ensure scrolling is re-enabled on cleanup
+        };
     }, []);
 
     useEffect(() => {
@@ -34,16 +40,10 @@ const Loader = () => {
                 onComplete: () => {
                     // Hide the loader after fade-out
                     loaderRef.current.style.display = "none";
+
+                    // Enable scrolling after the loader disappears
+                    document.body.style.overflow = "auto";
                 },
-                // onComplete: () => {
-                //     // Add additional fade-out animation
-                //     gsap.to(loaderRef.current, {
-                //         scale: 0.5, // Shrink the loader slightly
-                //         duration: 1, // Duration of the additional animation
-                //         ease: "power2.inOut",
-                        
-                //     });
-                // },
             });
         }
     }, [progress]);
@@ -51,7 +51,7 @@ const Loader = () => {
     return (
         <div
             ref={loaderRef} // Attach the ref to the loader container
-            className="loader-container flex justify-center items-center h-screen w-screen absolute top-0 left-0 "
+            className="loader-container flex justify-center items-center h-screen w-screen fixed top-0 left-0 "
         >
             {/* Video Background */}
             <video
@@ -64,13 +64,13 @@ const Loader = () => {
             <div className="h-[20vw] w-[60vw] flex justify-center items-center">
                 {/* Video Overlay */}
                 <div className="video-overlay">
-                    <h1 className="text-[4vw] font-[hanbai] tracking-widest text-[#E91516] drop-shadow-xl">
+                    <h1 className="text-[8vw] lg:text-[4vw] font-[hanbai] tracking-widest text-[#E91516] drop-shadow-xl">
                         ASSASSIN'S CREED
                     </h1>
-                    <p className="mt-[1vw] text-[0.8vw]">Shadows</p>
+                    <p className="mt-[1vw] text-[4vw] lg:text-[0.8vw]">Shadows</p>
                     <div className="flex justify-between items-center w-[20vw] mt-[1vw]">
-                        <h1 className="text-[0.8vw] text-[#E35E4E]">Loading...</h1>
-                        <p className="text-[0.8vw] text-[#E35E4E]">
+                        <h1 className="text-[2vw] lg:text-[0.8vw] text-[#E35E4E]">Loading...</h1>
+                        <p className="text-[2vw] lg:text-[0.8vw] text-[#E35E4E]">
                             {Math.round(progress)}%
                         </p>
                     </div>
