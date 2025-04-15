@@ -87,8 +87,17 @@ const Footer = ({ playSound }) => {
           </div>
 
           <div className="absolute p-10 flex flex-col justify-end top-0 left-0 w-full h-[100%] text-white">
-            <div className="text-[#E35E4E] flex justify-between items-center text-5xl w-full font-bold py-10">
-              <h1 className="w-[55%]">
+            <div className="text-[#E35E4E] text-xs flex flex-col md:flex-row justify-start items-start text-5xl w-full font-bold py-10">
+              <button
+                onClick={() => {
+                  playSound();
+                  setOrder(true);
+                }}
+                className="bg-[#E35E4E] text-black cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base font-[orbitron] font-bold px-3 py-2 mb-4 md:mb-0 md:order-2"
+              >
+                PRE ORDER
+              </button>
+              <h1 className="w-full md:w-[55%] text-lg md:text-5xl text-left">
                 <DecryptedText
                   text="The Shadows are rising— Will you embrace the creed?"
                   animateOn="view"
@@ -97,20 +106,10 @@ const Footer = ({ playSound }) => {
                   revealDirection="center"
                 />
               </h1>
-
-              <button
-                onClick={() => {
-                  playSound();
-                  setOrder(true);
-                }}
-                className="bg-[#E35E4E] text-black cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base font-[orbitron] font-bold px-3 py-2"
-              >
-                PRE ORDER
-              </button>
             </div>
 
             <div className="h-[2px] w-full bg-[#E35E4E]"></div>
-            <h1 className="px-5 pt-5">© 2025 Cyphers. All rights reserved.</h1>
+            <h1 className="px-5 pt-4 text-xs text-center">© 2025 Cyphers. All rights reserved.</h1>
           </div>
         </div>
       </div>
