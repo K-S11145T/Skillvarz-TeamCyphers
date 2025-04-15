@@ -7,7 +7,7 @@
     background-color: black; /* Background color for the loader */
     overflow: hidden;
     z-index: 9999; /* Ensure the loader is on top of other elements */
-    position : fixed; /* Fixed position to cover the entire viewport */
+    position: fixed; /* Fixed position to cover the entire viewport */
 }
 
 .loader-video {
@@ -49,4 +49,31 @@
     height: 100%; /* Fill the height of the loading line */
     background-color: #E35E4E; /* Color of the filling animation */
     transition: width 0.1s linear; /* Smooth animation for the progress */
+}
+
+/* Prevent scrolling when the loader is active */
+body.loader-active {
+    overflow: hidden !important; /* Forcefully disable scrolling */
+    height: 100%; /* Ensure no scrolling */
+}
+
+@media screen {
+    @media (max-width: 768px) {
+        .loading-line {
+            width: 50vw; /* Adjust width for smaller screens */
+            height: 4vw; /* Adjust height for smaller screens */
+        }
+    }
+    @media (max-width: 480px) {
+        .loading-line {
+            width: 46vw; /* Further adjust width for mobile devices */
+            height: 4vw; /* Further adjust height for mobile devices */
+        }
+    }
+    @media (max-width: 320px) {
+        .loading-line {
+            width: 40; /* Further adjust width for smaller devices */
+            height: 4w; /* Further adjust height for smaller devices */
+        }
+    }
 }
