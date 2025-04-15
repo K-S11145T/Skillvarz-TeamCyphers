@@ -189,52 +189,58 @@ const LandingPage = ({ playSound }) => {
         bottom: 0,
       });
     });
-    const moveElements = (e) => {
-      const rect = parent.current.getBoundingClientRect();
-      const relX = e.clientX - rect.left;
-      const relY = e.clientY - rect.top;
 
-      // Calculate mouse position as percentage (-0.5 to 0.5)
-      const xPercent = (relX / rect.width - 0.5) * 2;
-      const yPercent = (relY / rect.height - 0.5) * 2;
+    // Disable parallax effect for smaller devices
+    if (window.innerWidth > 1024) {
+      const moveElements = (e) => {
+        const rect = parent.current.getBoundingClientRect();
+        const relX = e.clientX - rect.left;
+        const relY = e.clientY - rect.top;
 
-      // Subtle movement (adjust these values to change intensity)
-      gsap.to(character.current, {
-        // scale: 1.05,
-        x: xPercent * 60, // ±15px
-        y: yPercent * 0, // ±10px
-        duration: 0.8,
-        ease: "power1.out",
-      });
+        // Calculate mouse position as percentage (-0.5 to 0.5)
+        const xPercent = (relX / rect.width - 0.5) * 2;
+        const yPercent = (relY / rect.height - 0.5) * 2;
 
-      gsap.to(bgImg.current, {
-        x: xPercent * -20, // Opposite direction
-        y: yPercent * -15,
-        duration: 1.2,
-        ease: "power1.out",
-      });
+        // Subtle movement (adjust these values to change intensity)
+        gsap.to(character.current, {
+          x: xPercent * 60,
+          y: yPercent * 0,
+          duration: 0.8,
+          ease: "power1.out",
+        });
 
-      gsap.to(shadowImg.current, {
-        x: xPercent * -20, // Opposite direction
-        y: yPercent * -15,
-        duration: 1.2,
-        ease: "power1.out",
-      });
+        gsap.to(bgImg.current, {
+          x: xPercent * -20,
+          y: yPercent * -15,
+          duration: 1.2,
+          ease: "power1.out",
+        });
 
-      gsap.to(logoImg.current, {
-        x: xPercent * 15,
-        y: yPercent * 13,
-        duration: 1,
-        ease: "power1.out",
-      });
-    };
+        gsap.to(shadowImg.current, {
+          x: xPercent * -20,
+          y: yPercent * -15,
+          duration: 1.2,
+          ease: "power1.out",
+        });
 
-    const parentEl = parent.current;
-    parentEl.addEventListener("mousemove", moveElements);
+        gsap.to(logoImg.current, {
+          x: xPercent * 15,
+          y: yPercent * 13,
+          duration: 1,
+          ease: "power1.out",
+        });
+      };
+
+      const parentEl = parent.current;
+      parentEl.addEventListener("mousemove", moveElements);
+
+      return () => {
+        parentEl.removeEventListener("mousemove", moveElements);
+      };
+    }
 
     return () => {
       mm.revert();
-      parentEl.removeEventListener("mousemove", moveElements);
     };
   }, []);
 
