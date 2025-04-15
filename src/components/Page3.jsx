@@ -7,6 +7,7 @@ import gsap from "gsap";
 const Page3 = ({ playSound }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [clicked, setClicked] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const buttonRef = useRef(null);
   const containerRef = useRef(null);
   const animationFrame = useRef(null);
@@ -14,15 +15,23 @@ const Page3 = ({ playSound }) => {
   const characterImageRef = useRef(null);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     if (characterImageRef.current) {
-      // Reset initial state
       gsap.set(characterImageRef.current, {
         opacity: 0,
         scale: 1.1,
         y: 20,
       });
 
-      // Animate to final state
       gsap.to(characterImageRef.current, {
         opacity: 1,
         scale: 1,
@@ -34,9 +43,9 @@ const Page3 = ({ playSound }) => {
   }, [activeIndex]);
 
   useEffect(() => {
-    targetPosition.current.x = clicked ? 90 : 0;
-    targetPosition.current.y = clicked ? 100 : 80;
-  }, [clicked]);
+    targetPosition.current.x = clicked ? (isMobile ? 40 : 90) : 0;
+    targetPosition.current.y = clicked ? (isMobile ? 60 : 100) : 80;
+  }, [clicked, isMobile]);
 
   const updateButtonPosition = () => {
     if (buttonRef.current) {
@@ -55,7 +64,7 @@ const Page3 = ({ playSound }) => {
   };
 
   const handleMouseMove = (e) => {
-    if (containerRef.current) {
+    if (containerRef.current && !isMobile) {
       const container = containerRef.current.getBoundingClientRect();
       targetPosition.current.x = e.clientX - container.left - 60;
       targetPosition.current.y = e.clientY - container.top - 60;
@@ -217,51 +226,98 @@ const Page3 = ({ playSound }) => {
   };
 
   return (
-    <div className="w-full min-h-screen font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
+    <div className="w-full min-h-screen font-orbitron bg-gradient-to-b from-black via-black to-[#120202] overflow-x-hidden">
       <div className="flex p-5 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
           className="w-fit h-fit object-contain"
         />
-        <h1 className="text-[#E35E4E] text-5xl">
-          {" "}
+        <h1 className="text-[#E35E4E] text-2xl sm:text-5xl">
           <DecryptedText
             key={clicked ? "stats" : "echoes"}
             text={clicked ? "Stats" : "Echoes of the Past"}
             speed={50}
             maxIterations={100}
-            revealDirection="center" // Force center always
+            revealDirection="center"
             animateOn="view"
             resetOnChange={true}
           />
         </h1>
       </div>
 
-      {/* Only render content for active index */}
-      <div className="flex items-center lg:h-[65vh] xl:h-[40vh] relative p-5 mt-18 flex-grow justify-center ">
+      <div className="flex flex-col md:flex-row items-center lg:h-[60vh] 2xl:h-[40vh] relative p-5 mt-4 md:mt-18 flex-grow justify-center">
+        <div className="border-t-2 lg:hidden relative mt-4 flex justify-evenly border-dashed border-[#E35E4E] w-full">
+          {data.map((item, index) => (
+            <div
+              key={item.sr}
+              className={`relative group ${
+                clicked ? "pointer-events-none opacity-50" : ""
+              }`}
+              onClick={() => {
+                playSound2();
+                handleDotClick(index);
+              }}
+            >
+              <div className="relative cursor-pointer h-[3vh]">
+                <div className="absolute w-[2vh] h-[2vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
+                <div
+                  className={`
+                  absolute w-[3vh] h-[3vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
+                  border-2 border-[#E35E4E] bg-transparent rounded-full 
+                  transition-all duration-300 ease-in-out
+                  ${
+                    activeIndex === index
+                      ? "opacity-100 scale-100"
+                      : "opacity-0 scale-50"
+                  }
+                `}
+                ></div>
+              </div>
+              <div
+                className={`
+                absolute text-center top-[-8vh] left-1/2 -translate-x-1/2 w-[20vw]
+                transition-all duration-300
+                ${activeIndex === index ? "opacity-100" : "opacity-40"}
+              `}
+              >
+                <h1 className="text-[#E35E4E] text-sm">{item.sr}</h1>
+                <h1 className="text-zinc-400 text-xs">{item.name}</h1>
+              </div>
+              <div className="w-[20vw] h-[15vh] flex justify-center overflow-hidden mx-auto">
+                <BoxElement
+                  key={index}
+                  item={item}
+                  index={index}
+                  activeIndex={activeIndex}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Text Content */}
         <div
-          className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
+          className={`w-full md:w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
             clicked
               ? "-translate-x-[120%] opacity-0"
               : "translate-x-0 opacity-100"
           }`}
         >
-          <h1 className="text-[#E35E4E] font-bold text-4xl">
+          <h1 className="text-[#E35E4E] font-bold md:text-xl lg:text-4xl">
             <DecryptedText
               text={activeData.title}
               speed={50}
               maxIterations={40}
               animateOn={!clicked ? "view" : "none"}
-              resetOnChange={clicked} // Reset when reverting
-              key={`title-${activeIndex}-${clicked}`} // Include clicked state in key
+              resetOnChange={clicked}
+              key={`title-${activeIndex}-${clicked}`}
             />
           </h1>
-          <p className="text-zinc-300 mt-2 text-lg">
+          <p className="text-zinc-300 mt-2 text-sm md:text-lg">
             <SplitText
               text={activeData.text1}
-              delay={30} // delay between each word
-              duration={0.3} // animation time per word
+              delay={30}
+              duration={0.3}
               animationFrom={{ opacity: 0, y: 40 }}
               animationTo={{ opacity: 1, y: 0 }}
               resetOnChange={true}
@@ -269,49 +325,46 @@ const Page3 = ({ playSound }) => {
               threshold={0.2}
               rootMargin="-50px"
               textAlign="start"
-              onLetterAnimationComplete={() => console.log("done ✅")}
             />
           </p>
-          <div className="w-[50%] h-[30%]  ">
-            <svg
-              width="50%"
-              height="200%"
-              viewBox="0 0 180 60"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <text
-                x="0"
-                y="0"
-                fontSize="60"
-                fontWeight="bold"
-                stroke="#E35E4E"
-                strokeWidth="0.5"
-                fill="transparent"
-                dominantBaseline="middle"
-              >
-                {activeData.sr}
-              </text>
-            </svg>
-          </div>
+          <div className="hidden md:block w-[50%] h-[30%]">
+  <svg
+    width="50%"
+    height="200%"
+    viewBox="0 0 180 60"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <text
+      x="0"
+      y="0"
+      fontSize="60"
+      fontWeight="bold"
+      stroke="#E35E4E"
+      strokeWidth="0.5"
+      fill="transparent"
+      dominantBaseline="middle"
+    >
+      {activeData.sr}
+    </text>
+  </svg>
+</div>
 
-          <h1 className="text-white font-bold text-3xl">
+          <h1 className="text-white font-bold  lg:3xl md:text-xl">
             <DecryptedText
               text={activeData.name}
               speed={60}
               maxIterations={200}
               animateOn={!clicked ? "view" : "none"}
-              resetOnChange={clicked} // Reset when reverting
-              key={`name-${activeIndex}-${clicked}`} // Include clicked state in key
+              resetOnChange={clicked}
+              key={`name-${activeIndex}-${clicked}`}
             />
           </h1>
-          <p className="text-zinc-300 mt-2 text-lg">
-            {" "}
+          <p className="text-zinc-300 mt-2 text-sm md:text-lg">
             <SplitText
               text={activeData.text2}
-              delay={30} // delay between each word
-              duration={0.3} // animation time per word
+              delay={30}
+              duration={0.3}
               resetOnChange={true}
-              // resetOnView={true}
               easing="power3.out"
               threshold={0.2}
               rootMargin="-50px"
@@ -323,19 +376,20 @@ const Page3 = ({ playSound }) => {
             onClick={() => {
               playSound();
             }}
-            className="bg-[#E35E4E] w-fit cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+            className="bg-[#E35E4E] w-fit cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2 text-sm md:text-base"
           >
             EXPLORE
           </button>
         </div>
 
+        {/* Image Container */}
         <div
           id="container"
           ref={containerRef}
-          className={`w-[35vw] relative transition-all duration-900 mt-[-20vh] ${
+          className={`w-full md:w-[35vw] relative transition-all duration-900 mt-0 md:mt-[-20vh] ${
             clicked ? "-translate-x-[140%]" : "translate-x-0"
           } h-fit`}
-          onMouseMove={handleMouseMove}
+          onMouseMove={!isMobile ? handleMouseMove : undefined}
         >
           <img
             className="w-full h-full object-cover"
@@ -357,7 +411,7 @@ const Page3 = ({ playSound }) => {
                 }}
               />
               <svg
-                className={`absolute transition-all opacity-0 duration-900 ${
+                className={`absolute transition-all opacity-0 duration-900  ${
                   clicked && "opacity-[100%]"
                 } bottom-10`}
                 width="200"
@@ -384,14 +438,12 @@ const Page3 = ({ playSound }) => {
             id="button"
             onClick={() => {
               playSound();
-
               setClicked(!clicked);
               if (clicked) {
-                // Force reset by triggering a state update
                 setActiveIndex((prev) => prev);
               }
             }}
-            className="absolute h-[12vh] w-[12vh] flex items-center justify-center rounded-full bg-transparent border-2 border-[#E35E4E]"
+            className="absolute hidden md:flex h-[12vh] w-[12vh] items-center justify-center rounded-full bg-transparent border-2 border-[#E35E4E]"
           >
             <h1 className="text-sm text-[#E35E4E]">
               {clicked ? "Revert" : "Tap now"}
@@ -399,67 +451,70 @@ const Page3 = ({ playSound }) => {
           </div>
         </div>
 
+        {/* Expanded Content */}
         <div
-          className={`w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
+          className={`w-full md:w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
             clicked
-              ? "translate-x-[50%] px-10 opacity-[100%]"
+              ? "translate-x-[0] md:translate-x-[50%] px-5 md:px-10 opacity-[100%]"
               : "translate-x-[130%] opacity-0"
           }`}
         >
           <div className="flex flex-col gap-2">
-            <h1 className="text-[#E35E4E] font-bold text-2xl">
+            <h1 className="text-[#E35E4E] font-bold text-xl md:text-2xl">
               <DecryptedText
                 text={activeData.name}
                 speed={200}
                 maxIterations={200}
-                animateOn={clicked ? "view" : "none"} // Only animate when clicked
+                animateOn={clicked ? "view" : "none"}
                 key={`expanded-name-${activeIndex}-${clicked}`}
               />
             </h1>
-            <h1 className="text-xl">
+            <h1 className="text-lg md:text-xl">
               <DecryptedText
                 text={activeData.title}
                 speed={50}
                 maxIterations={100}
-                animateOn={clicked ? "view" : "none"} // Only animate when clicked
+                animateOn={clicked ? "view" : "none"}
                 key={`expanded-title-${activeIndex}-${clicked}`}
               />
             </h1>
 
-            <div className="flex gap-5 text-md text-zinc-500">
+            <div className="flex flex-wrap gap-2 md:gap-5 text-sm md:text-md text-zinc-500">
               {activeData.skills.map((skill, index) => {
                 return <h1 key={index}>{skill}</h1>;
               })}
             </div>
-            <div className="flex mt-2 gap-6">
+            <div className="flex flex-wrap mt-2 gap-3 md:gap-6">
               {activeData.capsule.map((item, index) => {
                 return (
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="w-[12vh] h-[12vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
+                  <div key={index} className="flex flex-col items-center gap-3">
+                    <div className="w-[8vh] h-[8vh] md:w-[12vh] md:h-[12vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
                       <img
                         className="w-full h-full object-cover"
                         src={item.img}
-                        alt="Katana"
+                        alt={item.name}
                       />
                     </div>
-                    <h1 className="w-[10vw] text-center">{item.name}</h1>
+                    <h1 className="w-[20vw] md:w-[10vw] text-center text-xs md:text-base">
+                      {item.name}
+                    </h1>
                   </div>
                 );
               })}
             </div>
 
-            <div className="w-[45vh] ml-20 h-[45vh] mt-5">
+            <div className="w-full md:w-[45vh] ml-0 md:ml-20 h-auto md:h-[45vh] mt-5 flex justify-center">
               <img
                 src={activeData.stats}
                 alt="Stats"
-                className="w-fit h-fit object-contain"
+                className="w-full md:w-fit h-auto md:h-fit object-contain"
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="border-t-2 relative mt-[20vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
+      <div className="border-t-2 hidden relative mt-[10vh] md:mt-[20vh] lg:flex justify-evenly border-dashed border-[#E35E4E] w-full">
         {data.map((item, index) => (
           <div
             key={item.sr}
@@ -472,39 +527,39 @@ const Page3 = ({ playSound }) => {
             }}
           >
             {/* Dot elements container */}
-            <div className="relative cursor-pointer  h-[3vh]">
+            <div className="relative cursor-pointer h-[3vh]">
               {/* Hover dot */}
-              <div className="absolute  w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
+              <div className="absolute w-[2vh] h-[2vh] md:w-[3vh] md:h-[3vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
 
               {/* Active ring */}
               <div
                 className={`
-            absolute w-[5vh] h-[5vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
-            border-2 border-[#E35E4E] bg-transparent rounded-full 
-            transition-all duration-300 ease-in-out
-            ${
-              activeIndex === index
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-50"
-            }
-          `}
+                  absolute w-[3vh] h-[3vh] md:w-[5vh] md:h-[5vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
+                  border-2 border-[#E35E4E] bg-transparent rounded-full 
+                  transition-all duration-300 ease-in-out
+                  ${
+                    activeIndex === index
+                      ? "opacity-100 scale-100"
+                      : "opacity-0 scale-50"
+                  }
+                `}
               ></div>
             </div>
 
             {/* Text labels */}
             <div
               className={`
-          absolute text-center top-[-13vh] left-1/2 -translate-x-1/2 w-[12vw]
-          transition-all duration-300
-          ${activeIndex === index ? "opacity-100" : "opacity-40"}
-        `}
+                absolute text-center top-[-8vh] md:top-[-13vh] left-1/2 -translate-x-1/2 w-[20vw] md:w-[12vw]
+                transition-all duration-300
+                ${activeIndex === index ? "opacity-100" : "opacity-40"}
+              `}
             >
-              <h1 className="text-[#E35E4E] text-xl">{item.sr}</h1>
-              <h1 className="text-zinc-400 text-lg">{item.name}</h1>
+              <h1 className="text-[#E35E4E] text-sm md:text-xl">{item.sr}</h1>
+              <h1 className="text-zinc-400 text-xs md:text-lg">{item.name}</h1>
             </div>
 
             {/* Box container - fixed size and centered */}
-            <div className="w-[10vw] h-[25vh] flex justify-center overflow-hidden mx-auto">
+            <div className="w-[20vw] md:w-[10vw] h-[15vh] md:h-[25vh] flex justify-center overflow-hidden mx-auto">
               <BoxElement
                 key={index}
                 item={item}

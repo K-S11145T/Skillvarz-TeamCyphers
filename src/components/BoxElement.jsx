@@ -48,8 +48,8 @@ const BoxElement = ({ item, index, activeIndex }) => {
       ref={boxRef}
       className={`flex flex-col gap-3 items-center`}
     >
-      <div className="w-[1px] h-[10vh] border-r-2 border-dashed border-[#E35E4E]" />
-      <div className="w-[10vh] h-[10vh] overflow-hidden rotate-[45deg] border-2 border-[#E35E4E]">
+      <div className="w-[1px] lg:h-[10vh] h-[5.5vh] border-r-2 border-dashed border-[#E35E4E]" />
+      <div className="lg:w-[10vh] lg:h-[10vh] w-[10vw] h-[10vw] overflow-hidden rotate-[45deg] border-2 border-[#E35E4E]">
         <img
           ref={imgRef}
           className="w-full h-full object-cover"
