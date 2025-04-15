@@ -58,7 +58,7 @@ const Loader = () => {
                 className="loader-video"
                 autoPlay
                 muted
-                src={"./Loader.mp4"}
+                src={"./Loader.webm"}
             ></video>
 
             <div className="h-[20vw] w-[60vw] flex justify-center items-center">

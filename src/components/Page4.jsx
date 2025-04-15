@@ -21,21 +21,21 @@ const Page4 = ({ playSound }) => {
       title: "Weapon Design",
       description:
         "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      video: "/Page-4/vid_1.mp4",
+      video: "/Page-4/vid_1.webm",
     },
     {
       sr: "02",
       title: "Developers Interviews",
       description:
         "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      video: "/Page-4/vid_3.mp4",
+      video: "/Page-4/vid_3.webm",
     },
     {
       sr: "03",
       title: "Soundtracks",
       description:
         "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      video: "/Page-4/vid_4.mp4",
+      video: "/Page-4/vid_4.webm",
     },
   ];
 
