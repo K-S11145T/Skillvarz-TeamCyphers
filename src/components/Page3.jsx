@@ -239,7 +239,7 @@ const Page3 = ({ playSound }) => {
       </div>
 
       {/* Only render content for active index */}
-      <div className="flex items-center h-[70vh] relative p-5 mt-18 flex-grow justify-center ">
+      <div className="flex items-center lg:h-[65vh] xl:h-[40vh] relative p-5 mt-18 flex-grow justify-center ">
         <div
           className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
             clicked
@@ -459,11 +459,11 @@ const Page3 = ({ playSound }) => {
         </div>
       </div>
 
-      <div className="border-t-2 relative mt-[17vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
+      <div className="border-t-2 relative mt-[20vh] flex justify-evenly border-dashed border-[#E35E4E] w-full">
         {data.map((item, index) => (
           <div
             key={item.sr}
-            className={`relative cursor-pointer group ${
+            className={`relative group ${
               clicked ? "pointer-events-none opacity-50" : ""
             }`}
             onClick={() => {
@@ -472,9 +472,9 @@ const Page3 = ({ playSound }) => {
             }}
           >
             {/* Dot elements container */}
-            <div className="relative h-[3vh]">
+            <div className="relative cursor-pointer  h-[3vh]">
               {/* Hover dot */}
-              <div className="absolute w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
+              <div className="absolute  w-[3vh] h-[3vh] rounded-full bg-[#E35E4E] left-1/2 transform -translate-y-1/2 -translate-x-1/2 transition-all duration-300 group-hover:scale-110"></div>
 
               {/* Active ring */}
               <div
