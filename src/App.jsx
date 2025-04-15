@@ -7,6 +7,7 @@ import ReactLenis, { useLenis } from "lenis/react";
 import Page5 from "./components/Page5";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
+import PreOrder from "./components/PreOrder";
 
 const App = () => {
   const lenis = useLenis();

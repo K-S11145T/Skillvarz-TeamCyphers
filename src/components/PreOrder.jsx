@@ -105,7 +105,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
 
   return (
     <motion.div
-      className="fixed top-1/2 left-1/2 z-[9999] w-[60vw] -translate-x-1/2 -translate-y-1/2  text-white"
+      className="fixed h-[50vh] lg:h-fit top-1/2 left-1/2 z-[9999] w-[98%] lg:w-[60vw] -translate-x-1/2 -translate-y-1/2 text-white"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -128,7 +128,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
         <form
           ref={centerDiv}
           onSubmit={handleSubmit}
-          className="space-y-4 flex flex-col justify-evenly items-center w-[80%]"
+          className="space-y-4 flex flex-col justify-evenly items-center px-4 lg:px-0 lg:w-[80%]"
         >
           <button
             type="button"
@@ -136,13 +136,13 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
               playSound();
               handleAnimatedClose();
             }}
-            className="absolute top-4 cursor-pointer right-5 text-white hover:text-[#E35E4E]  transition text-lg "
+            className="absolute top-1 right-2 lg:top-4 lg:right-5 cursor-pointer text-white hover:text-[#E35E4E]  transition text-lg "
           >
             Close
           </button>
 
           <div className="w-full flex gap-3 items-center justify-between">
-            <label className="font-bold text-2xl ">Choose Platform :</label>
+            <label className="font-bold text-sm lg:text-2xl ">Choose Platform :</label>
             <CustomDropdown
               options={["Steam", "Epic Games", "Xbox", "PlayStation", "Ubisoft"]}
               onChange={(val) => setPlatform(val)}
@@ -150,7 +150,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
           </div>
 
           <div className="w-full flex gap-3 items-center justify-between">
-            <label className="font-bold text-2xl ">
+            <label className="font-bold text-sm lg:text-2xl ">
               Select Creed Edition :
             </label>
             <CustomDropdown
@@ -160,37 +160,36 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
           </div>
 
           <div className="w-full relative flex gap-3 items-center justify-between">
-            <label className="font-bold text-2xl ">Assassin's Email:</label>
+            <label className="font-bold text-sm lg:text-2xl ">Assassin's Email:</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="px-4 py-3 w-[55%] rounded border-1 bg-white/10 border-white/50 outline-none"
-              required
+              className="px-3 lg:px-4 py-1 lg:py-3 w-[50%] lg:w-[55%] text-sm lg:text-base rounded border-1 bg-white/10 border-white/50 outline-none"
             />
           </div>
 
           <div className="w-full flex gap-3 items-center justify-between">
-            <label className="font-bold text-2xl ">Select Region :</label>
+            <label className="font-bold text-sm lg:text-2xl ">Select Region :</label>
             <CustomDropdown
               options={["United States", "United Kingdom", "Canada", "Japan", "India"]}
               onChange={(val) => setRegion(val)}
             />
           </div>
 
-          <div className="flex items-center justify-center gap-10 mt-4">
-            <div className="flex items-center gap-5">
+          <div className="flex items-center justify-center gap-5 lg:gap-10 mt-2 lg:mt-4">
+            <div className="flex items-center gap-2 lg:gap-5">
               <input
                 onClick={playSound}
                 type="checkbox"
                 id="notify"
-                className="appearance-none cursor-pointer w-8 h-8 border-2 border-[#E35E4E] checked:bg-[#E35E4E] relative"
+                className="appearance-none cursor-pointer w-6 h-6 lg:w-8 lg:h-8 border-2 border-[#E35E4E] checked:bg-[#E35E4E] relative"
               />
               <label
                 htmlFor="notify"
                 onClick={playSound}
-                className="bg-[#E35E4E] text-black cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base font-[orbitron] font-bold px-3 py-2"
+                className="bg-[#E35E4E] text-black cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-sm lg:text-base font-[orbitron] font-bold px-4 lg:px-6 py-2"
               >
                 Notify Me
               </label>
@@ -200,7 +199,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
               onClick={() => {
                 playSound();
               }}
-              className="px-6 py-2 cursor-pointer bg-transparent border-2 text-[#E35E4E]  border-[#E35E4E] font-bold"
+              className="px-4 lg:px-6 py-2 text-sm lg:text-base cursor-pointer bg-transparent border-2 text-[#E35E4E] border-[#E35E4E] font-bold"
             >
               Submit
             </button>
