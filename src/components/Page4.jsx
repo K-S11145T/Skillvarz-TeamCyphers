@@ -115,7 +115,7 @@ const Page4 = ({ playSound }) => {
           {/* Left panel - fixed width */}
           <div className="w-[35%] flex items-center px-2 py-2 lg:p-5 border-r-[1px] border-[#E35E4E] h-full z-10">
             <div className="w-full ">
-              <h1 className="font-semibold text-base sm:text-2xl lg:text-4xl">
+              <h1 className="font-semibold text-base text-center md:text-start sm:text-2xl lg:text-4xl">
                 <DecryptedText
                   text={data[activeIndex].title}
                   speed={50}
@@ -124,7 +124,7 @@ const Page4 = ({ playSound }) => {
                   key={`expanded-title-${activeIndex}`}
                 />
               </h1>
-              <p className="lg:mt-2 text-xs sm:text-lg lg:text-xl font-light leading-none">
+              <p className="hidden md:block lg:mt-2 text-xs sm:text-lg lg:text-2xl font-light leading-none">
                 <SplitText
                   text={data[activeIndex].description}
                   delay={30} // delay between each word
@@ -139,18 +139,18 @@ const Page4 = ({ playSound }) => {
                 />
               </p>
 
-              <div className="w-fit mt-1 lg:mt-4 h-fit">
+              <div className="w-full mt-1 lg:mt-4 h-fit flex flex-col items-center md:block">
                 <img
-                  className="w-[30vw] h-full object-cover"
+                  className="w-[90%] h-full object-cover"
                   src="/Page-4/Pos2.png"
                   alt=""
                 />
-                <div className="flex text-black items-center justify-evenly mt-0 lg:mt-4">
+                <div className="w-[90%] px-4 flex text-black items-center justify-start gap-5 mt-0 lg:mt-4">
                   <button
                     onClick={() => {
                       playSound();
                     }}
-                    className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-base font-bold px-3 py-2"
+                    className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-lg font-bold px-3 md:px-10 py-1 md:py-2"
                   >
                     Explore
                   </button>
@@ -158,7 +158,7 @@ const Page4 = ({ playSound }) => {
                     onClick={() => {
                       playSound();
                     }}
-                    className="bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-base px-3 py-2 font-bold"
+                    className="hidden md:block bg-[#E35E4E] cursor-pointer w-fit [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs lg:text-lg px-3 md:px-10 py-2 font-bold"
                   >
                     Steam
                   </button>
@@ -186,7 +186,7 @@ const Page4 = ({ playSound }) => {
                 className="stack-item cursor-pointer w-1/3 border-r-[1px] overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
               >
                 <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]"></div>
-                <h1 className="text-xs text-center lg:text-xl absolute top-1/2 -translate-y-1/2 z-10">
+                <h1 className="text-xs text-center lg:text-2xl md:font-bold absolute top-1/2 -translate-y-1/2 z-10">
                   {item.title}
                 </h1>
                 <h1 className="text-lg lg:text-2xl absolute right-1 bottom-0 lg:right-5 lg:bottom-3 font-bold z-10">

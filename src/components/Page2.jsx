@@ -15,83 +15,167 @@ const Page2 = () => {
   const bodyText = useRef();
   gsap.registerPlugin(ScrollTrigger);
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: parent.current,
-        start: "top top",
-        end: "top -200%",
-        // markers: true,
-        scrub: 1.2,
-        pin: true,
-      },
-    });
-    tl.from(
-      leftImg.current,
-      {
-        x: "-100%",
-        ease: "power4",
-        duration: 1.2,
-      },
-      "same"
-    );
-    tl.from(
-      rightImg.current,
-      {
-        x: "100%",
-        ease: "power4",
-        duration: 1.2,
-      },
-      "same"
-    );
+    const mm = gsap.matchMedia();
 
-    tl.from(
-      line1.current,
-      {
-        top: "50%",
-        duration: 1.2,
-      },
-      "line"
-    );
+    mm.add("(max-width: 767px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: parent.current,
+          start: "top 10%",
+          end: "top -10%",
+          // markers: true,
+          scrub: 1.2,
+          pin: true,
+        },
+      });
+      tl.from(
+        leftImg.current,
+        {
+          x: "-100%",
+          ease: "power4",
+          duration: 1.2,
+        },
+        "same"
+      );
+      tl.from(
+        rightImg.current,
+        {
+          x: "100%",
+          ease: "power4",
+          duration: 1.2,
+        },
+        "same"
+      );
 
-    tl.from(
-      line2.current,
-      {
-        bottom: "50%",
-        duration: 1.2,
-      },
-      "line"
-    );
+      tl.from(
+        line1.current,
+        {
+          top: "50%",
+          duration: 1.2,
+        },
+        "line"
+      );
 
-    tl.to(centerDiv.current, {
-      autoAlpha: 1,
-      y: 0,
-      ease: "power4.out",
-      duration: 0.8,
-    });
+      tl.from(
+        line2.current,
+        {
+          bottom: "50%",
+          duration: 1.2,
+        },
+        "line"
+      );
 
-    tl.from(
-      Array.from(headingText.current.children),
-      {
-        opacity: 0,
-        y: 20,
-        stagger: 0.3,
+      tl.to(centerDiv.current, {
+        autoAlpha: 1,
+        y: 0,
         ease: "power4.out",
         duration: 0.8,
-      },
-      "text+=0.2"
-    );
+      });
 
-    tl.from(
-      Array.from(bodyText.current.children),
-      {
-        opacity: 0,
-        y: 20,
-        stagger: 0.2,
+      tl.from(
+        Array.from(headingText.current.children),
+        {
+          opacity: 0,
+          y: 20,
+          stagger: 0.3,
+          ease: "power4.out",
+          duration: 0.8,
+        },
+        "text+=0.2"
+      );
+
+      tl.from(
+        Array.from(bodyText.current.children),
+        {
+          opacity: 0,
+          y: 20,
+          stagger: 0.2,
+          ease: "power4.out",
+          duration: 0.5,
+        },
+        "text+=0.5"
+      );
+    });
+
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: parent.current,
+          start: "top top",
+          end: "top -200%",
+          // markers: true,
+          scrub: 1.2,
+          pin: true,
+        },
+      });
+      tl.from(
+        leftImg.current,
+        {
+          x: "-100%",
+          ease: "power4",
+          duration: 1.2,
+        },
+        "same"
+      );
+      tl.from(
+        rightImg.current,
+        {
+          x: "100%",
+          ease: "power4",
+          duration: 1.2,
+        },
+        "same"
+      );
+
+      tl.from(
+        line1.current,
+        {
+          top: "50%",
+          duration: 1.2,
+        },
+        "line"
+      );
+
+      tl.from(
+        line2.current,
+        {
+          bottom: "50%",
+          duration: 1.2,
+        },
+        "line"
+      );
+
+      tl.to(centerDiv.current, {
+        autoAlpha: 1,
+        y: 0,
         ease: "power4.out",
-        duration: 0.5,
-      },
-      "text+=0.5"
-    );
+        duration: 0.8,
+      });
+
+      tl.from(
+        Array.from(headingText.current.children),
+        {
+          opacity: 0,
+          y: 20,
+          stagger: 0.3,
+          ease: "power4.out",
+          duration: 0.8,
+        },
+        "text+=0.2"
+      );
+
+      tl.from(
+        Array.from(bodyText.current.children),
+        {
+          opacity: 0,
+          y: 20,
+          stagger: 0.2,
+          ease: "power4.out",
+          duration: 0.5,
+        },
+        "text+=0.5"
+      );
+    });
   });
   const splitText = (text) => {
     return text.split(" ").map((word, i) => (

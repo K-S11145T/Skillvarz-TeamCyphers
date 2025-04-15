@@ -33,18 +33,18 @@ const App = () => {
     <ReactLenis root>
       <div className="w-full overflow-x-hidden relative min-h-screen bg-black select-none font-[orbitron]">
         {/* Show Loader or Main Content */}
-        {isLoading ? (
+        {/* {isLoading ? (
           <Loader playSound={playSound} />
         ) : (
-          <>
+          <> */}
             <LandingPage playSound={playSound} />
             <Page2 playSound={playSound} />
             <Page3 playSound={playSound} />
             <Page4 playSound={playSound} />
             <Page5 playSound={playSound} />
             <Footer playSound={playSound} />
-          </>
-        )}
+          {/* </>
+        )} */}
       </div>
     </ReactLenis>
   );
