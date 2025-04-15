@@ -7,8 +7,8 @@ const Loader = () => {
     const loaderRef = useRef(null); // Reference to the loader container
 
     useEffect(() => {
-        const duration = 10; // Duration in seconds
-        const interval = 90; // Update interval in milliseconds
+        const duration = 11; // Duration in seconds
+        const interval = 100; // Update interval in milliseconds
         const increment = 100 / (duration * (1000 / interval));
 
         const intervalId = setInterval(() => {
@@ -30,9 +30,20 @@ const Loader = () => {
             gsap.to(loaderRef.current, {
                 opacity: 0,
                 duration: 1, // Duration of the fade-out animation
+                ease: "power2.inOut",
                 onComplete: () => {
-                    loaderRef.current.style.display = "none"; // Hide the loader after fade-out
+                    // Hide the loader after fade-out
+                    loaderRef.current.style.display = "none";
                 },
+                // onComplete: () => {
+                //     // Add additional fade-out animation
+                //     gsap.to(loaderRef.current, {
+                //         scale: 0.5, // Shrink the loader slightly
+                //         duration: 1, // Duration of the additional animation
+                //         ease: "power2.inOut",
+                        
+                //     });
+                // },
             });
         }
     }, [progress]);
@@ -40,7 +51,7 @@ const Loader = () => {
     return (
         <div
             ref={loaderRef} // Attach the ref to the loader container
-            className="loader-container flex justify-center items-center h-screen w-screen relative"
+            className="loader-container flex justify-center items-center h-screen w-screen absolute top-0 left-0 "
         >
             {/* Video Background */}
             <video
