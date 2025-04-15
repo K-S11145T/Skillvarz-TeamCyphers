@@ -21,23 +21,21 @@ const Page4 = ({ playSound }) => {
       title: "Weapon Design",
       description:
         "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      image: "/Page-4/Dope 1.png",
+      video: "/Page-4/vid_1.mp4",
     },
     {
       sr: "02",
       title: "Developers Interviews",
       description:
         "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      image:
-        "https://4kwallpapers.com/images/wallpapers/assassins-creed-4480x2520-16786.jpeg",
+      video: "/Page-4/vid_3.mp4",
     },
     {
       sr: "03",
       title: "Soundtracks",
       description:
         "A character's soundtrack enhances their presence and emotions. Assassin's Creed Shadows blends shakuhachi flutes, taiko drums, and orchestration for an immersive, historical feel.",
-      image:
-        "https://gaming-cdn.com/images/news/articles/10198/cover/1000x563/ubisoft-posts-a-new-artwork-from-assassin-s-creed-shadows-cover67894625921f9.jpg",
+      video: "/Page-4/vid_4.mp4",
     },
   ];
 
@@ -97,15 +95,17 @@ const Page4 = ({ playSound }) => {
       </div>
 
       <div className="w-full h-[40vh] relative lg:h-[90vh] bg-zinc-400 overflow-hidden">
-        <img
+        <video
           style={{ objectPosition: "50% 20%" }}
           className="w-full h-full object-cover"
-          src={data[activeIndex].image}
-          alt=""
+          src={data[activeIndex].video}
+          autoPlay
+          loop
+          muted
         />
         <div className="absolute w-full h-full top-0 left-0">
           <img
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-40" /* Reduced opacity */
             src="/Page-4/dotedOverlay.png"
             alt=""
           />
