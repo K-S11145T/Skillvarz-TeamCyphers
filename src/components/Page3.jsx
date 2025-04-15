@@ -231,9 +231,9 @@ const Page3 = ({ playSound }) => {
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
-          className="h-5 w-auto lg:w-fit lg:h-fit object-contain"
+          className="w-fit h-fit object-contain"
         />
-        <h1 className="text-[#E35E4E] sm:text-2xl lg:text-5xl font-bold ">
+        <h1 className="text-[#E35E4E] text-5xl">
           {" "}
           <DecryptedText
             key={clicked ? "stats" : "echoes"}

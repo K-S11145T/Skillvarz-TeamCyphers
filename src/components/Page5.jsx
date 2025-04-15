@@ -99,7 +99,7 @@ const Page5 = ({ playSound }) => {
               alt="Arrow"
               className="h-4 w-auto lg:w-fit lg:h-fit object-contain"
             />
-            <h1 className="text-[#E35E4E] font-semibold leading-none text-lg sm:text-3xl lg:text-5xl">
+            <h1 className="text-[#E35E4E] text-xl sm:text-2xl lg:text-5xl font-bold">
               <DecryptedText
                 text="Platforms"
                 speed={100}
@@ -109,8 +109,8 @@ const Page5 = ({ playSound }) => {
             </h1>
           </div>
 
-          <div className="w-[65%] text-white">
-            <p className="text-3xl">
+          <div className="w-full md:w-[65%] text-white">
+            <p className="md:text-3xl">
               <SplitText
                 text="Step into the shadows of war, where honor and betrayal shape destiny. Will you rise as a master of stealth and steel, or be lost in the chaos of a fading era? The land is your battleground—embrace the assassin's path!"
                 delay={30}
