@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DecryptedText from "../animations/DecryptedText";
 import SplitText from "../animations/SplitText";
-import { Tilt } from '@jdion/tilt-react';
+
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -165,11 +165,7 @@ const Page5 = ({ playSound }) => {
 
         <div className="w-full mt-[10vh] relative flex flex-col gap-10 items-center md:min-h-screen">
           {imagedata.map((item, idx) => (
-            <Tilt
-              key={idx}
-              className="w-full z-[11] relative h-full flex group items-center justify-center"
-              options={{ scale: 1.03, max: 10 }}
-            >
+   
               <div 
                 ref={floatRefs[idx]}
                 className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]"
@@ -195,7 +191,7 @@ const Page5 = ({ playSound }) => {
                   </button>
                 </div>
               </div>
-            </Tilt>
+
           ))}
         </div>
       </div>

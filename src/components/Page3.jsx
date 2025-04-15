@@ -226,14 +226,14 @@ const Page3 = ({ playSound }) => {
   };
 
   return (
-    <div className="w-full min-h-screen font-orbitron bg-gradient-to-b from-black via-black to-[#120202] overflow-x-hidden">
-      <div className="flex p-5 items-center gap-5">
+    <div className="w-full min-h-screen  font-orbitron bg-gradient-to-b from-black via-black to-[#120202] overflow-x-hidden">
+      <div className="flex p-5  mt-20 items-center gap-5">
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
-          className="w-fit h-fit object-contain"
+          className="h-5 w-auto lg:w-fit lg:h-fit object-contain"
         />
-        <h1 className="text-[#E35E4E] text-5xl">
+        <h1 className="text-[#E35E4E] sm:text-2xl lg:text-5xl font-bold ">
           {" "}
           <DecryptedText
             key={clicked ? "stats" : "echoes"}
@@ -247,14 +247,13 @@ const Page3 = ({ playSound }) => {
         </h1>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center lg:h-[60vh] 2xl:h-[40vh] relative p-5 mt-4 md:mt-18 flex-grow justify-center">
+      <div className="flex flex-col md:flex-row items-center mt-20 lg:h-[60vh] 2xl:h-[50vh] relative p-5 mt-4 md:mt-18 flex-grow justify-center">
         <div className="border-t-2 lg:hidden relative mt-4 flex justify-evenly border-dashed border-[#E35E4E] w-full">
           {data.map((item, index) => (
             <div
               key={item.sr}
-              className={`relative group ${
-                clicked ? "pointer-events-none opacity-50" : ""
-              }`}
+              className={`relative group ${clicked ? "pointer-events-none opacity-50" : ""
+                }`}
               onClick={() => {
                 playSound2();
                 handleDotClick(index);
@@ -267,11 +266,10 @@ const Page3 = ({ playSound }) => {
                   absolute w-[3vh] h-[3vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
                   border-2 border-[#E35E4E] bg-transparent rounded-full 
                   transition-all duration-300 ease-in-out
-                  ${
-                    activeIndex === index
+                  ${activeIndex === index
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-50"
-                  }
+                    }
                 `}
                 ></div>
               </div>
@@ -298,13 +296,12 @@ const Page3 = ({ playSound }) => {
         </div>
         {/* Text Content */}
         <div
-          className={`w-full md:w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
-            clicked
+          className={`w-full md:w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${clicked
               ? "-translate-x-[120%] opacity-0"
               : "translate-x-0 opacity-100"
-          }`}
+            }`}
         >
-          <h1 className="text-[#E35E4E] font-bold md:text-xl lg:text-4xl">
+          <h1 className="text-[#E35E4E] font-bold md:text-xl 2xl:text-4xl lg:text-3xl">
             <DecryptedText
               text={activeData.title}
               speed={50}
@@ -314,7 +311,7 @@ const Page3 = ({ playSound }) => {
               key={`title-${activeIndex}-${clicked}`}
             />
           </h1>
-          <p className="text-zinc-300 mt-2 text-sm md:text-lg">
+          <div className="text-zinc-300 mt-2 md:text-xl lg:text-xl 2xl:text-3xl">
             <SplitText
               text={activeData.text1}
               delay={30}
@@ -327,30 +324,30 @@ const Page3 = ({ playSound }) => {
               rootMargin="-50px"
               textAlign="start"
             />
-          </p>
+          </div>
           <div className="hidden md:block w-[50%] h-[30%]">
-  <svg
-    width="50%"
-    height="200%"
-    viewBox="0 0 180 60"
-    preserveAspectRatio="xMidYMid meet"
-  >
-    <text
-      x="0"
-      y="0"
-      fontSize="60"
-      fontWeight="bold"
-      stroke="#E35E4E"
-      strokeWidth="0.5"
-      fill="transparent"
-      dominantBaseline="middle"
-    >
-      {activeData.sr}
-    </text>
-  </svg>
-</div>
+            <svg
+              width="50%"
+              height="200%"
+              viewBox="0 0 180 60"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <text
+                x="0"
+                y="0"
+                fontSize="60"
+                fontWeight="bold"
+                stroke="#E35E4E"
+                strokeWidth="0.5"
+                fill="transparent"
+                dominantBaseline="middle"
+              >
+                {activeData.sr}
+              </text>
+            </svg>
+          </div>
 
-          <h1 className="text-white font-bold  lg:3xl md:text-xl">
+          <h1 className="text-white font-bold lg:text-2xl 2xl:text-3xl md:text-xl">
             <DecryptedText
               text={activeData.name}
               speed={60}
@@ -360,7 +357,7 @@ const Page3 = ({ playSound }) => {
               key={`name-${activeIndex}-${clicked}`}
             />
           </h1>
-          <p className="text-zinc-300 mt-2 text-sm md:text-lg">
+          <p className="text-zinc-300 mt-2 md:text-xl lg:text-xl 2xl:text-3xl">
             <SplitText
               text={activeData.text2}
               delay={30}
@@ -387,9 +384,8 @@ const Page3 = ({ playSound }) => {
         <div
           id="container"
           ref={containerRef}
-          className={`w-full md:w-[35vw] relative transition-all duration-900 mt-0 md:mt-[-20vh] ${
-            clicked ? "-translate-x-[140%]" : "translate-x-0"
-          } h-fit`}
+          className={`w-full md:w-[35vw] relative transition-all duration-900 mt-0 md:mt-[-20vh] ${clicked ? "-translate-x-[140%]" : "translate-x-0"
+            } h-fit`}
           onMouseMove={!isMobile ? handleMouseMove : undefined}
         >
           <img
@@ -397,7 +393,7 @@ const Page3 = ({ playSound }) => {
             src="/Page-3/AC_Shadows_Crest_w_Color 2.png"
             alt=""
           />
-          <div className={`absolute bottom-14 left-10 w-[80%] h-fit`}>
+          <div className={`absolute bottom-5 left-10 w-[80%] h-fit`}>
             <div className="relative">
               <img
                 ref={characterImageRef}
@@ -412,9 +408,8 @@ const Page3 = ({ playSound }) => {
                 }}
               />
               <svg
-                className={`absolute transition-all opacity-0 duration-900  ${
-                  clicked && "opacity-[100%]"
-                } bottom-10`}
+                className={`absolute transition-all opacity-0 duration-900  ${clicked && "opacity-[100%]"
+                  } bottom-10`}
                 width="200"
                 height="100"
                 viewBox="0 0 180 100"
@@ -453,74 +448,72 @@ const Page3 = ({ playSound }) => {
         </div>
 
         {/* Expanded Content */}
-        
-                <div
-                  className={`w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
-                    clicked
-                      ? "translate-x-[50%] px-10 opacity-[100%]"
-                      : "translate-x-[130%] opacity-0"
-                  }`}
-                >
-                  <div className="flex flex-col gap-2">
-                    <h1 className="text-[#E35E4E] font-bold text-2xl">
-                      <DecryptedText
-                        text={activeData.name}
-                        speed={200}
-                        maxIterations={200}
-                        animateOn={clicked ? "view" : "none"} // Only animate when clicked
-                        key={`expanded-name-${activeIndex}-${clicked}`}
-                      />
-                    </h1>
-                    <h1 className="text-xl">
-                      <DecryptedText
-                        text={activeData.title}
-                        speed={50}
-                        maxIterations={100}
-                        animateOn={clicked ? "view" : "none"} // Only animate when clicked
-                        key={`expanded-title-${activeIndex}-${clicked}`}
-                      />
-                    </h1>
-        
-                    <div className="flex gap-5 text-md text-zinc-500">
-                      {activeData.skills.map((skill, index) => {
-                        return <h1 key={index}>{skill}</h1>;
-                      })}
-                    </div>
-                    <div className="flex mt-2 gap-6">
-                      {activeData.capsule.map((item, index) => {
-                        return (
-                          <div className="flex flex-col items-center gap-3">
-                            <div className="w-[12vh] h-[12vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
-                              <img
-                                className="w-full h-full object-cover"
-                                src={item.img}
-                                alt="Katana"
-                              />
-                            </div>
-                            <h1 className="w-[10vw] text-center">{item.name}</h1>
-                          </div>
-                        );
-                      })}
-                    </div>
-        
-                    <div className="w-[45vh] ml-20 h-[45vh] mt-5">
+
+        <div
+          className={`w-[50vw] transition-all text-white duration-900 ease-in-out absolute  ${clicked
+              ? "translate-x-[50%] px-10 opacity-[100%]"
+              : "translate-x-[130%] opacity-0"
+            }`}
+        >
+          <div className="flex flex-col gap-2">
+            <h1 className="text-[#E35E4E] font-bold lg:text-2xl 2xl:text-4xl">
+              <DecryptedText
+                text={activeData.name}
+                speed={200}
+                maxIterations={200}
+                animateOn={clicked ? "view" : "none"} // Only animate when clicked
+                key={`expanded-name-${activeIndex}-${clicked}`}
+              />
+            </h1>
+            <h1 className="lg:text-xl 2xl:texxt-2xl">
+              <DecryptedText
+                text={activeData.title}
+                speed={50}
+                maxIterations={100}
+                animateOn={clicked ? "view" : "none"} // Only animate when clicked
+                key={`expanded-title-${activeIndex}-${clicked}`}
+              />
+            </h1>
+
+            <div className="flex gap-5 lg:text-md 2xl:text-lg text-zinc-500">
+              {activeData.skills.map((skill, index) => {
+                return <h1 key={index}>{skill}</h1>;
+              })}
+            </div>
+            <div className="flex mt-2 gap-6">
+              {activeData.capsule.map((item, index) => {
+                return (
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-[12vh] h-[12vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
                       <img
-                        src={activeData.stats}
-                        alt="Stats"
-                        className="w-fit h-fit object-contain"
+                        className="w-full h-full object-cover"
+                        src={item.img}
+                        alt="Katana"
                       />
                     </div>
+                    <h1 className="w-[10vw] text-center">{item.name}</h1>
                   </div>
-                </div>
+                );
+              })}
+            </div>
+
+            <div className="w-[35vh] ml-20 h-[35vh] mt-5">
+              <img
+                src={activeData.stats}
+                alt="Stats"
+                className="w-fit h-fit object-contain"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="border-t-2 hidden relative mt-[10vh] md:mt-[20vh] lg:flex justify-evenly border-dashed border-[#E35E4E] w-full">
+      <div className="border-t-2 hidden relative lg:mt-[10%] md:mt-[20vh] lg:flex justify-evenly border-dashed border-[#E35E4E] w-full">
         {data.map((item, index) => (
           <div
             key={item.sr}
-            className={`relative group ${
-              clicked ? "pointer-events-none opacity-50" : ""
-            }`}
+            className={`relative group ${clicked ? "pointer-events-none opacity-50" : ""
+              }`}
             onClick={() => {
               playSound2();
               handleDotClick(index);
@@ -537,10 +530,9 @@ const Page3 = ({ playSound }) => {
                   absolute w-[3vh] h-[3vh] md:w-[5vh] md:h-[5vh] top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 
                   border-2 border-[#E35E4E] bg-transparent rounded-full 
                   transition-all duration-300 ease-in-out
-                  ${
-                    activeIndex === index
-                      ? "opacity-100 scale-100"
-                      : "opacity-0 scale-50"
+                  ${activeIndex === index
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-50"
                   }
                 `}
               ></div>
