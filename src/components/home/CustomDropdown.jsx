@@ -15,11 +15,11 @@ const CustomDropdown = ({
   };
 
   return (
-    <div className="relative w-[55%]  text-white font-semibold">
+    <div className="relative w-[50%] lg:w-[55%] text-white font-semibold">
       {/* Main button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-3 bg-white/10 cursor-pointer rounded-md border border-white/50 flex justify-between items-center hover:border-[#E35E4E] transition-all"
+        className="w-full px-3 lg:px-4 py-1 lg:py-3 bg-white/10 cursor-pointer rounded-md border border-white/50 flex justify-between text-sm lg:text-base items-center hover:border-[#E35E4E] transition-all"
       >
         {selected || placeholder}
         <p
@@ -38,7 +38,7 @@ const CustomDropdown = ({
             <div
               key={idx}
               onClick={() => handleSelect(option)}
-              className="px-4 py-3 hover:bg-[#E35E4E]/30 text-[#E35E4E] cursor-pointer transition-colors"
+              className="px-4 py-3 text-sm lg:text-base hover:bg-[#E35E4E]/30 text-[#E35E4E] cursor-pointer transition-colors"
             >
               {option}
             </div>
