@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DecryptedText from "../animations/DecryptedText";
 import SplitText from "../animations/SplitText";
 
-
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +12,7 @@ const Page5 = ({ playSound }) => {
   const floatRefs = [
     useRef(null), // Card 1
     useRef(null), // Card 2
-    useRef(null)  // Card 3
+    useRef(null), // Card 3
   ];
 
   // Animation setup for each ref
@@ -37,11 +36,11 @@ const Page5 = ({ playSound }) => {
 
       const handleLeave = () => {
         gsap.killTweensOf(img);
-        gsap.to(img, { 
-          y: -20, 
+        gsap.to(img, {
+          y: -20,
           scale: 1,
-          duration: 0.5, 
-          ease: "power2.out" 
+          duration: 0.5,
+          ease: "power2.out",
         });
       };
 
@@ -86,12 +85,12 @@ const Page5 = ({ playSound }) => {
     <div className="w-full relative min-h-screen font-orbitron">
       <div className="w-full">
         <img
-          className="w-full filter brightness-100 saturate-150 h-[270vh] lg:h-[320vh] object-cover"
+          className="w-full filter brightness-100 saturate-150 h-[170vh] md:h-[270vh] lg:h-[320vh] object-cover"
           src="/Page-1/AC_Background.png"
           alt=""
         />
       </div>
-      <div className="w-full px-4 md:px-8 absolute flex flex-col pt-10 items-center justify-start gap-10 top-0">
+      <div className="w-full px-4 md:px-8 z-[999] absolute flex flex-col pt-10 items-center justify-start gap-10 top-0">
         <div className="w-full flex flex-col md:flex-row gap-2 md:gap-5 items-start justify-between">
           <div className="flex w-full md:w-[30%] bg-zinc-30 items-center gap-2 md:gap-5">
             <img
@@ -135,7 +134,10 @@ const Page5 = ({ playSound }) => {
             viewBox="0 0 100 100"
             preserveAspectRatio="none"
           >
-            <polygon points="0,0 99,0 100,10 100,100 1,100 0,90" fill="transparent" />
+            <polygon
+              points="0,0 99,0 100,10 100,100 1,100 0,90"
+              fill="transparent"
+            />
             <polygon
               points="0,0 99,0 100,10 100,100 1,100 0,90"
               fill="none"
@@ -163,39 +165,41 @@ const Page5 = ({ playSound }) => {
           ))}
         </div>
 
-        <div className="w-full mt-[10vh] relative flex flex-col gap-10 items-center md:min-h-screen">
+        <div className="w-full md:mt-[10vh] relative flex flex-col gap-5 md:gap-10 items-center h-fit md:min-h-screen">
           {imagedata.map((item, idx) => (
-   
-              <div 
-                ref={floatRefs[idx]}
-                className="image-container w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] h-[50vh]"
-              >
+            <div
+              ref={floatRefs[idx]}
+              className="image-container h-fit md:w-[75%] relative shadow-black shadow-xl md:[clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] md:h-[50vh]"
+            >
+              <img
+                className="w-full h-auto md:translate-y-[-3vh] md:h-[150%] object-cover"
+                src={item.img1}
+                alt=""
+              />
+              <img className="absolute top-0" src="/Page-5/image.png" alt="" />
+              <div className="w-full h-full absolute top-0 left-0">
                 <img
-                  className="w-full translate-y-[-3vh] h-[150%] object-cover"
-                  src={item.img1}
+                  className="w-full h-full object-cover"
+                  src="/Footer/FooterOverlay.png"
                   alt=""
                 />
-                <img className="absolute top-0" src="/Page-5/image.png" alt="" />
-                <div className="w-full h-full absolute top-0 left-0">
-                  <img className="w-full h-full object-cover" src="/Footer/FooterOverlay.png" alt="" />
-                </div>
-                <div className="absolute bottom-5 right-0">
-                  <h1 className="text-3xl w-[40vw] text-white font-bold">
-                    {item.text}
-                  </h1>
-                  <button
-                    onClick={playSound}
-                    className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
-                  >
-                    EXPLORE
-                  </button>
-                </div>
               </div>
-
+              <div className="absolute bottom-5 right-0 px-4 md:px-0">
+                <h1 className="text-sm md:text-3xl dm:w-[40vw] text-white font-bold">
+                  {item.text}
+                </h1>
+                <button
+                  onClick={playSound}
+                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron text-xs md:text-base font-bold px-3 py-2"
+                >
+                  EXPLORE
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       </div>
-      <h1 className="text-start bottom-[50vh] translate-x-[-50%] left-1/2 absolute w-[90%] lg:[80%] text-white text-lg md:text-lg lg:text-3xl">
+      <h1 className="text-start bottom-[25%] w-full px-4 md:bottom-[50vh] translate-x-[-50%] left-1/2 absolute md:w-[90%] lg:[80%] text-white text-lg md:text-lg lg:text-3xl">
         <SplitText
           text="Step into the shadows. Stay tuned for exclusive content and pre-launch surprises. The journey begins soon..."
           delay={30}
