@@ -23,7 +23,7 @@ const App = () => {
   return (
     <ReactLenis root>
       <div className="w-full overflow-x-hidden relative min-h-screen bg-black select-none font-[orbitron]">
-        <Loader />
+        {/* <Loader /> */}
         <LandingPage playSound={playSound} />
         <Page2 playSound={playSound} />
         <Page3 playSound={playSound} />

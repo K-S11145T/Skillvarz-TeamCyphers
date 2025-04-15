@@ -105,7 +105,7 @@ const PreOrder = ({ handleClose, Order, playSound, setSubmitted }) => {
 
   return (
     <motion.div
-      className="fixed h-[50vh] lg:h-fit top-1/2 left-1/2 z-[9999] w-[98%] lg:w-[60vw] -translate-x-1/2 -translate-y-1/2 text-white"
+      className="fixed h-[50vh] lg:h-fit top-1/2 left-1/2 z-[99999] w-[98%] lg:w-[60vw] -translate-x-1/2 -translate-y-1/2 text-white"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
