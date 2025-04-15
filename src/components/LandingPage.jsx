@@ -419,7 +419,7 @@ const LandingPage = ({ playSound }) => {
       </div>
 
       {/* Fixed Nav */}
-      
+
       <div
         className={`fixed pointer-events-none top-0 z-[999] ${
           Order && "opacity-40 pointer-events-none"
@@ -436,9 +436,7 @@ const LandingPage = ({ playSound }) => {
               className="hidden cursor-pointer sm:block relative px-8 w-fit py-3 bg-black/30 backdrop-blur-md [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] pointer-events-auto text-[#E35E4E] font-[orbitron] overflow-hidden hover:text-black "
               whileHover="hover"
             >
-              <span className="relative z-10 font-bold ">
-                JOIN
-              </span>
+              <span className="relative z-10 font-bold ">JOIN</span>
 
               <motion.span
                 className="absolute cursor-pointer font-bold [clip-path:polygon(0%_0%,95%_0%,100%_0%,100%_100%,5%_100%,0%_80%)] inset-0 bg-[#E35E4E] "

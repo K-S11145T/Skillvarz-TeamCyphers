@@ -217,14 +217,14 @@ const Page3 = ({ playSound }) => {
   };
 
   return (
-    <div className="w-full min-h-screen font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
-      <div className="w-full flex px-4 py-2 lg:p-5 items-center gap-5">
+    <div className="w-full min-h-screen py-1 font-orbitron bg-gradient-to-b from-black via-black to-[#120202]">
+      <div className="w-full h-fit flex px-4 md:px-8 py-2 mt-10 items-center gap-2 sm:gap-5">
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
-          className="h-4 w-auto lg:w-fit lg:h-fit object-contain"
+          className="h-5 w-auto lg:w-fit lg:h-fit object-contain"
         />
-        <h1 className="text-[#E35E4E] font-bold text-lg sm:text-2xl lg:text-5xl">
+        <h1 className="text-[#E35E4E] font-bold text-xl sm:text-3xl lg:text-5xl">
           <DecryptedText
             key={clicked ? "stats" : "echoes"}
             text={clicked ? "Stats" : "Echoes of the Past"}
@@ -238,15 +238,15 @@ const Page3 = ({ playSound }) => {
       </div>
 
       {/* Only render content for active index */}
-      <div className="w-full flex items-center lg:h-[70vh] relative px-4 py-2 lg:p-5 lg:mt-8 flex-grow justify-center ">
+      <div className="w-full flex flex-col lg:flex-row items-center lg:h-[70vh] relative px-4 py-2 lg:p-5 lg:mt-8 flex-grow justify-center ">
         <div
-          className={`w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
+          className={`w-full lg:w-[55vw] h-full flex flex-col gap-3 justify-center transition-all duration-900 ease-in-out ${
             clicked
               ? "-translate-x-[120%] opacity-0"
               : "translate-x-0 opacity-100"
           }`}
         >
-          <h1 className="text-[#E35E4E] font-semibold text-base sm:text-2xl lg:text-4xl">
+          <h1 className="text-[#E35E4E] font-semibold text-lg sm:text-2xl lg:text-4xl">
             <DecryptedText
               text={activeData.title}
               speed={50}
@@ -256,7 +256,7 @@ const Page3 = ({ playSound }) => {
               key={`title-${activeIndex}-${clicked}`} // Include clicked state in key
             />
           </h1>
-          <p className="text-zinc-300 mt-2 text-xs sm:text-lg lg:text-xl">
+          <p className="text-zinc-300 mt-2 text-sm sm:text-lg lg:text-xl">
             <SplitText
               text={activeData.text1}
               delay={30} // delay between each word
@@ -270,27 +270,13 @@ const Page3 = ({ playSound }) => {
               textAlign="start"
             />
           </p>
-          <div className="w-full h-[5vh] lg:w-[50%] lg:h-[30%]  ">
-            <svg
-              width="50%"
-              height="200%"
-              viewBox="0 0 180 60"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <text
-                x="0"
-                y="0"
-                fontSize="60"
-                fontWeight="bold"
-                stroke="#E35E4E"
-                strokeWidth="0.5"
-                fill="transparent"
-                dominantBaseline="middle"
-              >
-                {activeData.sr}
-              </text>
-            </svg>
-          </div>
+
+          <h1
+            className="stroke-green-300 font-[Orbitron] text-5xl lg:text-[9vw] text-transparent"
+            style={{ WebkitTextStroke: "1px #E35E4E" }}
+          >
+            {activeData.sr}
+          </h1>
 
           <h1 className="text-white font-semibold text-base sm:text-2xl lg:text-4xl">
             <DecryptedText
@@ -325,11 +311,10 @@ const Page3 = ({ playSound }) => {
             EXPLORE
           </button>
         </div>
-
         <div
           id="container"
           ref={containerRef}
-          className={`w-[35vw] h-full relative transition-all duration-900 mt-[-20vh] ${
+          className={`w-full lg:w-[35vw] h-full relative transition-all duration-900 mt-[-20vh] ${
             clicked ? "-translate-x-[140%]" : "translate-x-0"
           } h-fit`}
           onMouseMove={handleMouseMove}
@@ -397,7 +382,7 @@ const Page3 = ({ playSound }) => {
         </div>
 
         <div
-          className={`w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
+          className={`w-full lg:w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
             clicked
               ? "translate-x-[50%] px-10 opacity-[100%]"
               : "translate-x-[130%] opacity-0"
