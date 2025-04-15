@@ -14,9 +14,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true); // State to control loader visibility
 
   const playSound = () => {
-    console.log("playSound called"); // Debugging
-    const audio = new Audio(process.env.PUBLIC_URL + "/Page-1/Data 3.wav");
-    audio.volume = 0.3;
+    console.log("playSound called");
+    const audio = new Audio("/sounds/click.mp3"); // Use a relative path
     audio.play();
   };
 
