@@ -15,8 +15,9 @@ const App = () => {
 
   const playSound = () => {
     console.log("playSound called");
-    const audio = new Audio("/sounds/click.mp3"); // Use a relative path
+    const audio = new Audio("/Page-1/Data 3.wav"); // Use a relative path
     audio.play();
+    audio.volume = 0.3;
   };
 
   // Simulate loader completion after 12 seconds
