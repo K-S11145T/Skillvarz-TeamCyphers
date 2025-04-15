@@ -75,7 +75,7 @@ const Footer = ({ playSound }) => {
         <div className={`w-full h-screen ${
           Order && "opacity-40 pointer-events-none"
         } relative`}>
-          <div className="w-full h-screen relative flex items-center justify-center text-9xl text-white">
+          <div className="w-full h-screen relative flex items-center justify-center text-white">
             <img
               className="w-full h-full object-cover"
               src="/Footer/Footer IMG.png"
@@ -87,17 +87,17 @@ const Footer = ({ playSound }) => {
           </div>
 
           <div className="absolute p-10 flex flex-col justify-end top-0 left-0 w-full h-[100%] text-white">
-            <div className="text-[#E35E4E] text-xs flex flex-col md:flex-row justify-start items-start text-5xl w-full font-bold py-10">
+            <div className="text-[#E35E4E] text-lg flex flex-col md:flex-row justify-between items-start w-full font-bold py-10">
               <button
                 onClick={() => {
                   playSound();
                   setOrder(true);
                 }}
-                className="bg-[#E35E4E] text-black cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base font-[orbitron] font-bold px-3 py-2 mb-4 md:mb-0 md:order-2"
+                className="bg-[#E35E4E] text-black cursor-pointer [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] text-base font-[orbitron] font-bold px-3 lg:px-6 py-2 mb-4 md:mb-0 md:order-2"
               >
                 PRE ORDER
               </button>
-              <h1 className="w-full md:w-[55%] text-lg md:text-5xl text-left">
+              <h1 className="w-full md:w-[60%] text-lg md:text-5xl text-left">
                 <DecryptedText
                   text="The Shadows are rising— Will you embrace the creed?"
                   animateOn="view"
@@ -108,8 +108,8 @@ const Footer = ({ playSound }) => {
               </h1>
             </div>
 
-            <div className="h-[2px] w-full bg-[#E35E4E]"></div>
-            <h1 className="px-5 pt-4 text-xs text-center">© 2025 Cyphers. All rights reserved.</h1>
+            <div className="h-[1px] lg:h-[2px] w-full bg-[#E35E4E]"></div>
+            <h1 className="px-5 pt-4 text-xs lg:text-lg text-center">© 2025 Cyphers. All rights reserved.</h1>
           </div>
         </div>
       </div>
