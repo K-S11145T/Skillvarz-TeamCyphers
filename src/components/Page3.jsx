@@ -224,7 +224,7 @@ const Page3 = ({ playSound }) => {
           alt="Arrow"
           className="w-fit h-fit object-contain"
         />
-        <h1 className="text-[#E35E4E] text-5xl">
+        <h1 className="text-[#E35E4E] text-5xl font-bold">
           {" "}
           <DecryptedText
             key={clicked ? "stats" : "echoes"}

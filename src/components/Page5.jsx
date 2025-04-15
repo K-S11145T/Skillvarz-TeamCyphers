@@ -127,12 +127,15 @@ const Page6 = ({ playSound }) => {
   const imagedata = [
     {
       img1: "/Page-5/lastcard.png",
+      text: "Become a legendary samurai",
     },
     {
       img1: "/Page-5/lastcard-1.png",
+      text: "Master the art of the blade.",
     },
     {
       img1: "/Page-5/sa.png",
+      text: "The legend moves unseen.",
     },
   ];
 
@@ -140,7 +143,7 @@ const Page6 = ({ playSound }) => {
     <div className="w-full relative min-h-screen font-orbitron">
       <div className="w-full">
         <img
-          className="w-full filter brightness-100 saturate-150 h-[340vh] object-cover"
+          className="w-full filter brightness-100 saturate-150 h-[270vh] lg:h-[260vh] object-cover"
           src="/Page-1/AC_Background.png"
           alt=""
         />
@@ -164,9 +167,9 @@ const Page6 = ({ playSound }) => {
             </h1>
           </div>
 
-          <div className="w-full md:w-[65%] text-white sm:text-xl md:text-2xl lg:text-3xl">
+          <div className="w-full md:w-[65%] text-white sm:text-xl md:text-xl lg:text-3xl">
             <SplitText
-              text="Step into the shadows of war, where honor and betrayal shape destiny. Will you rise as a master of stealth and steel, or be lost in the chaos of a fading era? The land is your battleground—embrace the assassin’s path!"
+              text=", where honor and betrayal shape destiny. Will you rise as a master of stealth and steel, or be lost in the chaos of a fading era? The land is your battleground—embrace the assassin’s path!"
               delay={30} // delay between each word
               duration={0.3} // animation time per word
               animationFrom={{ opacity: 0, y: 40 }}
@@ -226,42 +229,42 @@ const Page6 = ({ playSound }) => {
           })}
         </div>
 
-        <div className="w-full mt-[10vh] relative flex flex-col gap-20 items-center md:min-h-screen">
+        <div className="w-full mt-[10vh] relative flex flex-col gap-10 items-center md:min-h-screen">
           {imagedata.map((item, idx) => {
             return (
               <TiltedCard
-              ref={idx === 0 ? floatRef1 : idx === 1 ? floatRef2 : floatRef3}
-              imageSrc={item.img1}
-              altText=""
-              containerHeight="45vh"
-              mdContainerHeight="50vh"
-              containerWidth="75%"
-              mdContainerWidth="75%"
-              clipPath="polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)"
-       
-              overlayContent={
-                <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
-                  <h1 className="text-xl md:text-4xl text-white font-bold">
-                    Become a legendary samurai
-                  </h1>
-                  <button
-                    onClick={() => playSound()}
-                    className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
-                  >
-                    EXPLORE
-                  </button>
-                </div>
-              }
-              additionalStyles={{
-                container: "shadow-black shadow-xl overflow-hidden",
-                overlay: "bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)] pointer-events-none z-[50]"
-              }}
-            />
+                ref={idx === 0 ? floatRef1 : idx === 1 ? floatRef2 : floatRef3}
+                imageSrc={item.img1}
+                altText=""
+                containerHeight="45vh"
+                mdContainerHeight="50vh"
+                containerWidth="75%"
+                mdContainerWidth="75%"
+                clipPath="polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)"
+                overlayContent={
+                  <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
+                    <h1 className="text-xl md:text-4xl text-white font-bold">
+                      {item.text}
+                    </h1>
+                    <button
+                      onClick={() => playSound()}
+                      className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                    >
+                      EXPLORE
+                    </button>
+                  </div>
+                }
+                additionalStyles={{
+                  container: "shadow-black shadow-xl overflow-hidden",
+                  overlay:
+                    "bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)] pointer-events-none z-[50]",
+                }}
+              />
             );
           })}
         </div>
       </div>
-      <h1 className="text-start bottom-[50vh] translate-x-[-50%] left-1/2 absolute w-[80%] text-white text-3xl font-bold">
+      <h1 className="text-start bottom-[50vh] translate-x-[-50%] left-1/2 absolute w-[90%] lg:[80%] text-white text-lg md:text-lg lg:text-3xl">
         <SplitText
           text="Step into the shadows. Stay tuned for exclusive content and pre-launch surprises. The journey begins soon..."
           delay={30} // delay between each word
