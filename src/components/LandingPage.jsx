@@ -277,7 +277,7 @@ const LandingPage = ({ playSound }) => {
         {/* Centered elements */}
         <div
           ref={shadowImg}
-          className="absolute w-[90%] h-[60%] md:w-[80%] md:h-[80%] xl:w-[30%] xl:h-screen bottom-0" // Increased width slightly
+          className="absolute w-[90%] h-[60%] md:w-[80%] md:h-[80%] xl:w-[35%] xl:h-screen bottom-0" // Increased width slightly
         >
           <img
             className="w-full h-full object-cover"
@@ -288,7 +288,7 @@ const LandingPage = ({ playSound }) => {
 
         <div
           ref={logoImg}
-          className="absolute w-[90%] h-[60%] md:w-[80%] md:h-[80%] xl:w-[30%] xl:h-screen bottom-0" // Increased width slightly
+          className="absolute w-[90%] h-[60%] md:w-[80%] md:h-[80%] xl:w-[35%] xl:h-screen bottom-0" // Increased width slightly
         >
           <img
             className="w-full h-full object-cover"
