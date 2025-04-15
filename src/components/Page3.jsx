@@ -453,66 +453,65 @@ const Page3 = ({ playSound }) => {
         </div>
 
         {/* Expanded Content */}
-        <div
-          className={`w-full md:w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
-            clicked
-              ? "translate-x-[0] md:translate-x-[50%] px-5 md:px-10 opacity-[100%]"
-              : "translate-x-[130%] opacity-0"
-          }`}
-        >
-          <div className="flex flex-col gap-2">
-            <h1 className="text-[#E35E4E] font-bold text-xl md:text-2xl">
-              <DecryptedText
-                text={activeData.name}
-                speed={200}
-                maxIterations={200}
-                animateOn={clicked ? "view" : "none"}
-                key={`expanded-name-${activeIndex}-${clicked}`}
-              />
-            </h1>
-            <h1 className="text-lg md:text-xl">
-              <DecryptedText
-                text={activeData.title}
-                speed={50}
-                maxIterations={100}
-                animateOn={clicked ? "view" : "none"}
-                key={`expanded-title-${activeIndex}-${clicked}`}
-              />
-            </h1>
-
-            <div className="flex flex-wrap gap-2 md:gap-5 text-sm md:text-md text-zinc-500">
-              {activeData.skills.map((skill, index) => {
-                return <h1 key={index}>{skill}</h1>;
-              })}
-            </div>
-            <div className="flex flex-wrap mt-2 gap-3 md:gap-6">
-              {activeData.capsule.map((item, index) => {
-                return (
-                  <div key={index} className="flex flex-col items-center gap-3">
-                    <div className="w-[8vh] h-[8vh] md:w-[12vh] md:h-[12vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
+        
+                <div
+                  className={`w-[50vw] transition-all text-white bottom-16 duration-900 ease-in-out absolute h-[70vh] ${
+                    clicked
+                      ? "translate-x-[50%] px-10 opacity-[100%]"
+                      : "translate-x-[130%] opacity-0"
+                  }`}
+                >
+                  <div className="flex flex-col gap-2">
+                    <h1 className="text-[#E35E4E] font-bold text-2xl">
+                      <DecryptedText
+                        text={activeData.name}
+                        speed={200}
+                        maxIterations={200}
+                        animateOn={clicked ? "view" : "none"} // Only animate when clicked
+                        key={`expanded-name-${activeIndex}-${clicked}`}
+                      />
+                    </h1>
+                    <h1 className="text-xl">
+                      <DecryptedText
+                        text={activeData.title}
+                        speed={50}
+                        maxIterations={100}
+                        animateOn={clicked ? "view" : "none"} // Only animate when clicked
+                        key={`expanded-title-${activeIndex}-${clicked}`}
+                      />
+                    </h1>
+        
+                    <div className="flex gap-5 text-md text-zinc-500">
+                      {activeData.skills.map((skill, index) => {
+                        return <h1 key={index}>{skill}</h1>;
+                      })}
+                    </div>
+                    <div className="flex mt-2 gap-6">
+                      {activeData.capsule.map((item, index) => {
+                        return (
+                          <div className="flex flex-col items-center gap-3">
+                            <div className="w-[12vh] h-[12vh] rounded-full overflow-hidden border-2 border-[#E35E4E]">
+                              <img
+                                className="w-full h-full object-cover"
+                                src={item.img}
+                                alt="Katana"
+                              />
+                            </div>
+                            <h1 className="w-[10vw] text-center">{item.name}</h1>
+                          </div>
+                        );
+                      })}
+                    </div>
+        
+                    <div className="w-[45vh] ml-20 h-[45vh] mt-5">
                       <img
-                        className="w-full h-full object-cover"
-                        src={item.img}
-                        alt={item.name}
+                        src={activeData.stats}
+                        alt="Stats"
+                        className="w-fit h-fit object-contain"
                       />
                     </div>
-                    <h1 className="w-[20vw] md:w-[10vw] text-center text-xs md:text-base">
-                      {item.name}
-                    </h1>
                   </div>
-                );
-              })}
-            </div>
-
-            <div className="w-full md:w-[45vh] ml-0 md:ml-20 h-auto md:h-[45vh] mt-5 flex justify-center">
-              <img
-                src={activeData.stats}
-                alt="Stats"
-                className="w-full md:w-fit h-auto md:h-fit object-contain"
-              />
-            </div>
-          </div>
-        </div>
+                </div>
       </div>
 
       <div className="border-t-2 hidden relative mt-[10vh] md:mt-[20vh] lg:flex justify-evenly border-dashed border-[#E35E4E] w-full">
