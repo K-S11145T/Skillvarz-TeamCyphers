@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DecryptedText from "../animations/DecryptedText";
 import SplitText from "../animations/SplitText";
-import { Tilt } from "@jdion/tilt-react";
+import TiltedCard from "../animations/TiltedCard";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -124,6 +124,18 @@ const Page6 = ({ playSound }) => {
     },
   ];
 
+  const imagedata = [
+    {
+      img1: "/Page-5/lastcard.png",
+    },
+    {
+      img1: "/Page-5/lastcard-1.png",
+    },
+    {
+      img1: "/Page-5/sa.png",
+    },
+  ];
+
   return (
     <div className="w-full relative min-h-screen font-orbitron">
       <div className="w-full">
@@ -214,109 +226,39 @@ const Page6 = ({ playSound }) => {
           })}
         </div>
 
-        <div className="w-full mt-[20vh] relative flex flex-col gap-10 items-center md:min-h-screen">
-          <Tilt
-            className="w-full z-[11] relative h-full flex group items-center justify-center"
-            options={{ scale: 1.07, max: 10 }}
-          >
-            <div
-              ref={floatRef1}
-              className="image-container w-full h-[15vh] md:h-[50vh] md:w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)] overflow-hidden"
-            >
-              <div
-                className="absolute top-0 left-0 w-full h-full z-[50] pointer-events-none
-              bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)]"
-              />
-
-              <img
-                className="w-full md:h-[150%] translate-y-[-3vh] object-cover"
-                src="/Page-5/lastcard.png"
-                alt=""
-              />
-              <img className="absolute top-0 w-full h-full" src="/Page-5/image.png" alt="" />
-
-              <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
-                <h1 className="text-xl md:text-4xl text-white font-bold">
-                  Become a legendary samurai
-                </h1>
-                <button
-                  onClick={() => playSound()}
-                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold  text-xs px-3 py-2"
-                >
-                  EXPLORE
-                </button>
-              </div>
-            </div>
-          </Tilt>
-          <Tilt
-            className="w-full z-[10] relative h-full flex items-center justify-center"
-            options={{ scale: 1.03, max: 7 }}
-          >
-            <div
-              ref={floatRef2}
-              className="image-container w-full h-[15vh] md:h-[50vh] md:w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)]"
-            >
-              <div
-                className="absolute top-0 left-0 w-full h-full z-[50] pointer-events-none
-  bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)]"
-              />
-
-              <img
-                className="w-full h-[150%] translate-y-[-3vh] object-cover"
-                src="/Page-5/lastcard-1.png"
-                alt=""
-              />
-
-              <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
-                <h1 className="text-xl md:text-4xl text-white font-bold">
-                  Become a legendary samurai
-                </h1>
-                <button
-                  onClick={() => {
-                    playSound();
-                  }}
-                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
-                >
-                  EXPLORE
-                </button>
-              </div>
-            </div>
-          </Tilt>
-
-          <Tilt
-            className="w-full z-[9] relative h-full flex items-center justify-center"
-            options={{ scale: 1.03, max: 7 }}
-          >
-            <div
-              ref={floatRef3}
-              className="image-container w-full h-[15vh] md:h-[50vh] md:w-[75%] relative shadow-black shadow-xl [clip-path:polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)]"
-            >
-              <div
-                className="absolute top-0 left-0 w-full h-full z-[50] pointer-events-none
-  bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)]"
-              />
-
-              <img
-                className="w-full h-[150%] translate-y-[-3vh] object-cover"
-                src="/Page-5/sa.png"
-                alt=""
-              />
-
-              <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
-                <h1 className="text-xl md:text-4xl text-white font-bold">
-                  Become a legendary samurai
-                </h1>
-                <button
-                  onClick={() => {
-                    playSound();
-                  }}
-                  className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold text-xs px-3 py-2"
-                >
-                  EXPLORE
-                </button>
-              </div>
-            </div>
-          </Tilt>
+        <div className="w-full mt-[10vh] relative flex flex-col gap-20 items-center md:min-h-screen">
+          {imagedata.map((item, idx) => {
+            return (
+              <TiltedCard
+              ref={idx === 0 ? floatRef1 : idx === 1 ? floatRef2 : floatRef3}
+              imageSrc={item.img1}
+              altText=""
+              containerHeight="45vh"
+              mdContainerHeight="50vh"
+              containerWidth="75%"
+              mdContainerWidth="75%"
+              clipPath="polygon(3%_0%,100%_0%,100%_90%,97%_100%,0%_100%,0%_10%)"
+       
+              overlayContent={
+                <div className="absolute bottom-5 right-0 px-4 w-[80%] md:w-[45%]">
+                  <h1 className="text-xl md:text-4xl text-white font-bold">
+                    Become a legendary samurai
+                  </h1>
+                  <button
+                    onClick={() => playSound()}
+                    className="bg-black mt-2 cursor-pointer text-[#E35E4E] [clip-path:polygon(0%_0%,95%_0%,100%_20%,100%_100%,5%_100%,0%_80%)] font-orbitron font-bold px-3 py-2"
+                  >
+                    EXPLORE
+                  </button>
+                </div>
+              }
+              additionalStyles={{
+                container: "shadow-black shadow-xl overflow-hidden",
+                overlay: "bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_40%,rgba(0,0,0,0.7)_100%)] pointer-events-none z-[50]"
+              }}
+            />
+            );
+          })}
         </div>
       </div>
       <h1 className="text-start bottom-[50vh] translate-x-[-50%] left-1/2 absolute w-[80%] text-white text-3xl font-bold">
