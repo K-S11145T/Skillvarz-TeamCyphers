@@ -76,14 +76,14 @@ const Page4 = ({ playSound }) => {
 
   return (
     <div className="w-full h-fit bg-red-900 lg:py-10 bg-gradient-to-b from-[#120202] via-black to-[#0D0000] font-orbitron overflow-x-hidden">
-      <div className="flex px-4 py-3 items-center gap-2 lg:gap-5">
+      <div className="flex px-4 my-3 md:mb-5 items-center gap-2 lg:gap-5">
         <img
           src="/Page-2/Arrow.svg"
           alt="Arrow"
-          className="h-4 w-auto lg:w-fit lg:h-fit object-contain"
+          className="h-5 w-auto lg:w-fit lg:h-fit object-contain"
         />
 
-        <h1 className="text-[#E35E4E] text-lg sm:text-2xl lg:text-4xl">
+        <h1 className="text-[#E35E4E] text-xl sm:text-2xl lg:text-5xl font-bold">
           <DecryptedText
             text="Behind the scenes"
             speed={50}
@@ -113,7 +113,7 @@ const Page4 = ({ playSound }) => {
 
         <div className="w-full absolute text-white top-0 left-0 flex h-full border-2 border-[#E35E4E]">
           {/* Left panel - fixed width */}
-          <div className="w-[45%] lg:w-[30%] flex items-center px-2 py-2 lg:p-5 border-r-[1px] border-[#E35E4E] h-full z-10">
+          <div className="w-[35%] flex items-center px-2 py-2 lg:p-5 border-r-[1px] border-[#E35E4E] h-full z-10">
             <div className="w-full ">
               <h1 className="font-semibold text-base sm:text-2xl lg:text-4xl">
                 <DecryptedText
@@ -174,26 +174,28 @@ const Page4 = ({ playSound }) => {
           ></div>
 
           {/* Right panel - stack items with animation */}
-          <div className="w-full flex-1 relative overflow-hidden">
-            <div ref={stackContainerRef} className="w-full h-full flex">
-              {data.map((item, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    handleClick(idx);
-                    playSound2();
-                  }}
-                  className="stack-item cursor-pointer w-1/3 border-r-[1px] overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
-                >
-                  <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]"></div>
-                  <h1 className="text-xs text-center lg:text-xl absolute top-1/2 -translate-y-1/2 z-10">{item.title}</h1>
-                  <h1 className="text-lg lg:text-2xl absolute right-1 bottom-0 lg:right-5 lg:bottom-3 font-bold z-10">
-                    {item.sr}
-                  </h1>
-                </div>
-              ))}
-            </div>
+          {/* <div className="w-full flex-1 relative overflow-hidden"> */}
+          <div ref={stackContainerRef} className="w-[65%] h-full flex">
+            {data.map((item, idx) => (
+              <div
+                key={idx}
+                onClick={() => {
+                  handleClick(idx);
+                  playSound2();
+                }}
+                className="stack-item cursor-pointer w-1/3 border-r-[1px] overflow-hidden group relative border-[#E35E4E] flex flex-col items-center justify-center h-full"
+              >
+                <div className="absolute w-full h-full left-0 top-[100%] group-hover:top-0 duration-300 bg-[#E35E4E]"></div>
+                <h1 className="text-xs text-center lg:text-xl absolute top-1/2 -translate-y-1/2 z-10">
+                  {item.title}
+                </h1>
+                <h1 className="text-lg lg:text-2xl absolute right-1 bottom-0 lg:right-5 lg:bottom-3 font-bold z-10">
+                  {item.sr}
+                </h1>
+              </div>
+            ))}
           </div>
+          {/* </div> */}
         </div>
       </div>
     </div>

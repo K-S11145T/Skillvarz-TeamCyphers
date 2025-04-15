@@ -110,7 +110,10 @@ const Page2 = () => {
       ref={parent}
       className="relative w-full h-[40vh] xl:h-screen flex items-center justify-between bg-black overflow-hidden"
     >
-      <div ref={leftImg} className="w-[30%] sm:w-[25%] h-full">
+      <div
+        ref={leftImg}
+        className="w-[35%] absolute -left-10 md:left-0 sm:w-[25%] h-full"
+      >
         <img
           className="w-full h-full object-cover"
           src="/Page-2/Player2BgRemoved 1 (1).png"
@@ -118,7 +121,7 @@ const Page2 = () => {
         />
       </div>
 
-      <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center w-[55%] lg:w-[45%] ">
+      <div className="absolute z-[99] top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center w-[70%] lg:w-[45%] ">
         <div
           ref={line1}
           className="absolute top-0 -translate-y-1/2 w-full h-fit"
@@ -128,7 +131,7 @@ const Page2 = () => {
 
         <div
           ref={centerDiv}
-          className="w-full text-center font-[orbitron] py-2 sm:py-10 h-fit opacity-0 lg:translate-y-10"
+          className="w-full text-center font-[orbitron] py-4 lg:py-15 h-fit opacity-0 lg:translate-y-10"
         >
           <div
             className="flex items-center justify-center gap-2 lg:gap-5"
@@ -137,9 +140,9 @@ const Page2 = () => {
             <img
               src="/Page-2/Arrow.svg"
               alt="Arrow"
-              className="h-4 w-auto lg:w-fit lg:h-fit object-contain"
+              className="h-5 w-auto lg:w-fit lg:h-fit object-contain"
             />
-            <h1 className="font-orbitron font-semibold text-[#E35E4E] text-base sm:text-2xl lg:text-4xl ">
+            <h1 className="font-orbitron font-semibold text-[#E35E4E] text-xl sm:text-3xl lg:text-5xl ">
               <DecryptedText
                 text="A new creed rises"
                 speed={60}
@@ -151,7 +154,15 @@ const Page2 = () => {
             </h1>
           </div>
           <div
-            className="text-zinc-300 text-xs sm:text-lg lg:mt-5 lg:text-xl "
+            className="text-zinc-300 sm:hidden sm:text-lg md:text-xl lg:mt-5 lg:text-xl "
+            ref={bodyText}
+          >
+            {splitText(
+              `Live the intertwined stories of Naoe, an adept shinobi Assassin from Iga Province, and Yasuke, the powerful African samurai of historical legend. Against the backdrop of the turbulent late Sengoku period`
+            )}
+          </div>
+          <div
+            className="text-zinc-300 hidden sm:mt-2 lg:mt-5 sm:block sm:text-2xl lg:text-3xl "
             ref={bodyText}
           >
             {splitText(
@@ -168,7 +179,10 @@ const Page2 = () => {
         </div>
       </div>
 
-      <div ref={rightImg} className="w-[30%] sm:w-[25%] h-full">
+      <div
+        ref={rightImg}
+        className="w-[35%] z-[10] absolute -right-8 md:right-0 sm:w-[25%] h-full"
+      >
         <img
           className="w-full h-full object-cover"
           src="/Page-2/Player1BgRemoved 1 (1).png"
