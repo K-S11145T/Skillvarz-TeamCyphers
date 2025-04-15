@@ -324,7 +324,7 @@ const LandingPage = ({ playSound }) => {
       >
         <div className="w-fit flex flex-col h-full pb-14 sm:pb-30 lg:pb-8 justify-between">
           <div className="flex gap-1">
-            <h1 className="tracking-[-0.18em] text-3xl sm:text-5xl font-[hanbai] text-white [writing-mode:vertical-rl] [text-orientation:upright]">
+            <h1 className="tracking-[-0.18em] lg:text-4xl text-3xl  sm:text-5xl font-[hanbai] text-white [writing-mode:vertical-rl] [text-orientation:upright]">
               <span className="bg-gradient-to-b from-red-600 via-zinc-800 to-red-600 filter brightness-90 saturate-150 bg-clip-text text-transparent">
                 as
               </span>
